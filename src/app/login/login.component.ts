@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
   }
 
   login1(): Observable<any> {
-    return this.http.get('https://user-service.cubetech-app.fr/user').pipe();
+    return this.http.get('http://localhost:3000/user').pipe();
   }
   login(){
     this.login1().subscribe(message => this.message = message);
