@@ -46,6 +46,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "keycloak-js"
+            ],
             "outputPath": "dist/ng-ishelp-app",
             "index": "src/index.html",
             "main": "src/main.ts",

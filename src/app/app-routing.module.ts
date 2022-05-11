@@ -7,7 +7,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent, canActivate : [AuthGuard] },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent,
+  loadChildren: () => import('./login/login.module').then(m => m.LoginModule)}
 ];
 
 @NgModule({

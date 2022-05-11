@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of, tap, throwError } from 'rxjs';
 import { GlobalHttpInterceptorService } from '../utility/app.init'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   password: string = '';
 
   constructor(
-    private router: Router, 
+    public translate: TranslateService, 
     private http: HttpClient
   ) { }
 
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   login1(): Observable<any> {
-    return this.http.get('http://localhost:3000/user').pipe();
+    return this.http.get('https://user-service.cubetech-app.fr/user').pipe();
   }
   login(){
     this.login1().subscribe(message => this.message = message);
