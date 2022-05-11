@@ -10,21 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlobalHttpInterceptorService } from './utility/app.init';
 
-function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'https://keycloak.cubetech-app.fr/auth',
-        realm: 'ishelp',
-        clientId: 'angular-front-public'
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
-      }
-    });
-}
+
 @NgModule({
   declarations: [
     AppComponent
@@ -62,4 +48,20 @@ export class AppModule { }
 
 export function httpTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+export function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        url: 'https://keycloak.cubetech-app.fr/auth',
+        realm: 'ishelp',
+        clientId: 'angular-front-public'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
+    });
 }

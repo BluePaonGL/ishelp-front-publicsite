@@ -34,19 +34,4 @@ export class LoginComponent implements OnInit {
     this.login1().subscribe(message => this.message = message);
 
   }
-  
-
-  logout() {
-
-  }
-
-  private log(response: any) {
-    console.table(response);
-  }
-
-  
-  private handleError(error: HttpErrorResponse, errorValue: any) {
-    console.error(error.error);
-    return of(errorValue);
-  }
 }
