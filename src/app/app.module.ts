@@ -9,11 +9,15 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlobalHttpInterceptorService } from './utility/app.init';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormulaireComponent,
+    
   ],
   imports: [
     FormsModule,
@@ -27,7 +31,8 @@ import { GlobalHttpInterceptorService } from './utility/app.init';
       }
     }),
     AppRoutingModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { 
