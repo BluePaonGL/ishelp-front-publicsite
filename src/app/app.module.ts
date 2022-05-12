@@ -9,6 +9,8 @@ import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GlobalHttpInterceptorService } from './utility/app.init';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 
 function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
@@ -27,7 +29,9 @@ function initializeKeycloak(keycloak: KeycloakService) {
 }
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FormulaireComponent,
+    
   ],
   imports: [
     FormsModule,
@@ -41,7 +45,8 @@ function initializeKeycloak(keycloak: KeycloakService) {
       }
     }),
     AppRoutingModule,
-    KeycloakAngularModule
+    KeycloakAngularModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { 
