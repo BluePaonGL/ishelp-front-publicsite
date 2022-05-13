@@ -1,5 +1,6 @@
 {
-    "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
+    "LoginButton": "Login",
+    "signUpButton": "Sign Up",
     "login": {
         "username": "Efefzef",
         "password": "Password here"
