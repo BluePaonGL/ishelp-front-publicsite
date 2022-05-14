@@ -1,20 +1,14 @@
 <div class="center">
     <mat-card class="card-custom card mat-elevation-z6">
-        <mat-card-header class="card-custom">
-            <mat-card-title>test</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
+        <mat-card-title style="margin-top: 5%;">{{ '404.title' | translate }}</mat-card-title>
+        <mat-card-subtitle style="margin-bottom: 0; font-weight: bolder;">{{ '404.subTitle' | translate }}</mat-card-subtitle>
         <img mat-card-image class="card-image" src="../../assets/logo-whiteback-round.png" alt="ishelp-logo">
         <mat-card-content>
-            <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-            </p>
         </mat-card-content>
+        <mat-card-title style="font-size: 3em;">404</mat-card-title>
+        <mat-card-title style="margin-bottom: 5%;">{{ '404.error' | translate }}</mat-card-title>
         <mat-card-actions>
-            <button mat-button>LIKE</button>
-            <button mat-button>SHARE</button>
+            <button (click)="back()" mat-button style="color:rgba(0, 0, 0, 0.54);">{{ '404.back' | translate }}</button>
         </mat-card-actions>
     </mat-card>
 </div>

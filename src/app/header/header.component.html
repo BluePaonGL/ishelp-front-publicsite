@@ -2,27 +2,27 @@
     <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
     <button  mat-button routerLink="/header" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
         class="mat-focus-indicator mat-button-base header-titles" #btnRef="matButton" color="ishelp-accent">
-        <span class="mat-button-wrapper">IsHelp1</span>
+        <span class="mat-button-wrapper">{{ 'header.title1' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
     <button mat-button routerLink="/header" class="mat-focus-indicator mat-button-base header-titles">
-        <span class="mat-button-wrapper">IsHelp2</span>
+        <span class="mat-button-wrapper">{{ 'header.title2' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
     <button mat-button class="header-titles">
-        <span >IsHelp3</span>
+        <span class="mat-button-wrapper"> {{ 'header.title3' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
     </button>
     <span class="header-spacer"></span>
     <button mat-button class="mat-focus-indicator mat-button-base header-login">
-        <a href="https://user-service.cubetech-app.fr/user" class="mat-button-wrapper">{{ 'LoginButton' | translate }}</a>
+        <a href="https://user-service.cubetech-app.fr/user" class="mat-button-wrapper">{{ 'header.LoginButton' | translate }}</a>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
     <button mat-button class="mat-focus-indicator mat-button-base header-signup">
-        <span href="" class="mat-button-wrapper">{{ 'signUpButton' | translate }}</span>
+        <span href="" class="mat-button-wrapper">{{ 'header.signUpButton' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>

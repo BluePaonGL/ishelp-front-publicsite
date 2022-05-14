@@ -13,6 +13,14 @@
 .card-custom {
   max-width: 400px;
   justify-content: center;
+  color: mat.get-color-from-palette($mat-blue-custom, 500);
+}
+
+.mat-card-title {
+  margin-top: 10% ;
+  margin-bottom: 10%;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 .card-image {
@@ -20,5 +28,4 @@ background-image: url('../../assets/logo-white-transarent.png');
 background-size: cover;
 width: 100%;
 margin: 0 0 0 0 ;
-
 }

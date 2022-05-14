@@ -1,8 +1,15 @@
 {
-    "LoginButton": "Connexion",
-    "signUpButton": "Inscription",
-    "login": {
-        "username": "Efrfrfrfrfrfrfrfrfrfrf name",
-        "password": "Passwordefrezfezf here"
+    "header": {
+        "LoginButton": "Connexion",
+        "signUpButton": "Inscription",
+        "title1": "isHelp1",
+        "title2": "isHelp2",
+        "title3": "isHelp3"
+    },
+    "404": {
+        "title": "Oups !",
+        "subTitle": "Il semble que vous êtes perdu ...",
+        "error": "Page introuvable",
+        "back": "Retour"
     }
 }
