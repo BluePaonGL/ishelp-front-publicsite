@@ -1,6 +1,7 @@
-<mat-toolbar color="primary" class="mat-elevation-z6 header">
+<mat-toolbar class="mat-elevation-z6 header">
     <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
-    <button  mat-button routerLink="/header" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"class="mat-focus-indicator mat-button-base header-titles" #btnRef="matButton" >
+    <button  mat-button routerLink="/header" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
+        class="mat-focus-indicator mat-button-base header-titles" #btnRef="matButton" color="ishelp-accent">
         <span class="mat-button-wrapper">IsHelp1</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
@@ -16,11 +17,11 @@
     </button>
     <span class="header-spacer"></span>
     <button mat-button class="mat-focus-indicator mat-button-base header-login">
-        <span href="" class="mat-button-wrapper">{{ 'LoginButton' | translate }}</span>
+        <a href="https://user-service.cubetech-app.fr/user" class="mat-button-wrapper">{{ 'LoginButton' | translate }}</a>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
-    <button mat-button class="mat-focus-indicator mat-button-base header-login">
+    <button mat-button class="mat-focus-indicator mat-button-base header-signup">
         <span href="" class="mat-button-wrapper">{{ 'signUpButton' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
