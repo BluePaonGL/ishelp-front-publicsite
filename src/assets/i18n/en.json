@@ -11,5 +11,13 @@
         "subTitle": "It seems that you're lost ...",
         "error": "Page not found",
         "back": "Back"
+    },
+    "footer": {
+        "socialTitle": "Our socials:",
+        "donationTitle": "Help us by donating:",
+        "donationLink": "Donation Link",
+        "Q&A": "Q&A",
+        "aboutUs": "About Us",
+        "CGU": "CGU"
     }
 }

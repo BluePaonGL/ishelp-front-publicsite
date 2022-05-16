@@ -1,31 +1,45 @@
 <footer class="page-footer">
     <div class="container">
         <div class="row">
-            <div class="col s6 m5 l4">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+            <div class="col s12 m12 l4 footer-left">
+                <h2 class="white-text">{{ 'footer.socialTitle' | translate }}</h2>
+                <mat-nav-list class="footer-nav-list">
+                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
+                        <a class="icon" href="https://www.youtube.com/channel/UCveKTUT7_UAq7WcVeeKXPnA"><span class="iconify icon" data-icon="akar-icons:youtube-fill"></span></a>
+                    </button>
+                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
+                        <a class="icon" href="https://www.instagram.com/asso_ishelp"><span class="iconify icon" data-icon="akar-icons:instagram-fill"></span></a>
+                    </button>
+                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
+                        <a class="icon" href="https://www.facebook.com/IsHelpAssociation"><span class="iconify icon" data-icon="akar-icons:facebook-fill"></span></a>
+                    </button>
+                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
+                        <a class="icon" href="https://www.linkedin.com/company/ishelp"><span class="iconify icon" data-icon="akar-icons:linkedin-box-fill"></span></a>
+                    </button>
+                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
+                        <a class="icon" href="https://www.tiktok.com/@asso_ishelp"><span class="iconify icon" data-icon="bxl:tiktok"></span></a>
+                    </button>
+                </mat-nav-list>
             </div>
-            <div class="col s0 m2 l4 "></div>
-            <div class="col s6 m5 l4">
-                <h5 class="white-text right">Links</h5>
-                <ul class="right">
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><span class="iconify" data-icon="mdi:twitter"></span></li>
-                </ul>
+            <div class="col s12 m12 l4 footer-middle">
+                <mat-nav-list class="mat-middle-list">
+                <h2 class="white-text">{{ 'footer.donationTitle' | translate }}</h2>
+                <a style="font-weight: 400;"class="grey-text text-lighten-4" href="#">{{ 'footer.donationLink' | translate }}</a>
+            </mat-nav-list>
+            </div>
+            <div class="col s12 m12 l4 footer-right">
+                <mat-nav-list class="mat-right-list">
+                        <a class="grey-text text-lighten-4" href="#">{{ 'footer.Q&A' | translate }}</a>
+                        <a class="grey-text text-lighten-4" href="#">{{ 'footer.aboutUs' | translate }}</a>
+                        <a  class="grey-text text-lighten-4" href="#">{{ 'footer.CGU' | translate }}</a>
+                </mat-nav-list>
             </div>
         </div>
     </div>
-    <div class="footer-copyright light-blue darken-4">
+    <div class="footer-copyright">
         <div class="container">
-            <div class="row">
-                <div class="col s6 m5 l4">
-                    © 2022 Copyright BluePaon
-                </div>
-                <div class="col s0 m2 l4"></div>
-                <div class="col s6 m5 l4">
-                    <a class="grey-text text-lighten-4 right" href="https://github.com/BluePaonGL">GitHub</a>
-                </div>
-            </div>
+            © 2022 Copyright BluePaon
+            <a class="grey-text text-lighten-4 right" href="https://github.com/BluePaonGL">GitHub</a>
         </div>
     </div>
 </footer>

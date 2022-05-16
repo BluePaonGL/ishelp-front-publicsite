@@ -3,7 +3,7 @@
 
 
 .center {
-  height: 90%;
+  height: 95%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -11,7 +11,10 @@
 }
 
 .card-custom {
-  max-width: 400px;
+  max-height: 800px;
+  width: 70%;
+  min-width: 200px;
+  max-width: 350px;
   justify-content: center;
   color: mat.get-color-from-palette($mat-blue-custom, 500);
 }

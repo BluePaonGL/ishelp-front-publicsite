@@ -11,5 +11,14 @@
         "subTitle": "Il semble que vous êtes perdu ...",
         "error": "Page introuvable",
         "back": "Retour"
+    },
+    "footer": {
+        "socialTitle": "Nos réseaux :",
+        "donationTitle": "Aidez-nous en donnant:",
+        "donationLink": "Lien pour donner",
+        "Q&A": "FAQ",
+        "aboutUs": "Nous connaitre",
+        "CGU": "CGU"
     }
+    
 }
