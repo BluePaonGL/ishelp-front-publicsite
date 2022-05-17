@@ -4,12 +4,13 @@ import {
   Router,
   RouterStateSnapshot
 } from '@angular/router';
-import { KeycloakAuthGuard, KeycloakService } from 'keycloak-angular';
+import { KeycloakAuthGuard, KeycloakEventType, KeycloakService } from 'keycloak-angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard extends KeycloakAuthGuard {
+  [x: string]: any;
   constructor(
     protected override readonly router: Router,
     protected readonly keycloak: KeycloakService
@@ -31,4 +32,5 @@ export class AuthGuard extends KeycloakAuthGuard {
     // Allow the user to proceed if all the required roles are present.
     return true;
   }
+
 }

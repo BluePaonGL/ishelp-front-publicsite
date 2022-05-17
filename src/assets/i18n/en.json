@@ -1,10 +1,13 @@
 {
     "header": {
         "LoginButton": "Login",
+        "LogoutButton": "Logout",
         "signUpButton": "Sign Up",
-        "title1": "isHelp1",
-        "title2": "isHelp2",
-        "title3": "isHelp3"
+        "home": "Home",
+        "apply": "Apply",
+        "marauding": "Marauding",
+        "news": "News",
+        "user": "Profile"
     },
     "404": {
         "title": "Oups !",

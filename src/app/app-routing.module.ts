@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 const routes: Routes = [
   { path: 'page-not-found.component', component: PageNotFoundComponent, canActivate : [AuthGuard] },
-  { path: 'header', component: HeaderComponent, canActivate : [AuthGuard] },
+  { path: 'home', component: PageNotFoundComponent, canActivate : [AuthGuard] },
   { path: '**', component: PageNotFoundComponent}
 ];
 

@@ -17,6 +17,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -36,6 +37,7 @@ import { FormulaireComponent } from './back-office/formulaire/formulaire.compone
     MatGridListModule,
     MatIconModule,
     MatButtonModule,
+    MatTabsModule,
     MatCardModule,
     MatButtonToggleModule,
     MatToolbarModule,
