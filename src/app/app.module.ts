@@ -17,13 +17,16 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTabsModule} from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
+import { FormulaireComponent } from './recruitment/formulaire/formulaire.component';
+import { CandidatesListComponent } from './recruitment/candidates-list/candidates-list.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +35,7 @@ import { FormulaireComponent } from './back-office/formulaire/formulaire.compone
     FooterComponent,
     HeaderComponent,
     PageNotFoundComponent,
+    CandidatesListComponent,
   ],
   imports: [
     MatGridListModule,
@@ -42,6 +46,7 @@ import { FormulaireComponent } from './back-office/formulaire/formulaire.compone
     MatButtonToggleModule,
     MatToolbarModule,
     MatListModule,
+    MatFormFieldModule,
     FormsModule,
     BrowserModule,
     HttpClientModule,
