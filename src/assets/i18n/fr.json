@@ -3,7 +3,8 @@
         "LoginButton": "Connexion",
         "LogoutButton": "Déconnexion",
         "signUpButton": "Inscription",
-        "home": "Acceuil",
+        "welcome": "Bienvenue ",
+        "home": "Accueil",
         "apply": "Postuler",
         "marauding": "Maraudes",
         "news": "Actualités",
@@ -22,6 +23,9 @@
         "Q&A": "FAQ",
         "aboutUs": "Nous connaitre",
         "CGU": "CGU"
+    },
+    "showcase": {
+        "pictureTitle": "Nous connaitre"
     }
     
 }

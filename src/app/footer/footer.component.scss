@@ -6,6 +6,7 @@ h2 {
 }
 
 footer{
+    background-color: #0257b1;
     background-image: url(../../assets/blue-background.jpg);
     background-size: cover;
 }
@@ -47,6 +48,16 @@ footer{
     width: 24px;
     height: 24px;
     vertical-align: middle;
+}
+
+.container-footer {
+    margin: 0 5%;
+}
+
+.container {
+    width: 100%;
+    margin: 0 5%;
+    max-width: 100%;
 }
 
 .mat-nav-list{

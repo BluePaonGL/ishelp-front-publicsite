@@ -3,6 +3,7 @@
         "LoginButton": "Login",
         "LogoutButton": "Logout",
         "signUpButton": "Sign Up",
+        "welcome": "Welcome ",
         "home": "Home",
         "apply": "Apply",
         "marauding": "Marauding",
@@ -22,5 +23,9 @@
         "Q&A": "Q&A",
         "aboutUs": "About Us",
         "CGU": "CGU"
+    },
+    "showcase": {
+        "pictureTitle": "About Us"
     }
+
 }

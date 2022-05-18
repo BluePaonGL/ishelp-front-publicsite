@@ -24,6 +24,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
+import { ShowcaseComponent } from './showcase/showcase.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { FormulaireComponent } from './back-office/formulaire/formulaire.compone
     FooterComponent,
     HeaderComponent,
     PageNotFoundComponent,
+    ShowcaseComponent,
   ],
   imports: [
     MatGridListModule,

@@ -1,11 +1,7 @@
 <mat-toolbar class="mat-elevation-z6 header">
     <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
     <span class="header-spacer"></span>
-    <button *ngIf="isDisabled" mat-button class="mat-focus-indicator mat-button-base">
-        <span class="mat-button-wrapper">{{ username }}</span>
-        <span matripple="" class="mat-ripple mat-button-ripple"></span>
-        <span class="mat-button-focus-overlay"></span>
-    </button>
+    <span class="padding">{{ 'header.welcome' | translate }}{{ username }}</span>
     <button (click)="logout()" *ngIf="isDisabled" mat-button class="mat-focus-indicator mat-button-base header-logout">
         <span class="mat-button-wrapper">{{ 'header.LogoutButton' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
