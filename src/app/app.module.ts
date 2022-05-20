@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, LOCALE_ID  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -25,6 +25,12 @@ import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
+import { EventComponent } from './event/event.component';
+import { LocalizedDatePipe } from './utility/localized-date.pipe';
+import { DatePipe } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 @NgModule({
   declarations: [
@@ -34,6 +40,8 @@ import { ShowcaseComponent } from './showcase/showcase.component';
     HeaderComponent,
     PageNotFoundComponent,
     ShowcaseComponent,
+    EventComponent,
+    LocalizedDatePipe,
   ],
   imports: [
     MatGridListModule,
@@ -69,7 +77,9 @@ import { ShowcaseComponent } from './showcase/showcase.component';
       useFactory: initializeKeycloak,
       multi: true,
       deps: [KeycloakService]
-    }
+    },
+    DatePipe,
+    LocalizedDatePipe
   ],
   bootstrap: [AppComponent]
 })

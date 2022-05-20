@@ -6,7 +6,7 @@
         "welcome": "Bienvenue ",
         "home": "Accueil",
         "apply": "Postuler",
-        "marauding": "Maraudes",
+        "event": "Évènements",
         "news": "Actualités",
         "user": "Profil"
     },
@@ -26,6 +26,20 @@
     },
     "showcase": {
         "pictureTitle": "Nous connaitre"
+    },
+    "eventList": {
+        "title": "Nos évènements",
+        "titleUser": "Mes évènements"
+    },
+    "eventInfo": {
+        "campus": "Campus de départ: ",
+        "location": "Lieux de l'évènement: ",
+        "date": "Date: ",
+        "startingTime": "De: ",
+        "endingTime": "À: ",
+        "description": "Description: ",
+        "participants": "Ils participent: ",
+        "signoutButton": "Me désinscrire",
+        "signupButton": "Je participe"
     }
-    
 }

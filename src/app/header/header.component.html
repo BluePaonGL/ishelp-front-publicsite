@@ -1,7 +1,7 @@
 <mat-toolbar class="mat-elevation-z6 header">
     <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
     <span class="header-spacer"></span>
-    <span class="padding">{{ 'header.welcome' | translate }}{{ username }}</span>
+    <span *ngIf="isDisabled" class="padding">{{ 'header.welcome' | translate }}{{ username }}</span>
     <button (click)="logout()" *ngIf="isDisabled" mat-button class="mat-focus-indicator mat-button-base header-logout">
         <span class="mat-button-wrapper">{{ 'header.LogoutButton' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
@@ -22,6 +22,7 @@
     <a class="nav" mat-tab-link  *ngFor="let link of links"
     [routerLink]= "link.link"
     (click)="activeLink = link"
-    [active]="activeLink == link" > {{link.title|translate}} </a>
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive"> {{link.title|translate}} </a>
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

@@ -15,14 +15,14 @@ export class HeaderComponent implements OnInit {
   links = [
     {title:'header.home', link:'/home'},
     {title:'header.apply', link:'/apply'},
-    {title:'header.marauding', link:'/marauding'},
+    {title:'header.event', link:'/event'},
     {title:'header.news', link:'/news'},
     {title:'header.user', link:'/user'},
   ];
   activeLink = this.links[0];
 
 
-  constructor(private router: Router, private keycloakService: KeycloakService) { }
+  constructor(private keycloakService: KeycloakService) { }
   async ngOnInit(): Promise<void> {
     if(await this.keycloakService.isLoggedIn()){
       this.isDisabled = true;

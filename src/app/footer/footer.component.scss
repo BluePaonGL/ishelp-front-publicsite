@@ -28,16 +28,27 @@ footer{
 
 .footer-right, .mat-right-list {
     text-align: end;
-    justify-content: center;
+    justify-content: end;
     padding: 0 0;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-spacer {
+    flex: 1 1 auto;
 }
 
 .mat-right-list a {
     display: flex;
     flex-direction: column;
+    justify-content: end;
     padding: 6px 0px;
     font-weight: 500;
     font-size: 15px;
+    width: 100%;
 }
 
 .mat-right-list a:hover {
@@ -75,5 +86,9 @@ footer{
     }    
     .footer-right {
         text-align: center;
+        justify-content: center;
+    }
+    .footer-spacer{
+        flex: 0 0 0;
     }
 }

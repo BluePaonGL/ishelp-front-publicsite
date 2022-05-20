@@ -19,6 +19,11 @@ export class PageNotFoundComponent {
   }
 
   back(): void {
-    this.location.back()
+    if(this.router.url.indexOf("/event/") !== -1){
+      this.router.navigate(['/event/']);
+    }
+    else{
+      this.location.back()
+    }
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-showcase',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowcaseComponent implements OnInit {
 
-  constructor() { }
+  constructor(private keycloakService: KeycloakService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    if (await this.keycloakService.isLoggedIn()){
+      this.keycloakService.logout("http://localhost:4200/");
+    }
   }
 
 }
