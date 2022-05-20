@@ -1,0 +1,95 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$mat-blue-custom: (
+    50: #00abff,
+    100: #679ad0,
+    200: #4e89c8,
+    300: #3579c1,
+    400: #1b68b9,
+    500: #0257b1,
+    600: #02468e,
+    700: #01346a,
+    800: #012347,
+    900: #001123,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white,
+    )
+);
+
+$mat-grey-custom: (
+    50: #ffffff,
+    100: #fafafa,
+    200: #f5f5f5,
+    300: #f0f0f0,
+    400: #dedede,
+    500: #c2c2c2,
+    600: #979797,
+    700: #818181,
+    800: #606060,
+    900: #3c3c3c,
+    contrast: (
+        50: white,
+        100: white,
+        200: white,
+        300: white,
+        400: white,
+        500: black,
+        600: black,
+        700: black,
+        800: black,
+        900: black,
+    )
+);
+
+$ishelp-primary: mat.define-palette($mat-blue-custom, 500);
+$ishelp-accent: mat.define-palette($mat-grey-custom, 50);
+$ishelp-warn: mat.define-palette(mat.$red-palette);
+
+$ishelp-theme: mat.define-light-theme(
+    (
+    color: (
+        primary: $ishelp-primary,
+        accent: $ishelp-accent,
+        warn: $ishelp-warn,
+    ),
+    )
+);
+
+@include mat.all-component-themes($ishelp-theme);
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    box-shadow: inset 0 -5px 5px -5px #333, inset 0 5px 10px -5px #333;
+    background: linear-gradient(#f5f5f5, rgba(2, 87, 177, 0.5));
+}
+
+html, body { 
+    height: 100%; 
+}
+
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: inherit;
+}

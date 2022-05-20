@@ -1,7 +1,45 @@
 {
-    "welcomeMessage": "Thanks for joining, {{ firstName }}! It's great to have you!",
-    "login": {
-        "username": "Efefzef",
-        "password": "Password here"
+    "header": {
+        "LoginButton": "Login",
+        "LogoutButton": "Logout",
+        "signUpButton": "Sign Up",
+        "welcome": "Welcome ",
+        "home": "Home",
+        "apply": "Apply",
+        "event": "Events",
+        "news": "News",
+        "user": "Profile"
+    },
+    "404": {
+        "title": "Oups !",
+        "subTitle": "It seems that you're lost ...",
+        "error": "Page not found",
+        "back": "Back"
+    },
+    "footer": {
+        "socialTitle": "Our socials:",
+        "donationTitle": "Help us by donating:",
+        "donationLink": "Donation Link",
+        "Q&A": "Q&A",
+        "aboutUs": "About Us",
+        "CGU": "CGU"
+    },
+    "showcase": {
+        "pictureTitle": "About Us"
+    },
+    "eventList": {
+        "title": "Our events",
+        "titleUser": "My events"
+    },
+    "eventInfo": {
+        "campus": "Starting Campus: ",
+        "location": "Location of the event: ",
+        "date": "Date of the event: ",
+        "startingTime": "From: ",
+        "endingTime": "To: ",
+        "description": "Description: ",
+        "participants": "They're participating: ",
+        "signoutButton": "Cancel participation",
+        "signupButton": "I want to participate"
     }
 }

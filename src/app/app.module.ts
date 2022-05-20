@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, LOCALE_ID  } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
@@ -7,10 +7,89 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { GlobalHttpInterceptorService } from './utility/app.init';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-function initializeKeycloak(keycloak: KeycloakService) {
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule, } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
+
+import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
+import { ShowcaseComponent } from './showcase/showcase.component';
+import { EventComponent } from './event/event.component';
+import { LocalizedDatePipe } from './utility/localized-date.pipe';
+import { DatePipe } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    FormulaireComponent,
+    FooterComponent,
+    HeaderComponent,
+    PageNotFoundComponent,
+    ShowcaseComponent,
+    EventComponent,
+    LocalizedDatePipe,
+  ],
+  imports: [
+    MatGridListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonToggleModule,
+    MatToolbarModule,
+    MatListModule,
+    FormsModule,
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    AppRoutingModule,
+    KeycloakAngularModule,
+    BrowserAnimationsModule
+  ],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: GlobalHttpInterceptorService,
+      multi: true  
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    },
+    DatePipe,
+    LocalizedDatePipe
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+export function httpTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
+
+export function initializeKeycloak(keycloak: KeycloakService) {
   return () =>
     keycloak.init({
       config: {
@@ -24,42 +103,4 @@ function initializeKeycloak(keycloak: KeycloakService) {
           window.location.origin + '/assets/silent-check-sso.html'
       }
     });
-}
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    FormsModule,
-    BrowserModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: httpTranslateLoader,
-        deps: [HttpClient]
-      }
-    }),
-    AppRoutingModule,
-    KeycloakAngularModule
-  ],
-  providers: [
-    { 
-      provide: HTTP_INTERCEPTORS, 
-      useClass: GlobalHttpInterceptorService,
-      multi: true  
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initializeKeycloak,
-      multi: true,
-      deps: [KeycloakService]
-    }
-  ],
-  bootstrap: [AppComponent]
-})
-export class AppModule { }
-
-export function httpTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http);
 }

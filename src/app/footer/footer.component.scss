@@ -1,0 +1,94 @@
+@use "@angular/material" as mat;
+@import "../../styles.scss";
+
+h2 {
+    margin: 0 0 0 0;
+}
+
+footer{
+    background-color: #0257b1;
+    background-image: url(../../assets/blue-background.jpg);
+    background-size: cover;
+}
+
+.footer-copyright{
+    background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+}
+
+.footer-nav-list {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-middle {
+    text-align: center;
+    padding: 0px 50px;
+}
+
+
+.footer-right, .mat-right-list {
+    text-align: end;
+    justify-content: end;
+    padding: 0 0;
+}
+
+.footer-right {
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-spacer {
+    flex: 1 1 auto;
+}
+
+.mat-right-list a {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 6px 0px;
+    font-weight: 500;
+    font-size: 15px;
+    width: 100%;
+}
+
+.mat-right-list a:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.container-footer {
+    margin: 0 5%;
+}
+
+.container {
+    width: 100%;
+    margin: 0 5%;
+    max-width: 100%;
+}
+
+.mat-nav-list{
+    padding: 0 0;
+}
+
+@media (max-width: 1000px) {
+    .footer-left, .mat-nav-list {
+        text-align: center;
+        justify-content: center;
+    }
+    .footer-middle {
+        text-align: center;
+        padding: 0px 50px;
+    }    
+    .footer-right {
+        text-align: center;
+        justify-content: center;
+    }
+    .footer-spacer{
+        flex: 0 0 0;
+    }
+}
