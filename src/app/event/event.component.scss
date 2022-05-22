@@ -95,8 +95,10 @@ img{
 
 .participant-img{
     margin: 0 0;
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
+    margin-right: 10px;
+    margin-left: 10px;
     display: flex;
 }
 
@@ -181,6 +183,7 @@ img{
     line-break: strict;
     max-height: 230px;
     text-align: justify;
+    min-height: 25px;
 }
 
 .inscription-tab {

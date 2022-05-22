@@ -15,7 +15,7 @@
                             <span *ngIf="eventById.startingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.startingTime'| translate }}</span>{{"2022-01-01T" + eventById.startingTime |  date: 'shortTime':'':lang}}</span>
                             <span *ngIf="eventById.endingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.endingTime'| translate }}</span>{{"2022-01-01T" + eventById.endingTime |  date: 'shortTime':'':lang}}</span>
                             <span class="info-header info">{{ 'eventInfo.description'| translate }}</span>
-                            <span *ngIf="eventById.description !== null" class="info description">{{eventById.description}}Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.g</span>
+                            <span *ngIf="eventById.description !== null" class="info description">{{eventById.description}}</span>
                             <span class="event-spacer"></span>
                             <span class="info"><span class="info-header">{{ 'eventInfo.participants'| translate }}</span>( {{ participantNumber }} )</span>
                             <div class="participants-list">

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../utility/users.service';
 import { KeycloakService } from 'keycloak-angular';
+import { TranslateService } from '@ngx-translate/core';
 
 
 
@@ -26,7 +27,8 @@ export class HeaderComponent implements OnInit {
   activeLink = this.links[0];
 
 
-  constructor(private keycloakService: KeycloakService, private http: HttpClient, private usersService: UsersService) { }
+  constructor(private keycloakService: KeycloakService, private http: HttpClient, 
+    private usersService: UsersService, public translate: TranslateService) { }
   
   async ngOnInit(): Promise<void> {
     if(await this.usersService.isLoggedIn()){
@@ -41,4 +43,8 @@ export class HeaderComponent implements OnInit {
   async logout() {
     this.usersService.logout();
   }
+
+  lang(lang: string) {
+    this.translate.use(lang)
+    }
 }
