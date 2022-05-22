@@ -26,7 +26,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { EventComponent } from './event/event.component';
-import { LocalizedDatePipe } from './utility/localized-date.pipe';
 import { DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
@@ -41,7 +40,6 @@ registerLocaleData(localeFr);
     PageNotFoundComponent,
     ShowcaseComponent,
     EventComponent,
-    LocalizedDatePipe,
   ],
   imports: [
     MatGridListModule,
@@ -79,7 +77,6 @@ registerLocaleData(localeFr);
       deps: [KeycloakService]
     },
     DatePipe,
-    LocalizedDatePipe
   ],
   bootstrap: [AppComponent]
 })

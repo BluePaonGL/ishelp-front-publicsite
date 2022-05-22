@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../utility/users.service';
 import { KeycloakService } from 'keycloak-angular';
 
 
@@ -10,8 +11,11 @@ import { KeycloakService } from 'keycloak-angular';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
   isDisabled: boolean = false;
   username: string|undefined = '';
+  id: any|undefined = '';
+  user:any;
   links = [
     {title:'header.home', link:'/home'},
     {title:'header.apply', link:'/apply'},
@@ -22,29 +26,19 @@ export class HeaderComponent implements OnInit {
   activeLink = this.links[0];
 
 
-  constructor(private keycloakService: KeycloakService) { }
+  constructor(private keycloakService: KeycloakService, private http: HttpClient, private usersService: UsersService) { }
+  
   async ngOnInit(): Promise<void> {
-    if(await this.keycloakService.isLoggedIn()){
+    if(await this.usersService.isLoggedIn()){
       this.isDisabled = true;
-      this.keycloakService.loadUserProfile().then(profile => {
-        console.log(profile.username)
-        this.username = profile.username?.toString();
-      })
+      this.user = await this.usersService.getUser();
+      console.log(this.user)
+      this.username = this.user.username;
+      
     }
   }
 
-  async isLoggedIn() {
-    return this.keycloakService.isLoggedIn
-  }
-
-  async getUsername() {
-    this.keycloakService.loadUserProfile().then(profile => {
-      console.log(profile.username)
-      profile.username;
-    })
-  }
-
   async logout() {
-    this.keycloakService.logout("http://localhost:4200/");
+    this.usersService.logout();
   }
 }
