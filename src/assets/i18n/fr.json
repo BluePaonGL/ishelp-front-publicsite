@@ -29,7 +29,8 @@
     },
     "eventList": {
         "title": "Nos évènements",
-        "titleUser": "Mes évènements"
+        "titleUser": "Mes évènements",
+        "noEvent": "Il n'y a pas d'évènements ici ..."
     },
     "eventInfo": {
         "campus": "Campus de départ: ",

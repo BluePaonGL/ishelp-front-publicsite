@@ -9,32 +9,63 @@ footer{
     background-color: #0257b1;
     background-image: url(../../assets/blue-background.jpg);
     background-size: cover;
+    display: flex;
+    flex-direction: column;
 }
 
-.footer-copyright{
-    background-color: mat.get-color-from-palette($mat-blue-custom, 500);
-}
-
-.footer-nav-list {
+.copyright {
     display: flex;
     flex-direction: row;
+    height: 35px;
+    background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+    color: mat.get-color-from-palette($mat-grey-custom, 50);
 }
 
-.footer-middle {
+.copyright-a {
+    margin: auto;
+    margin-right: 10%;
+    margin-left: 10%;
+}
+
+.footer-nav {
+    height: 120px;
+    max-height: 120;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
+
+.footer-vertical {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin: auto;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    color: mat.get-color-from-palette($mat-grey-custom, 50);
+}
+
+.left {
+    margin-left: 10%;
+}
+
+.middle {
     text-align: center;
     padding: 0px 50px;
 }
 
-
-.footer-right, .mat-right-list {
-    text-align: end;
-    justify-content: end;
-    padding: 0 0;
+.right {
+    margin-right: 10%;
 }
 
-.footer-right {
-    display: flex;
-    flex-direction: row;
+.mat-center-list {
+    text-align: center;
+    justify-content: center;
+}
+
+.mat-right-list {
+    text-align: end;
+    justify-content: end;
 }
 
 .footer-spacer {
@@ -44,7 +75,7 @@ footer{
 .mat-right-list a {
     display: flex;
     flex-direction: column;
-    justify-content: end;
+    justify-content: flex-end;
     padding: 6px 0px;
     font-weight: 500;
     font-size: 15px;
@@ -61,34 +92,57 @@ footer{
     vertical-align: middle;
 }
 
-.container-footer {
-    margin: 0 5%;
-}
-
-.container {
-    width: 100%;
-    margin: 0 5%;
-    max-width: 100%;
-}
-
 .mat-nav-list{
     padding: 0 0;
 }
 
-@media (max-width: 1000px) {
-    .footer-left, .mat-nav-list {
+::-webkit-scrollbar {
+    width: 16px; /* width of the entire scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 20px;
+    background: mat.get-color-from-palette($mat-blue-custom, 500); /* color of the tracking area */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: mat.get-color-from-palette($mat-grey-custom, 50); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+    border: 3px solid mat.get-color-from-palette($mat-blue-custom, 500); /* creates padding around scroll thumb */
+}
+
+@media (max-width: 600px) {
+    .footer-nav {
+        display: flex;
+        flex-direction: column;
+        margin: 0 0;
+    }
+
+    .mat-left-list {
         text-align: center;
         justify-content: center;
     }
-    .footer-middle {
-        text-align: center;
-        padding: 0px 50px;
-    }    
-    .footer-right {
+    
+    .mat-right-list {
+
         text-align: center;
         justify-content: center;
     }
-    .footer-spacer{
-        flex: 0 0 0;
+
+    .footer-vertical{
+        text-align: center;
+        justify-content: center;
+    }
+
+    .left {
+        margin-bottom: 16px;
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .right {
+        margin-top: 16px;
+        margin-right: 0;
+        width: 100%;
     }
 }

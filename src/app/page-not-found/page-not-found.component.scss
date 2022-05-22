@@ -15,20 +15,26 @@
 }
 
 .card-custom {
+  border-radius: 20px;
   max-height: 800px;
   width: 70%;
   min-width: 200px;
   max-width: 350px;
   justify-content: center;
+  align-items: center;
   color: mat.get-color-from-palette($mat-blue-custom, 500);
 }
 
-.mat-card-title {
+.mat-card-title-custom {
   margin-top: 10% ;
   margin-bottom: 10%;
   font-weight: bold;
   font-size: 2em;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
+
 
 .card-image {
 background-image: url('../../assets/logo-white-transarent.png');

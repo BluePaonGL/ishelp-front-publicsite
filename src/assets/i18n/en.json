@@ -29,7 +29,8 @@
     },
     "eventList": {
         "title": "Our events",
-        "titleUser": "My events"
+        "titleUser": "My events",
+        "noEvent": "There is no event here ..."
     },
     "eventInfo": {
         "campus": "Starting Campus: ",
