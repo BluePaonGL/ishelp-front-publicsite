@@ -1,8 +1,14 @@
-FROM node:latest as node
+FROM node:16-alpine AS builder
 WORKDIR /app
-COPY . .
+COPY ./package*.json ./
 RUN npm install
-RUN npm run build --prod
+COPY . .
+RUN npm run build
 
-FROM nginx:alpine
-COPY --from=node /app/dist/ng-ishelp-app /usr/share/nginx/html
+FROM node:16-alpine
+WORKDIR /app
+COPY --from=builder /app ./
+
+EXPOSE 4200
+
+CMD ["npm", "run", "start"]
