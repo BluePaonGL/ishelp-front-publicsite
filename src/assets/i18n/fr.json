@@ -1,49 +1,52 @@
 {
-	"header": {
-		"LoginButton": "Connexion",
-		"LogoutButton": "Déconnexion",
-		"signUpButton": "Inscription",
-		"welcome": "Bienvenue ",
-		"home": "Accueil",
-		"apply": "Postuler",
-		"event": "Évènements",
-		"news": "Actualités",
-		"user": "Profil"
-	},
-	"404": {
-		"title": "Oups !",
-		"subTitle": "Il semble que vous êtes perdu ...",
-		"error": "Page introuvable",
-		"back": "Retour"
-	},
-	"footer": {
-		"socialTitle": "Nos réseaux :",
-		"donationTitle": "Aidez-nous en donnant:",
-		"donationLink": "Lien pour donner",
-		"Q&A": "FAQ",
-		"aboutUs": "Nous connaitre",
-		"CGU": "CGU"
-	},
-	"showcase": {
-		"pictureTitle": "Nous connaitre"
-	},
-	"eventList": {
-		"title": "Nos évènements",
-		"titleUser": "Mes évènements",
-		"noEvent": "Il n'y a pas d'évènements ici ..."
-	},
-	"eventInfo": {
-		"campus": "Campus de départ: ",
-		"location": "Lieux de l'évènement: ",
-		"date": "Date: ",
-		"startingTime": "De: ",
-		"endingTime": "À: ",
-		"description": "Description: ",
-		"participants": "Ils participent: ",
-		"signoutButton": "Me désinscrire",
-		"signupButton": "Je participe"
-	},
-	"aboutUs": {
-		"pictureTitle": "Nous connaître"
-	}
+    "header": {
+        "LoginButton": "Connexion",
+        "LogoutButton": "Déconnexion",
+        "signUpButton": "Inscription",
+        "welcome": "Bienvenue ",
+        "home": "Accueil",
+        "apply": "Postuler",
+        "event": "Évènements",
+        "news": "Actualités",
+        "user": "Profil"
+    },
+    "403": {
+        "title": "Oulah !",
+        "subTitle": "Qu'est ce que tu essayes de faire ??",
+        "error": "Non autorisé",
+        "back": "Back"
+    },
+    "404": {
+        "title": "Oups !",
+        "subTitle": "Il semble que vous êtes perdu ...",
+        "error": "Page introuvable",
+        "back": "Retour"
+    },
+    "footer": {
+        "socialTitle": "Nos réseaux :",
+        "donationTitle": "Aidez-nous en donnant:",
+        "donationLink": "Lien pour donner",
+        "Q&A": "FAQ",
+        "aboutUs": "Nous connaitre",
+        "CGU": "CGU"
+    },
+    "showcase": {
+        "pictureTitle": "Nous connaitre"
+    },
+    "eventList": {
+        "title": "Nos évènements",
+        "titleUser": "Mes évènements",
+        "noEvent": "Il n'y a pas d'évènements ici ..."
+    },
+    "eventInfo": {
+        "campus": "Campus de départ: ",
+        "location": "Lieux de l'évènement: ",
+        "date": "Date: ",
+        "startingTime": "De: ",
+        "endingTime": "À: ",
+        "description": "Description: ",
+        "participants": "Ils participent: ",
+        "signoutButton": "Me désinscrire",
+        "signupButton": "Je participe"
+    }
 }

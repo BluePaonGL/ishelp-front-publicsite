@@ -20,69 +20,71 @@ import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
 
-import {AppComponent} from './app.component';
-import {FooterComponent} from './footer/footer.component';
-import {HeaderComponent} from './header/header.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {FormulaireComponent} from './back-office/formulaire/formulaire.component';
-import {ShowcaseComponent} from './showcase/showcase.component';
-import {EventComponent} from './event/event.component';
-import {DatePipe} from '@angular/common';
-import {registerLocaleData} from '@angular/common';
+import { AppComponent } from './app.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
+import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
+import { ShowcaseComponent } from './showcase/showcase.component';
+import { EventComponent } from './event/pages/public/event.component';
+import { DatePipe } from '@angular/common';
+import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import {AboutUsComponent} from './about-us/about-us.component';
+import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
+import { AboutUsComponent} from './about-us/about-us.component';
 registerLocaleData(localeFr);
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		FormulaireComponent,
-		FooterComponent,
-		HeaderComponent,
-		PageNotFoundComponent,
-		ShowcaseComponent,
-		EventComponent,
-		AboutUsComponent,
-	],
-	imports: [
-		MatMenuModule,
-		MatGridListModule,
-		MatIconModule,
-		MatButtonModule,
-		MatTabsModule,
-		MatCardModule,
-		MatButtonToggleModule,
-		MatToolbarModule,
-		MatListModule,
-		FormsModule,
-		BrowserModule,
-		HttpClientModule,
-		TranslateModule.forRoot({
-			loader: {
-				provide: TranslateLoader,
-				useFactory: httpTranslateLoader,
-				deps: [HttpClient],
-			},
-		}),
-		AppRoutingModule,
-		KeycloakAngularModule,
-		BrowserAnimationsModule,
-	],
-	providers: [
-		{
-			provide: HTTP_INTERCEPTORS,
-			useClass: GlobalHttpInterceptorService,
-			multi: true,
-		},
-		{
-			provide: APP_INITIALIZER,
-			useFactory: initializeKeycloak,
-			multi: true,
-			deps: [KeycloakService],
-		},
-		DatePipe,
-	],
-	bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    FormulaireComponent,
+    FooterComponent,
+    HeaderComponent,
+    PageNotFoundComponent,
+    UnauthorizedComponent,
+    ShowcaseComponent,
+    EventComponent,
+	AboutUsComponent,
+  ],
+  imports: [
+    MatMenuModule,
+    MatGridListModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTabsModule,
+    MatCardModule,
+    MatButtonToggleModule,
+    MatToolbarModule,
+    MatListModule,
+    FormsModule,
+    BrowserModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: httpTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
+    AppRoutingModule,
+    KeycloakAngularModule,
+    BrowserAnimationsModule
+  ],
+  providers: [
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: GlobalHttpInterceptorService,
+      multi: true  
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeKeycloak,
+      multi: true,
+      deps: [KeycloakService]
+    },
+    DatePipe,
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
 

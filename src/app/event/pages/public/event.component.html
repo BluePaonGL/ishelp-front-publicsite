@@ -1,0 +1,141 @@
+<div class="body">
+    <span class="body-spacer"></span>
+    <div class="grid-div">
+        <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
+                <mat-card class="events-card">
+                    <div class="events-card" *ngIf="this.router.url === '/event/' + this.id && eventById">
+                        <mat-card-header style="padding-top: 16px;">
+                            <mat-card-title *ngIf="eventById.name" class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{eventById.name}}</h1></mat-card-title>
+                        </mat-card-header>
+                        <div class="event-info">
+                            <span *ngIf="eventById.startingCampus !== null" class="info"><span class="info-header">{{ 'eventInfo.campus'| translate }}</span>{{eventById.startingCampus}}</span>
+                            <span *ngIf="eventById.location !== null" class="info"><span class="info-header">{{ 'eventInfo.location'| translate }}</span>{{eventById.location}}</span>
+                            <span *ngIf="eventById.date !== null" class="info"><span class="info-header">{{ 'eventInfo.date'| translate }}</span>{{eventById.date |  date: 'fullDate':'':lang}}</span>
+                            <span *ngIf="eventById.startingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.startingTime'| translate }}</span>{{"2022-01-01T" + eventById.startingTime |  date: 'shortTime':'':lang}}</span>
+                            <span *ngIf="eventById.endingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.endingTime'| translate }}</span>{{"2022-01-01T" + eventById.endingTime |  date: 'shortTime':'':lang}}</span>
+                            <span class="info-header info">{{ 'eventInfo.description'| translate }}</span>
+                            <span *ngIf="eventById.description !== null" class="info description">{{eventById.description}}</span>
+                            <span class="event-spacer"></span>
+                            <span class="info"><span class="info-header">{{ 'eventInfo.participants'| translate }}</span>( {{ participantNumber }} )</span>
+                            <div class="participants-list">
+                                <div class="participant" *ngFor="let user of users; let last = last" [ngClass]="{last: last }">
+                                    <img class="participant-img" src={{profilePictureUrl}}>
+                                    <span class="participant-name">{{user.firstName}} {{ user.lastName}}</span>
+                                </div>
+                            </div>
+                            <div class="inscription-tab" style="padding-bottom: 20px;">
+                                <span class="event-spacer"></span>
+                                <button *ngIf="isManager()" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                    <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
+                                <button (click)="signUp()" *ngIf="!isSignedUp()" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                    <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
+                                <button (click)="signOut()" *ngIf="isSignedUp()" mat-raised-button class="mat-focus-indicator mat-button-base event-signout">
+                                    <span class="mat-button-wrapper">{{ 'eventInfo.signoutButton' | translate }}</span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="events-card" *ngIf="this.router.url === '/event'">
+                        <mat-card-header style="padding-top: 16px;">
+                            <mat-card-title  class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{ 'eventList.title'| translate }}</h1></mat-card-title>
+                        </mat-card-header>
+                        <mat-list class="custom-list " style="padding-bottom: 16px;">
+                            <span *ngIf="eventsNumber === 0">
+                                <mat-list-item class="mat-list-item " style="width: 100%; height: 100%;">
+                                    <a>
+                                        <div style="width: 100%;">
+                                            <mat-card class="event-card mat-elevation-z3 no-event" style="width: 100%; height: 100%;"> 
+                                                <div class="no-event">{{ 'eventList.noEvent'| translate }}</div>
+                                            </mat-card>
+                                        </div>
+                                    </a>
+                                </mat-list-item>
+                            </span>  
+                            <mat-list-item class="mat-list-item" *ngFor="let event of events" style="height: fit-content; width: 100%; min-width:fit-content">
+                                <a [routerLink]= "['./',event.eventId]" style="width: 100%;">
+                                    <div class="event-list">
+                                        <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
+                                        <mat-card class="event-card mat-elevation-z3">
+                                            <div class="event-tab">
+                                                <div class="event-tab-left">
+                                                    <span mat-line style="font-weight: 550;">{{event.name}}</span>
+                                                    <span *ngIf="(event.location !== null && event.startingCampus === null)" style="font-weight: 100;">{{event.location}}</span>
+                                                    <span *ngIf="(event.location !== null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}, {{event.location}}</span>
+                                                    <span *ngIf="(event.location === null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}</span>
+                                                </div>
+                                                <span class="event-spacer"></span>
+                                                <div class="event-tab-right">
+                                                    <div *ngIf="event.startingTime !== null" mat-line>{{"2022-01-01T" + event.startingTime |  date: 'shortTime':'':lang}}</div>
+                                                    <span *ngIf="event.endingTime !==null">{{"2022-01-01T" + event.endingTime |  date: 'shortTime':'':lang}}</span>
+                                                </div>
+                                            </div>
+                                        </mat-card>
+                                    </div>
+                                </a>
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+                    </mat-card>
+            </mat-grid-tile>
+                <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
+                    <mat-card class="user-card">
+                        <div style="height: 10px;"></div>
+                        <img src={{profilePictureUrl}}>
+                        <mat-card-header class="profileName" style="margin-bottom: 7%;">
+                            <mat-card-title  class="mat-title"><h1 class="mat-h1 profileName"> {{ profileName }}</h1></mat-card-title>
+                        </mat-card-header>
+                        <span class="event-spacer"></span>
+                        <mat-card-header class="profileName">
+                            <mat-card-title  class="mat-title header-card"><h1 class="mat-h1 header-card"> {{ 'eventList.titleUser'| translate }}</h1></mat-card-title>
+                        </mat-card-header>
+                        <mat-list class="custom-list" style="margin-bottom: 16px">
+                            <span *ngIf="eventsUserNumber === 0">
+                                <mat-list-item class="mat-list-item " style="width: 100%; height: 100%;">
+                                    <a style="width: 100%; height: 100%;">
+                                        <div style="width: 100%;">
+                                            <mat-card class="event-card mat-elevation-z3 no-event" style="width: 100%; height: 100%;"> 
+                                                <div class="no-event">{{ 'eventList.noEvent'| translate }}</div>
+                                            </mat-card>
+                                        </div>
+                                    </a>
+                                </mat-list-item>
+                            </span>
+                            <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of eventsUser">
+                                
+                                <a style="width: 100%;" [routerLink]= "['/event/',event.eventId]" (click)="reload(event.eventId)">
+                                    <div class="event-list">
+                                        <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
+                                        <mat-card class="event-card mat-elevation-z3">
+                                            <div class="event-tab">
+                                                <div class="event-tab-left">
+                                                    <spa mat-line style="font-weight: 550;">{{event.name}}</spa>
+                                                    <span *ngIf="(event.location !== null && event.startingCampus === null)" style="font-weight: 100;">{{event.location}}</span>
+                                                    <span *ngIf="(event.location !== null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}, {{event.location}}</span>
+                                                    <span *ngIf="(event.location === null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}</span>
+                                                </div>
+                                                <span class="event-spacer"></span>
+                                                <div class="event-tab-right">
+                                                    <div *ngIf="event.startingTime !== null" mat-line>{{"2022-01-01T" + event.startingTime |  date: 'shortTime':'':lang}}</div>
+                                                    <span *ngIf="event.endingTime !==null">{{"2022-01-01T" + event.endingTime |  date: 'shortTime':'':lang}}</span>
+                                                </div>
+                                            </div>
+                                        </mat-card>
+                                    </div>
+                                </a>
+                            </mat-list-item>
+                        </mat-list>
+                        </mat-card>
+                </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <span class="body-spacer"></span>
+</div>
