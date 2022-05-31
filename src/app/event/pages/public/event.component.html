@@ -26,6 +26,11 @@
                             </div>
                             <div class="inscription-tab" style="padding-bottom: 20px;">
                                 <span class="event-spacer"></span>
+                                <button *ngIf="isManager()" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                    <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
                                 <button (click)="signUp()" *ngIf="!isSignedUp()" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
                                     <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
@@ -105,7 +110,8 @@
                                 </mat-list-item>
                             </span>
                             <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of eventsUser">
-                                <a style="width: 100%;" [routerLink]= "['./',event.id]">
+                                
+                                <a style="width: 100%;" [routerLink]= "['/event/',event.eventId]" (click)="reload(event.eventId)">
                                     <div class="event-list">
                                         <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
                                         <mat-card class="event-card mat-elevation-z3">

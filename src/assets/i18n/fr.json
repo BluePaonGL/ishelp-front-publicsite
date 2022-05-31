@@ -10,6 +10,12 @@
         "news": "Actualités",
         "user": "Profil"
     },
+    "403": {
+        "title": "Oulah !",
+        "subTitle": "Qu'est ce que tu essayes de faire ??",
+        "error": "Non autorisé",
+        "back": "Back"
+    },
     "404": {
         "title": "Oups !",
         "subTitle": "Il semble que vous êtes perdu ...",

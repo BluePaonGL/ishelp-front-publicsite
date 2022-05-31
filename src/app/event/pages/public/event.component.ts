@@ -4,13 +4,14 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 import {DatePipe} from '@angular/common';
 import { lastValueFrom } from 'rxjs';
-import { UsersService } from '../utility/users.service';
-import { EventsService } from '../utility/events.service';
+import { UsersService } from '../../../utility/users.service';
+import { EventsService } from '../../events.service';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-event',
   templateUrl: './event.component.html',
-  styleUrls: ['./event.component.scss']
+  styleUrls: ['../event.component.scss']
 })
 export class EventComponent implements OnInit {
   startDate = new Date('2022-05-18T12:30'); 
@@ -30,7 +31,8 @@ export class EventComponent implements OnInit {
   users: any[] | undefined;
 
   constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, 
-              private eventsService: EventsService, public datePipe: DatePipe, private usersService: UsersService) { 
+              private eventsService: EventsService, public datePipe: DatePipe, private usersService: UsersService,
+              private keycloakService: KeycloakService) { 
     this.eventById = null;
     this.subscription = this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
@@ -91,5 +93,15 @@ export class EventComponent implements OnInit {
   isSignedUp(){
     if(this.id !== null){return this.eventById.participantsId.includes(this.user.userId)}
     else return false
+  }
+
+  isManager(){
+    return this.keycloakService.getUserRoles().includes('events');
+  }
+
+  reload(eventId: string){
+    this.router.navigate(['/event/'+eventId]).then(() => {
+      window.location.reload();
+    });;
   }
 }

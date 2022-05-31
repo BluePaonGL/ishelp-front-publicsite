@@ -12,7 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-
+  isAdmin = false;
   isDisabled: boolean = false;
   username: string|undefined = '';
   id: any|undefined = '';
@@ -31,6 +31,9 @@ export class HeaderComponent implements OnInit {
     private usersService: UsersService, public translate: TranslateService) { }
   
   async ngOnInit(): Promise<void> {
+    if (this.keycloakService.getUserRoles().includes('ADMIN')){
+      this.isAdmin = true;
+    }
     if(await this.usersService.isLoggedIn()){
       this.isDisabled = true;
       this.user = await this.usersService.getUser();

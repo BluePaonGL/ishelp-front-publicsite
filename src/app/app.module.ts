@@ -23,13 +23,14 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
-import { EventComponent } from './event/event.component';
+import { EventComponent } from './event/pages/public/event.component';
 import { DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -39,6 +40,7 @@ registerLocaleData(localeFr);
     FooterComponent,
     HeaderComponent,
     PageNotFoundComponent,
+    UnauthorizedComponent,
     ShowcaseComponent,
     EventComponent,
   ],

@@ -10,6 +10,12 @@
         "news": "News",
         "user": "Profile"
     },
+    "403": {
+        "title": "Wait ??",
+        "subTitle": "What are you trying to do?",
+        "error": "Unauthorized",
+        "back": "Back"
+    },
     "404": {
         "title": "Oups !",
         "subTitle": "It seems that you're lost ...",
@@ -25,7 +31,8 @@
         "CGU": "CGU"
     },
     "showcase": {
-        "pictureTitle": "About Us"
+        "pictureTitle": "About Us",
+        "pictureLink": "Test"
     },
     "eventList": {
         "title": "Our events",

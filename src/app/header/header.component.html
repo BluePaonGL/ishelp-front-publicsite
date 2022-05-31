@@ -1,5 +1,11 @@
 <mat-toolbar class="mat-elevation-z6 header">
     <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
+    <button  mat-button routerLink="/event" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
+        *ngIf="isAdmin" class="mat-focus-indicator mat-button-base header-titles" #btnRef="matButton" color="ishelp-accent">
+        <span class="mat-button-wrapper">{{ 'header.title1' | translate }}</span>
+        <span matripple="" class="mat-ripple mat-button-ripple"></span>
+        <span class="mat-button-focus-overlay"></span>
+    </button>
     <span class="header-spacer"></span>
     <span *ngIf="isDisabled">{{ 'header.welcome' | translate }}{{ username }}</span>
     <button mat-icon-button class="icon-button" [matMenuTriggerFor]="menu">

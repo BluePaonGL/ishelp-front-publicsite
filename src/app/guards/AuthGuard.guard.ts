@@ -29,8 +29,22 @@ export class AuthGuard extends KeycloakAuthGuard {
       });
     }
 
-    // Allow the user to proceed if all the required roles are present.
-    return true;
+        // Get the roles required from the route.
+        const requiredRoles = route.data['roles'];
+
+        // Allow the user to to proceed if no additional roles are required to access the route.
+        if (!(requiredRoles instanceof Array) || requiredRoles.length === 0) {
+          return true;
+        }
+        else if(requiredRoles.every((role) => this.roles.includes(role))){
+          return true;
+        }
+        else{
+          this.router.navigate(['/unauthorized']);
+        }
+    
+        // Allow the user to proceed if all the required roles are present.
+        return requiredRoles.every((role) => this.roles.includes(role));
   }
 
 }
