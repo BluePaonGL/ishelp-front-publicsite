@@ -1,75 +1,73 @@
-@use "@angular/material" as mat;
-@import "../../styles.scss";
+@use '@angular/material' as mat;
+@import '../../styles.scss';
 
 .mat-toolbar {
-  height: 60px;
-  margin: 0 0;
-  padding: 0 0;
-  color: mat.get-color-from-palette($mat-blue-custom, 500);
-  background-color: mat.get-color-from-palette($mat-grey-custom, 50);
+	height: 60px;
+	margin: 0 0;
+	padding: 0 0;
+	color: mat.get-color-from-palette($mat-blue-custom, 500);
+	background-color: mat.get-color-from-palette($mat-grey-custom, 50);
 }
 
 .img {
-  height: 60px;
-  margin: 0 0;
-  padding: 0 0;
+	height: 60px;
+	margin: 0 0;
+	padding: 0 0;
 }
 
 .header-spacer {
-  flex: 1 1 auto;
+	flex: 1 1 auto;
 }
 
-.mat-button{
-  margin: 0px 5px 0px 0px;
-  font-size: 16px;
-  height: 45px;
-  font-weight: 500;
+.mat-button {
+	margin: 0px 5px 0px 0px;
+	font-size: 16px;
+	height: 45px;
+	font-weight: 500;
 }
 
 .header-logout {
-  color: mat.get-color-from-palette($mat-grey-custom, 50);
-  background-color: mat.get-color-from-palette($mat-grey-custom, 700);
+	color: mat.get-color-from-palette($mat-grey-custom, 50);
+	background-color: mat.get-color-from-palette($mat-grey-custom, 700);
 }
 
 .header-login {
-  color: mat.get-color-from-palette($mat-grey-custom, 50);
-  background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+	color: mat.get-color-from-palette($mat-grey-custom, 50);
+	background-color: mat.get-color-from-palette($mat-blue-custom, 500);
 }
 
 .header-signup {
-  color: mat.get-color-from-palette($mat-grey-custom, 50);
-  background-color: mat.get-color-from-palette($mat-blue-custom, 50);
+	color: mat.get-color-from-palette($mat-grey-custom, 50);
+	background-color: mat.get-color-from-palette($mat-blue-custom, 50);
 }
 
-.active-link{
-  color: mat.get-color-from-palette($mat-grey-custom, 50);
-  background-color: mat.get-color-from-palette($mat-grey-custom, 700);
-  font-weight: bold;
+.active-link {
+	color: mat.get-color-from-palette($mat-grey-custom, 50);
+	background-color: mat.get-color-from-palette($mat-grey-custom, 700);
+	font-weight: bold;
 }
 
-.header-under{
-  background-color: mat.get-color-from-palette($mat-blue-custom, 500);
-  color: white;
-  height: 48px
+.header-under {
+	background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+	color: white;
+	height: 48px;
 }
 
 .nav {
-  color:white;
-  font-size: 15px;
-  font-weight: 500;
+	color: white;
+	font-size: 15px;
+	font-weight: 500;
 }
 
 .icon-button {
-  margin-right: 15px;
-  margin-left: 15px;
-  height: 45px;
-  width: 45px;
+	margin-right: 15px;
+	margin-left: 15px;
+	height: 45px;
+	width: 45px;
 }
 
 .icon {
-  width: 30px;
-  height: 30px;
-  vertical-align: middle;
-
+	width: 30px;
+	height: 30px;
+	vertical-align: middle;
 }
-
