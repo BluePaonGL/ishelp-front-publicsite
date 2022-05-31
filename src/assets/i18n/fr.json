@@ -42,5 +42,8 @@
         "participants": "Ils participent: ",
         "signoutButton": "Me désinscrire",
         "signupButton": "Je participe"
+    },
+    "aboutUs": {
+      "pictureTitle": "Nous connaître"
     }
 }
