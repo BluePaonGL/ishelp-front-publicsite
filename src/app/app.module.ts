@@ -30,6 +30,7 @@ import { EventComponent } from './event/event.component';
 import { DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { AboutUsComponent } from './about-us/about-us.component';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -41,6 +42,7 @@ registerLocaleData(localeFr);
     PageNotFoundComponent,
     ShowcaseComponent,
     EventComponent,
+    AboutUsComponent,
   ],
   imports: [
     MatMenuModule,
