@@ -1,8 +1,8 @@
 <mat-toolbar class="mat-elevation-z6 header">
-    <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
-    <button  mat-button routerLink="/event" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
-        *ngIf="isAdmin" class="mat-focus-indicator mat-button-base header-titles" #btnRef="matButton" color="ishelp-accent">
-        <span class="mat-button-wrapper">{{ 'header.title1' | translate }}</span>
+    <a routerLink="/home" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
+    <button  mat-button routerLink="/event/create" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
+        *ngIf="isEventsManager()" class="mat-focus-indicator mat-button-base" #btnRef="matButton" style="font-weight: 500" color="ishelp-accent">
+        <span class="mat-button-wrapper">{{ 'header.eventsManager' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
@@ -35,25 +35,9 @@
         <span class="mat-button-focus-overlay"></span>
     </button>
 </mat-toolbar>
-<nav
-	*ngIf="isDisabled"
-	class="header-under"
-	mat-tab-nav-bar
-	mat-align-tabs="center"
-	color="accent"
-	[tabPanel]="tabPanel"
->
-	<a
-		class="nav"
-		mat-tab-link
-		*ngFor="let link of links"
-		[routerLink]="link.link"
-		(click)="activeLink = link"
-		routerLinkActive
-		#rla="routerLinkActive"
-		[active]="rla.isActive"
-	>
-		{{ link.title | translate }}
-	</a>
+<nav *ngIf="isDisabled" class="header-under" mat-tab-nav-bar mat-align-tabs="center" color="accent" [tabPanel]="tabPanel">
+	<a class="nav" mat-tab-link *ngFor="let link of links" [routerLink]="link.link" (click)="activeLink = link"
+		routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"> {{ link.title | translate }}
+    </a>
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

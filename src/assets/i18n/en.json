@@ -8,7 +8,9 @@
         "apply": "Apply",
         "event": "Events",
         "news": "News",
-        "user": "Profile"
+        "user": "Profile",
+        "eventsManager": "Create events"
+        
     },
     "403": {
         "title": "Wait ??",

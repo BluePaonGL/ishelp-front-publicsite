@@ -10,8 +10,5 @@ export class ShowcaseComponent implements OnInit {
 	constructor(private keycloakService: KeycloakService) {}
 
 	async ngOnInit(): Promise<void> {
-		if (await this.keycloakService.isLoggedIn()) {
-			this.keycloakService.logout('http://localhost:4200/');
-		}
 	}
 }

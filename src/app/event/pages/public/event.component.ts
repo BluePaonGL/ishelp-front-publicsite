@@ -72,28 +72,13 @@ export class EventComponent implements OnInit {
 	ngOnDestroy(): void {
 		this.subscription.unsubscribe();
 	}
-
-	async signUp() {
-		await this.eventsService.addParticipant(this.user.userId, this.id);
-		location.reload();
-	}
-
-	async signOut() {
-		console.log('test1');
-		await this.eventsService.deleteParticipant(this.user.userId, this.id);
-		console.log('test2');
-		location.reload();
-	}
-
   async signUp(){
     await this.eventsService.addParticipant(this.user.userId, this.id);
     location.reload();
   }
 
   async signOut(){
-    console.log('test1')
     await this.eventsService.deleteParticipant(this.user.userId, this.id);
-    console.log('test2')
     location.reload();
   }
 

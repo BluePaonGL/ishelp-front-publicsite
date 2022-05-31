@@ -8,7 +8,8 @@
         "apply": "Postuler",
         "event": "Évènements",
         "news": "Actualités",
-        "user": "Profil"
+        "user": "Profil",
+        "eventsManager": "Création d'évènements"
     },
     "403": {
         "title": "Oulah !",

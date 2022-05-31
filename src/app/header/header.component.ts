@@ -40,7 +40,15 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-	lang(lang: string) {
-		this.translate.use(lang);
-	}
+  isEventsManager(){
+    return this.keycloakService.getUserRoles().includes('events');
+  }
+
+  async logout() {
+    this.usersService.logout();
+  }
+
+  lang(lang: string) {
+    this.translate.use(lang)
+    }
 }

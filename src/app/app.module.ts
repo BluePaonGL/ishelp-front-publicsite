@@ -32,6 +32,8 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
 import { AboutUsComponent} from './about-us/about-us.component';
+import { CreateEventComponent } from './event/pages/back/create-event.component';
+
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -44,7 +46,8 @@ registerLocaleData(localeFr);
     UnauthorizedComponent,
     ShowcaseComponent,
     EventComponent,
-	AboutUsComponent,
+    AboutUsComponent,
+    CreateEventComponent,
   ],
   imports: [
     MatMenuModule,
