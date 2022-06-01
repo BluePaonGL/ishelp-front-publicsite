@@ -7,7 +7,7 @@ import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ShowcaseComponent} from './showcase/showcase.component';
 
 const routes: Routes = [
-	{path: 'about-us', component: AboutUsComponent},
+	{path: 'about_us', component: AboutUsComponent},
 	{path: 'page-not-found.component', component: PageNotFoundComponent, canActivate: [AuthGuard]},
 	{path: 'event/not_found', component: PageNotFoundComponent, canActivate: [AuthGuard]},
 	{path: 'event/:id', component: EventComponent, canActivate: [AuthGuard]},

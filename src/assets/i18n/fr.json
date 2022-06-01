@@ -44,6 +44,10 @@
 		"signupButton": "Je participe"
 	},
 	"aboutUs": {
-		"pictureTitle": "Nous connaître"
+		"pictureTitle": "À la rencontre d'IsHelp",
+		"ourMission": "Notre mission",
+		"missionText": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vestibulum lectus mauris ultrices eros in. Malesuada fames ac turpis egestas maecenas pharetra convallis. Ultricies leo integer malesuada nunc. Consequat mauris nunc congue nisi. Neque convallis a cras semper auctor. Potenti nullam ac tortor vitae purus faucibus ornare. Est pellentesque elit ullamcorper dignissim. Urna nec tincidunt praesent semper feugiat nibh. Eget felis eget nunc lobortis. Ornare massa eget egestas purus viverra accumsan in. Ac ut consequat semper viverra nam libero justo laoreet sit. Lectus vestibulum mattis ullamcorper velit sed. Enim tortor at auctor urna nunc. Nisi vitae suscipit tellus mauris. Vel facilisis volutpat est velit egestas dui. Proin nibh nisl condimentum id venenatis. Porttitor leo a diam sollicitudin.\n\nVel pharetra vel turpis nunc. Et leo duis ut diam quam nulla porttitor. Amet commodo nulla facilisi nullam vehicula ipsum a arcu. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Eget felis eget nunc lobortis mattis. Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Tempor orci dapibus ultrices in. Mauris cursus mattis molestie a iaculis at erat pellentesque. Augue ut lectus arcu bibendum at. Aliquam vestibulum morbi blandit cursus risus at ultrices mi tempus. Convallis tellus id interdum velit laoreet. Sed euismod nisi porta lorem mollis. A erat nam at lectus urna duis convallis convallis.",
+		"ourPartners": "Nos partenaires",
+		"isHelpOrganigram": "Organigramme IsHelp"
 	}
 }
