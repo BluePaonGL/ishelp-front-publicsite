@@ -7,8 +7,10 @@ h2 {
 
 footer {
 	background-color: #0257b1;
-	background-image: url(../../assets/blue-background.jpg);
-	background-size: cover;
+	background-image: url(../../assets/part-blue-background.png);
+	//background-image: url(../../assets/blue-background.jpg);
+	background-size: 75px;
+	background-repeat: repeat;
 	display: flex;
 	flex-direction: column;
 }
