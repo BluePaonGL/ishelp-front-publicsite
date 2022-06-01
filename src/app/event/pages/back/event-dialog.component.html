@@ -10,9 +10,9 @@
   </div>
 </div>
 
-<div *ngIf="data.action === 'delete'">
+<div *ngIf="data.action === 'delete'" style="display:flex; flex-direction:column;">
   <h1 mat-dialog-title>{{ 'eventDialog.eventDeletion' | translate }}</h1>
-  <div mat-dialog-content>{{ 'eventDialog.eventDeletionWarning' | translate }}</div>
-  <button mat-button mat-dialog-close>{{ 'eventDialog.buttonCancel' | translate }}</button>
+  <div mat-dialog-content style="margin-bottom: 16px;">{{ 'eventDialog.eventDeletionWarning' | translate }}</div>
   <button mat-raised-button color="warn" [mat-dialog-close]="true">{{ 'eventDialog.buttonYes' | translate }}</button>
+  <button mat-raised-button mat-dialog-close style="margin-top: 16px;">{{ 'eventDialog.buttonCancel' | translate }}</button>
 </div>

@@ -71,6 +71,11 @@
     "eventDialog": {
         "eventCreation": "Création d'évènements",
         "eventCreationSuccess": "L'évènement à été créé avec succès",
-        "eventCreationError": "Une erreur est survenue lors de la création de l'évènement"
+        "eventCreationError": "Une erreur est survenue lors de la création de l'évènement",
+        "eventDeletion": "Suppression d'évènements",
+        "eventDeletionWarning": "Voulez-vous vraiment supprimer cet évennements ?",
+        "buttonCancel": "Annuler",
+        "buttonYes": "Oui",
+        "buttonClose": "Fermer"
     }
 }

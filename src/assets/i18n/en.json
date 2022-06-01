@@ -73,6 +73,11 @@
     "eventDialog": {
         "eventCreation": "Event creation",
         "eventCreationSuccess": "Event successfully created",
-        "eventCreationError": "An error occurred while creating the event"
+        "eventCreationError": "An error occurred while creating the event",
+        "eventDeletion": "Event deletion",
+        "eventDeletionWarning": "Do you really want to delete this event ?",
+        "buttonCancel": "Cancel",
+        "buttonYes": "Yes",
+        "buttonClose": "Close"
     }
 }
