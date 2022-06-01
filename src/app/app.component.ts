@@ -13,10 +13,20 @@ export class AppComponent implements OnInit {
 
 	constructor(private readonly keycloak: KeycloakService, public translate: TranslateService) {
 		translate.addLangs(['en', 'fr']);
-		translate.setDefaultLang(translate.getBrowserLang());
+		if(localStorage.getItem('language')){
+			translate.setDefaultLang(localStorage.getItem('language')!);
+			translate.use(localStorage.getItem('language')!);
+		}else {
+			translate.setDefaultLang('fr');
+			translate.use('fr');
+			localStorage.setItem("language","fr");
+		}
 	}
 
 	public async ngOnInit() {
+		if(this.translate.currentLang === undefined){
+			this.translate.setDefaultLang(this.translate.getBrowserLang());
+		}
 		this.isLoggedIn = await this.keycloak.isLoggedIn();
 
 		if (this.isLoggedIn) {

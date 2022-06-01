@@ -1,3 +1,118 @@
-<p>
-  back works!
-</p>
+<div class="body">
+  <span class="body-spacer"></span>
+  <div class="grid-div">
+      <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
+          <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
+              <mat-card class="events-card">
+                  <div class="events-card">
+                    <mat-card-header style="padding-top: 16px;">
+                      <mat-card-title  class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{ 'eventCreate.titleCreate'| translate }}</h1></mat-card-title>
+                    </mat-card-header>
+                    <form class="event-form" autocomplete="on" [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+                      <div class="locations-form">
+                        <mat-form-field class="single-form" appearance="fill">
+                          <mat-label>{{ 'eventCreate.typeLabel' | translate }}</mat-label>
+                          <mat-select formControlName="type">
+                            <mat-option value="MARAUDE">{{ 'eventCreate.typeMarauding' | translate }}</mat-option>
+                            <mat-option value="AFTERWORK">{{ 'eventCreate.typeAfterwork' | translate }}</mat-option>
+                            <mat-option value="OTHER">{{ 'eventCreate.typeOther' | translate }}</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <mat-form-field style="width: 100%" appearance="fill">
+                          <mat-label>{{ 'eventCreate.nameLabel' | translate }}</mat-label>
+                          <input matInput formControlName="name">
+                        </mat-form-field>
+                      </div>
+                      <div class="locations-form">
+                        <mat-form-field class="single-form" appearance="fill">
+                          <mat-label>{{ 'eventCreate.campusLabel' | translate }}</mat-label>
+                          <mat-select formControlName="campus">
+                            <mat-option value="NDL">NDL</mat-option>
+                            <mat-option value="NDC">NDC</mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                        <mat-form-field style="width: 100%" appearance="fill">
+                          <mat-label>{{ 'eventCreate.locationLabel' | translate }}</mat-label>
+                          <input matInput formControlName="location">
+                        </mat-form-field>
+                      </div>
+                      <mat-form-field class="single-form" appearance="fill">
+                        <mat-label>{{ 'eventCreate.dateLabel' | translate }}</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="date">
+                        <mat-hint>{{ 'eventCreate.dateHint' | translate }}</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker">
+                        </mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                      <div class="times-form">
+                        <div class="time-form">
+                          <mat-label>{{ 'eventCreate.startLabel' | translate }}</mat-label>
+                          <ngx-mat-timepicker-field formControlName="start" [defaultTime]="''" [floatLabel]="'auto'" [format]=24 never required></ngx-mat-timepicker-field>
+                        </div>
+                        <div class="time-form">
+                          <mat-label>{{ 'eventCreate.endLabel' | translate }}</mat-label>
+                          <ngx-mat-timepicker-field formControlName="end" [defaultTime]="''" [floatLabel]="'auto'" [format]=24 never required></ngx-mat-timepicker-field>
+                        </div>
+                      </div>
+                      <mat-form-field style="height: 100%" appearance="fill">
+                        <mat-label>{{ 'eventCreate.descriptionLabel' | translate }}</mat-label>
+                        <textarea matInput
+                          formControlName="description"
+                          cdkTextareaAutosize
+                          #autosize="cdkTextareaAutosize"
+                          cdkAutosizeMinRows="1"
+                          cdkAutosizeMaxRows="5"></textarea>
+                      </mat-form-field>
+                      <button mat-raised-button type="submit" [disabled]="!eventForm.valid" class="mat-focus-indicator mat-button-base event-signup">
+                        <span class="mat-button-wrapper">{{ 'eventCreate.createButton' | translate }}</span>
+                        <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                        <span class="mat-button-focus-overlay"></span>
+                      </button>
+                    </form>
+                  </div>
+              </mat-card>
+          </mat-grid-tile>
+              <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
+                  <mat-card class="user-card">
+                      <mat-card-header class="profileName" style="margin-top: 16px;">
+                          <mat-card-title  class="mat-title margin-card header-card"><h1 class="mat-h1 header-card">{{ 'eventCreate.titleDelete' | translate }}</h1></mat-card-title>
+                      </mat-card-header>
+                      <mat-list class="custom-list" style="margin-bottom: 20px">
+                          <span *ngIf="eventsNumber === 0">
+                              <mat-list-item class="mat-list-item " style="width: 100%; height: 100%;">
+                                  <a style="width: 100%; height: 100%;">
+                                      <div style="width: 100%;">
+                                          <mat-card class="event-card mat-elevation-z3 no-event" style="width: 100%; height: 100%;"> 
+                                              <div class="no-event">{{ 'eventList.noEvent'| translate }}</div>
+                                          </mat-card>
+                                      </div>
+                                  </a>
+                              </mat-list-item>
+                          </span>
+                          <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content" *ngFor="let event of events">
+                            <div class="event-list" style="width: 100%;">
+                                <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
+                                <mat-card class="event-card-warn mat-elevation-z3" (click)="openDialog('delete', false, event.eventId)">
+                                    <div class="event-tab">
+                                        <div class="event-tab-left">
+                                            <spa mat-line style="font-weight: 550;">{{event.name}}</spa>
+                                            <span *ngIf="(event.location !== null && event.startingCampus === null)" style="font-weight: 100;">{{event.location}}</span>
+                                            <span *ngIf="(event.location !== null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}, {{event.location}}</span>
+                                            <span *ngIf="(event.location === null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}</span>
+                                        </div>
+                                        <span class="event-spacer"></span>
+                                        <div class="event-tab-right">
+                                            <div *ngIf="event.startingTime !== null" mat-line>{{"2022-01-01T" + event.startingTime |  date: 'shortTime':'':lang}}</div>
+                                            <span *ngIf="event.endingTime !==null">{{"2022-01-01T" + event.endingTime |  date: 'shortTime':'':lang}}</span>
+                                        </div>
+                                    </div>
+                                </mat-card>
+                            </div>
+                          </mat-list-item>
+                      </mat-list>
+                      </mat-card>
+              </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+  <span class="body-spacer"></span>
+</div>

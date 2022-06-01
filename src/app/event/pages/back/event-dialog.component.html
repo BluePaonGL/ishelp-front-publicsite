@@ -1,0 +1,18 @@
+<div *ngIf="data.action === 'create'">
+  <h1 mat-dialog-title>{{ 'eventDialog.eventCreation' | translate }}</h1>
+  <div *ngIf="data.success" mat-dialog-content>{{ 'eventDialog.eventCreationSuccess' | translate }}</div>
+  <div *ngIf="!data.success" mat-dialog-content>{{ 'eventDialog.eventCreationError' | translate }}</div>
+  <div mat-dialog-actions *ngIf="data.success">
+    <button mat-button mat-dialog-close>{{ 'eventDialog.buttonClose' | translate }}</button>
+  </div>
+  <div mat-dialog-actions *ngIf="!data.success">
+    <button mat-raised-button color="warn" mat-dialog-close>{{ 'eventDialog.buttonClose' | translate }}</button>
+  </div>
+</div>
+
+<div *ngIf="data.action === 'delete'">
+  <h1 mat-dialog-title>{{ 'eventDialog.eventDeletion' | translate }}</h1>
+  <div mat-dialog-content>{{ 'eventDialog.eventDeletionWarning' | translate }}</div>
+  <button mat-button mat-dialog-close>{{ 'eventDialog.buttonCancel' | translate }}</button>
+  <button mat-raised-button color="warn" [mat-dialog-close]="true">{{ 'eventDialog.buttonYes' | translate }}</button>
+</div>

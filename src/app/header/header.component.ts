@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit {
     if(await this.usersService.isLoggedIn()){
       this.isDisabled = true;
       this.user = await this.usersService.getUser();
-      console.log(this.user)
       this.username = this.user.username;
       
     }
@@ -49,6 +48,8 @@ export class HeaderComponent implements OnInit {
   }
 
   lang(lang: string) {
-    this.translate.use(lang)
+    this.translate.setDefaultLang(lang)
+    this.translate.use(lang);
+    localStorage.setItem("language", lang);
     }
 }

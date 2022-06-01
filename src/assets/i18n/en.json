@@ -9,7 +9,7 @@
         "event": "Events",
         "news": "News",
         "user": "Profile",
-        "eventsManager": "Create events"
+        "eventsManager": "Manage events"
         
     },
     "403": {
@@ -51,5 +51,28 @@
         "participants": "They're participating: ",
         "signoutButton": "Cancel participation",
         "signupButton": "I want to participate"
+    },
+    "eventCreate": {
+        "titleEvents": "Events",
+        "titleCreate": "Event creation",
+        "titleDelete": "Event deletion",
+        "typeLabel": "Event type",
+        "typeMarauding": "Marauding",
+        "typeAfterwork": "Afterwork",
+        "typeOther": "Other",
+        "nameLabel": "Event name",
+        "campusLabel": "Starting campus",
+        "locationLabel": "Event location",
+        "dateLabel": "Event date",
+        "dateHint": "MM/DD/YYYY",
+        "startLabel": "Starting time",
+        "endLabel": "Ending time",
+        "descriptionLabel": "Event description",
+        "createButton": "Create event"
+    },
+    "eventDialog": {
+        "eventCreation": "Event creation",
+        "eventCreationSuccess": "Event successfully created",
+        "eventCreationError": "An error occurred while creating the event"
     }
 }

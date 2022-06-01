@@ -9,7 +9,7 @@
         "event": "Évènements",
         "news": "Actualités",
         "user": "Profil",
-        "eventsManager": "Création d'évènements"
+        "eventsManager": "Gestion d'évènements"
     },
     "403": {
         "title": "Oulah !",
@@ -49,5 +49,28 @@
         "participants": "Ils participent: ",
         "signoutButton": "Me désinscrire",
         "signupButton": "Je participe"
+    },
+    "eventCreate": {
+        "titleEvents": "Évènements",
+        "titleCreate": "Création d'évènements",
+        "titleDelete": "Suppression d'évènements",
+        "typeLabel": "Type d'évènement",
+        "typeMarauding": "Maraude",
+        "typeAfterwork": "Afterwork",
+        "typeOther": "Autre",
+        "nameLabel": "Nom de l'évènement",
+        "campusLabel": "Campus de départ",
+        "locationLabel": "Lieux de l'évènement",
+        "dateLabel": "Date de l'évènement",
+        "dateHint": "JJ/MM/AAAA",
+        "startLabel": "Heure de début",
+        "endLabel": "Heure de fin",
+        "descriptionLabel": "Description de l'évènement",
+        "createButton": "Créer l'évènement"
+    },
+    "eventDialog": {
+        "eventCreation": "Création d'évènements",
+        "eventCreationSuccess": "L'évènement à été créé avec succès",
+        "eventCreationError": "Une erreur est survenue lors de la création de l'évènement"
     }
 }

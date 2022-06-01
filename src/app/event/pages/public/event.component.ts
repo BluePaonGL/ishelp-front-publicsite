@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {DatePipe} from '@angular/common';
-import { lastValueFrom } from 'rxjs';
 import { UsersService } from '../../../utility/users.service';
 import { EventsService } from '../../events.service';
 import { KeycloakService } from 'keycloak-angular';
@@ -13,8 +12,6 @@ import { KeycloakService } from 'keycloak-angular';
   styleUrls: ['../event.component.scss']
 })
 export class EventComponent implements OnInit {
-	startDate = new Date('2022-05-18T12:30');
-	endDate = new Date('2022-05-18T14:30');
 	profilePictureUrl = '../../assets/logo-whiteback-round.png';
 	profileName = '';
 	user: any;
@@ -74,12 +71,20 @@ export class EventComponent implements OnInit {
 	}
   async signUp(){
     await this.eventsService.addParticipant(this.user.userId, this.id);
-    location.reload();
+    this.eventById = await this.eventsService.getEventById(this.id);
+		this.participantNumber = this.eventById.participantsId.length;
+		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
+			this.users = users;
+		});
   }
 
   async signOut(){
     await this.eventsService.deleteParticipant(this.user.userId, this.id);
-    location.reload();
+		this.eventById = await this.eventsService.getEventById(this.id);
+		this.participantNumber = this.eventById.participantsId.length;
+		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
+			this.users = users;
+		});
   }
 
   isSignedUp(){

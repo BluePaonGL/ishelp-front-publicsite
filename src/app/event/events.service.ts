@@ -37,4 +37,21 @@ export class EventsService {
 		);
 		return response;
 	}
+
+	async addEvent(name: string, eventType: string, startingCampus: string, location: string|null,
+		date: string|null, startingTime: string, endingTime: string, description:string): Promise<any> {
+
+		let response = await lastValueFrom(
+		this.http.post(this.eventUrl + '/event/addEvent', {name, eventType, startingCampus, location,
+			date, startingTime,endingTime, description})
+	);
+		return response;
+	}
+
+	async deleteEvent(eventId: any): Promise<any> {
+		let response = await lastValueFrom(
+			this.http.delete(this.eventUrl + '/event/deleteEvent/' + eventId)
+		);
+		return response;
+	}
 }

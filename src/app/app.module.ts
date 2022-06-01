@@ -1,6 +1,6 @@
 import {HttpClient, HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -19,6 +19,14 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -33,6 +41,8 @@ import localeFr from '@angular/common/locales/fr';
 import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
 import { AboutUsComponent} from './about-us/about-us.component';
 import { CreateEventComponent } from './event/pages/back/create-event.component';
+import { EventDialogComponent } from './event/pages/back/event-dialog.component';
+
 
 registerLocaleData(localeFr);
 
@@ -48,8 +58,18 @@ registerLocaleData(localeFr);
     EventComponent,
     AboutUsComponent,
     CreateEventComponent,
+    EventDialogComponent
   ],
   imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    NgxMatTimepickerModule.setLocale('fr-FR'),
+    MatDialogModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+    MatSelectModule,
+    MatInputModule,
+    MatFormFieldModule,
     MatMenuModule,
     MatGridListModule,
     MatIconModule,
@@ -59,7 +79,6 @@ registerLocaleData(localeFr);
     MatButtonToggleModule,
     MatToolbarModule,
     MatListModule,
-    FormsModule,
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
