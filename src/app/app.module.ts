@@ -36,7 +36,6 @@ import { ApplyComponent } from './recruitment/pages/apply/apply.component';
 import { CandidateCardComponent } from './recruitment/components/candidate-card/candidate-card.component';
 
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
-import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { EventComponent } from './event/pages/public/event.component';
 import { DatePipe } from '@angular/common';
