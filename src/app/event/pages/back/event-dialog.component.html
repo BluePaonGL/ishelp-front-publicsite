@@ -1,18 +1,18 @@
 <div *ngIf="data.action === 'create'">
-  <h1 mat-dialog-title>{{ 'eventDialog.eventCreation' | translate }}</h1>
-  <div *ngIf="data.success" mat-dialog-content>{{ 'eventDialog.eventCreationSuccess' | translate }}</div>
-  <div *ngIf="!data.success" mat-dialog-content>{{ 'eventDialog.eventCreationError' | translate }}</div>
-  <div mat-dialog-actions *ngIf="data.success">
-    <button mat-button mat-dialog-close>{{ 'eventDialog.buttonClose' | translate }}</button>
-  </div>
-  <div mat-dialog-actions *ngIf="!data.success">
-    <button mat-raised-button color="warn" mat-dialog-close>{{ 'eventDialog.buttonClose' | translate }}</button>
-  </div>
+    <h1 mat-dialog-title>{{ 'eventDialog.eventCreation' | translate }}</h1>
+    <div *ngIf="data.success" mat-dialog-content>{{ 'eventDialog.eventCreationSuccess' | translate }}</div>
+    <div *ngIf="!data.success" mat-dialog-content>{{ 'eventDialog.eventCreationError' | translate }}</div>
+    <div mat-dialog-actions *ngIf="data.success">
+        <button mat-button mat-dialog-close>{{ 'eventDialog.buttonClose' | translate }}</button>
+    </div>
+    <div mat-dialog-actions *ngIf="!data.success">
+        <button mat-raised-button color="warn" mat-dialog-close>{{ 'eventDialog.buttonClose' | translate }}</button>
+    </div>
 </div>
 
 <div *ngIf="data.action === 'delete'" style="display:flex; flex-direction:column;">
-  <h1 mat-dialog-title>{{ 'eventDialog.eventDeletion' | translate }}</h1>
-  <div mat-dialog-content style="margin-bottom: 16px;">{{ 'eventDialog.eventDeletionWarning' | translate }}</div>
-  <button mat-raised-button color="warn" [mat-dialog-close]="true">{{ 'eventDialog.buttonYes' | translate }}</button>
-  <button mat-raised-button mat-dialog-close style="margin-top: 16px;">{{ 'eventDialog.buttonCancel' | translate }}</button>
+    <h1 mat-dialog-title>{{ 'eventDialog.eventDeletion' | translate }}</h1>
+    <div mat-dialog-content style="margin-bottom: 16px;">{{ 'eventDialog.eventDeletionWarning' | translate }}</div>
+    <button mat-raised-button color="warn" [mat-dialog-close]="true">{{ 'eventDialog.buttonYes' | translate }}</button>
+    <button mat-raised-button mat-dialog-close style="margin-top: 16px;">{{ 'eventDialog.buttonCancel' | translate }}</button>
 </div>
