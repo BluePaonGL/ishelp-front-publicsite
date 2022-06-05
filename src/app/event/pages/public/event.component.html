@@ -3,8 +3,8 @@
     <div class="grid-div">
         <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
             <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
-                <mat-card class="events-card">
-                    <div class="events-card" *ngIf="this.router.url === '/event/' + this.id && eventById">
+                <mat-card class="base-card events-card">
+                    <div class="base-card events-card" *ngIf="this.router.url === '/event/' + this.id && eventById">
                         <mat-card-header style="padding-top: 16px;">
                             <mat-card-title *ngIf="eventById.name" class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{eventById.name}}</h1></mat-card-title>
                         </mat-card-header>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="events-card" *ngIf="this.router.url === '/event'">
+                    <div class="base-card events-card" *ngIf="this.router.url === '/event'">
                         <mat-card-header style="padding-top: 16px;">
                             <mat-card-title  class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{ 'eventList.title'| translate }}</h1></mat-card-title>
                         </mat-card-header>
@@ -87,7 +87,7 @@
                     </mat-card>
             </mat-grid-tile>
                 <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
-                    <mat-card class="user-card">
+                    <mat-card class="base-card user-card">
                         <div style="height: 10px;"></div>
                         <img src={{profilePictureUrl}}>
                         <mat-card-header class="profileName" style="margin-bottom: 7%;">
