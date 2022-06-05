@@ -65,8 +65,8 @@ export class CreateEventComponent implements OnInit {
         this.eventForm.value['end']+ ':00',
         this.eventForm.value['description']
         );
-        console.log(this.response);
       if(this.response['eventId']!== null){
+        await this.eventsService.getAllEvents().then((events) => (this.events = events));
         this.openDialog('create', true, null);
       }
       else {
@@ -107,11 +107,8 @@ export class CreateEventComponent implements OnInit {
     });
     await dialogRef.afterClosed().subscribe(async result => {
       this.isDeleted = result;
-      console.log(this.isDeleted);
       if (this.isDeleted) {
-        console.log('deletion')
         this.response = await this.eventsService.deleteEvent(eventId);
-        console.log('isdeleted')
         this.isDeleted = false;
         await this.eventsService.getAllEvents().then((events) => (this.events = events));
       }

@@ -25,6 +25,7 @@ export class EventComponent implements OnInit {
 	participantNumber: number | undefined;
 	subscription: any;
 	users: any[] | undefined;
+	isManagerAndMaraud: boolean = false;
 
   constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, 
               private eventsService: EventsService, public datePipe: DatePipe, private usersService: UsersService,
@@ -63,6 +64,9 @@ export class EventComponent implements OnInit {
 			await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
 				this.users = users;
 			});
+			if(this.keycloakService.getUserRoles().includes('events') && this.eventById.eventType == 'MARAUDE'){
+				this.isManagerAndMaraud = true;
+			}
 		}
 	}
 
@@ -76,6 +80,10 @@ export class EventComponent implements OnInit {
 		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
 			this.users = users;
 		});
+		await this.eventsService.getEventByUserId(this.user.userId).then((eventsUser) => {
+			this.eventsUser = eventsUser;
+		});
+		this.eventsUserNumber = this.eventsUser.length;
   }
 
   async signOut(){
@@ -85,6 +93,10 @@ export class EventComponent implements OnInit {
 		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
 			this.users = users;
 		});
+		await this.eventsService.getEventByUserId(this.user.userId).then((eventsUser) => {
+			this.eventsUser = eventsUser;
+		});
+		this.eventsUserNumber = this.eventsUser.length;
   }
 
   isSignedUp(){
@@ -92,13 +104,9 @@ export class EventComponent implements OnInit {
     else return false
   }
 
-  isManager(){
-    return this.keycloakService.getUserRoles().includes('events');
-  }
-
   reload(eventId: string){
-    this.router.navigate(['/event/'+eventId]).then(() => {
+    this.router.navigate(['/event/' + eventId]).then(() => {
       window.location.reload();
-    });;
+    });
   }
 }

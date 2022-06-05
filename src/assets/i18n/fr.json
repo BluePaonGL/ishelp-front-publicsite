@@ -47,6 +47,7 @@
         "endingTime": "À: ",
         "description": "Description: ",
         "participants": "Ils participent: ",
+        "manageButton": "Gestion de Maraude",
         "signoutButton": "Me désinscrire",
         "signupButton": "Je participe"
     },

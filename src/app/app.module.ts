@@ -42,6 +42,7 @@ import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.compon
 import { AboutUsComponent} from './about-us/about-us.component';
 import { CreateEventComponent } from './event/pages/back/create-event.component';
 import { EventDialogComponent } from './event/pages/back/event-dialog.component';
+import { MaraudComponent } from './event/pages/back/maraud.component';
 
 
 registerLocaleData(localeFr);
@@ -58,7 +59,8 @@ registerLocaleData(localeFr);
     EventComponent,
     AboutUsComponent,
     CreateEventComponent,
-    EventDialogComponent
+    EventDialogComponent,
+    MaraudComponent
   ],
   imports: [
     ReactiveFormsModule,

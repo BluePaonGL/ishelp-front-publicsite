@@ -6,11 +6,16 @@ import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.co
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
 import { CreateEventComponent } from './event/pages/back/create-event.component';
+import { MaraudComponent } from './event/pages/back/maraud.component';
 
 const routes: Routes = [
   { path: 'page_not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
   { path: 'event/not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
   { path: 'event/create', component: CreateEventComponent, canActivate : [AuthGuard], data: {
+    roles: ['events'],
+    } 
+  },
+  { path: 'event/manage/:id', component: MaraudComponent, canActivate : [AuthGuard], data: {
     roles: ['events'],
     } 
   },

@@ -1,5 +1,4 @@
 <div class="body">
-    <span class="body-spacer"></span>
     <div class="grid-div">
         <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
             <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
@@ -26,8 +25,8 @@
                             </div>
                             <div class="inscription-tab" style="padding-bottom: 20px;">
                                 <span class="event-spacer"></span>
-                                <button *ngIf="isManager()" mat-raised-button class="mat-focus-indicator mat-button-base event-signup" style="margin-right: 10px;">
-                                    <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
+                                <button *ngIf="isManagerAndMaraud" [routerLink]= "['/event/manage/', id]" mat-raised-button class="mat-focus-indicator mat-button-base event-signout" style="margin-right: 10px;">
+                                    <span class="mat-button-wrapper">{{ 'eventInfo.manageButton' | translate }}</span>
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
                                 </button>
@@ -86,56 +85,55 @@
                     </div>
                     </mat-card>
             </mat-grid-tile>
-                <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
-                    <mat-card class="user-card">
-                        <div style="height: 10px;"></div>
-                        <img src={{profilePictureUrl}}>
-                        <mat-card-header class="profileName" style="margin-bottom: 7%;">
-                            <mat-card-title  class="mat-title"><h1 class="mat-h1 profileName"> {{ profileName }}</h1></mat-card-title>
-                        </mat-card-header>
-                        <span class="event-spacer"></span>
-                        <mat-card-header class="profileName">
-                            <mat-card-title  class="mat-title header-card"><h1 class="mat-h1 header-card"> {{ 'eventList.titleUser'| translate }}</h1></mat-card-title>
-                        </mat-card-header>
-                        <mat-list class="custom-list" style="margin-bottom: 16px">
-                            <span *ngIf="eventsUserNumber === 0">
-                                <mat-list-item class="mat-list-item " style="width: 100%; height: 100%;">
-                                    <a style="width: 100%; height: 100%;">
-                                        <div style="width: 100%;">
-                                            <mat-card class="event-card mat-elevation-z3 no-event" style="width: 100%; height: 100%;"> 
-                                                <div class="no-event">{{ 'eventList.noEvent'| translate }}</div>
-                                            </mat-card>
-                                        </div>
-                                    </a>
-                                </mat-list-item>
-                            </span>
-                            <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of eventsUser">
-                                
-                                <a style="width: 100%;" [routerLink]= "['/event/',event.eventId]" (click)="reload(event.eventId)">
-                                    <div class="event-list">
-                                        <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
-                                        <mat-card class="event-card mat-elevation-z3">
-                                            <div class="event-tab">
-                                                <div class="event-tab-left">
-                                                    <spa mat-line style="font-weight: 550;">{{event.name}}</spa>
-                                                    <span *ngIf="(event.location !== null && event.startingCampus === null)" style="font-weight: 100;">{{event.location}}</span>
-                                                    <span *ngIf="(event.location !== null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}, {{event.location}}</span>
-                                                    <span *ngIf="(event.location === null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}</span>
-                                                </div>
-                                                <span class="event-spacer"></span>
-                                                <div class="event-tab-right">
-                                                    <div *ngIf="event.startingTime !== null" mat-line>{{"2022-01-01T" + event.startingTime |  date: 'shortTime':'':lang}}</div>
-                                                    <span *ngIf="event.endingTime !==null">{{"2022-01-01T" + event.endingTime |  date: 'shortTime':'':lang}}</span>
-                                                </div>
-                                            </div>
+            <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
+                <mat-card class="user-card">
+                    <div style="height: 10px;"></div>
+                    <img src={{profilePictureUrl}}>
+                    <mat-card-header class="profileName" style="margin-bottom: 7%;">
+                        <mat-card-title  class="mat-title"><h1 class="mat-h1 profileName"> {{ profileName }}</h1></mat-card-title>
+                    </mat-card-header>
+                    <span class="event-spacer"></span>
+                    <mat-card-header class="profileName">
+                        <mat-card-title  class="mat-title header-card"><h1 class="mat-h1 header-card"> {{ 'eventList.titleUser'| translate }}</h1></mat-card-title>
+                    </mat-card-header>
+                    <mat-list class="custom-list" style="margin-bottom: 16px">
+                        <span *ngIf="eventsUserNumber === 0">
+                            <mat-list-item class="mat-list-item " style="width: 100%; height: 100%;">
+                                <a style="width: 100%; height: 100%;">
+                                    <div style="width: 100%;">
+                                        <mat-card class="event-card mat-elevation-z3 no-event" style="width: 100%; height: 100%;"> 
+                                            <div class="no-event">{{ 'eventList.noEvent'| translate }}</div>
                                         </mat-card>
                                     </div>
                                 </a>
                             </mat-list-item>
-                        </mat-list>
-                        </mat-card>
-                </mat-grid-tile>
-        </mat-grid-list>
+                        </span>
+                        <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of eventsUser">
+                            
+                            <a style="width: 100%;" [routerLink]= "['/event/',event.eventId]" (click)="reload(event.eventId)">
+                                <div class="event-list">
+                                    <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
+                                    <mat-card class="event-card mat-elevation-z3">
+                                        <div class="event-tab">
+                                            <div class="event-tab-left">
+                                                <spa mat-line style="font-weight: 550;">{{event.name}}</spa>
+                                                <span *ngIf="(event.location !== null && event.startingCampus === null)" style="font-weight: 100;">{{event.location}}</span>
+                                                <span *ngIf="(event.location !== null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}, {{event.location}}</span>
+                                                <span *ngIf="(event.location === null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}</span>
+                                            </div>
+                                            <span class="event-spacer"></span>
+                                            <div class="event-tab-right">
+                                                <div *ngIf="event.startingTime !== null" mat-line>{{"2022-01-01T" + event.startingTime |  date: 'shortTime':'':lang}}</div>
+                                                <span *ngIf="event.endingTime !==null">{{"2022-01-01T" + event.endingTime |  date: 'shortTime':'':lang}}</span>
+                                            </div>
+                                        </div>
+                                    </mat-card>
+                                </div>
+                            </a>
+                        </mat-list-item>
+                    </mat-list>
+                    </mat-card>
+            </mat-grid-tile>
+    </mat-grid-list>
     </div>
-    <span class="body-spacer"></span>
 </div>
