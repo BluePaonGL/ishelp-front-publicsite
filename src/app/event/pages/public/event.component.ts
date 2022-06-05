@@ -54,7 +54,10 @@ export class EventComponent implements OnInit {
 		if (this.user.profilePicture !== null) {
 			this.profilePictureUrl = this.user.profilePicture;
 		}
+		this.urlChange()
+	}
 
+	async urlChange(){
 		if (this.router.url === '/event') {
 			await this.eventsService.getAllEvents().then((events) => (this.events = events));
 			this.eventsNumber = this.events.length;
@@ -106,7 +109,7 @@ export class EventComponent implements OnInit {
 
   reload(eventId: string){
     this.router.navigate(['/event/' + eventId]).then(() => {
-      window.location.reload();
+      this.urlChange()
     });
   }
 }

@@ -94,14 +94,14 @@
                                 <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
                                 <mat-card class="event-card-warn mat-elevation-z3" (click)="openDialog('delete', false, event.eventId)">
                                     <div class="event-tab">
-                                        <div class="event-tab-left">
+                                        <div>
                                             <spa mat-line style="font-weight: 550;">{{event.name}}</spa>
                                             <span *ngIf="(event.location !== null && event.startingCampus === null)" style="font-weight: 100;">{{event.location}}</span>
                                             <span *ngIf="(event.location !== null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}, {{event.location}}</span>
                                             <span *ngIf="(event.location === null && event.startingCampus !== null)" style="font-weight: 100;">{{event.startingCampus}}</span>
                                         </div>
                                         <span class="event-spacer"></span>
-                                        <div class="event-tab-right">
+                                        <div>
                                             <div *ngIf="event.startingTime !== null" mat-line>{{"2022-01-01T" + event.startingTime |  date: 'shortTime':'':lang}}</div>
                                             <span *ngIf="event.endingTime !==null">{{"2022-01-01T" + event.endingTime |  date: 'shortTime':'':lang}}</span>
                                         </div>
@@ -114,5 +114,5 @@
             </mat-grid-tile>
         </mat-grid-list>
     </div>
-<span class="body-spacer"></span>
+    <span class="body-spacer"></span>
 </div>
