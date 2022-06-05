@@ -1,50 +1,55 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { KeycloakService } from 'keycloak-angular';
-
-
+import {HttpClient} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {UsersService} from '../utility/users.service';
+import {KeycloakService} from 'keycloak-angular';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+	selector: 'app-header',
+	templateUrl: './header.component.html',
+	styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  isAdmin = false;
   isDisabled: boolean = false;
   username: string|undefined = '';
+  id: any|undefined = '';
+  user:any;
   links = [
     {title:'header.home', link:'/home'},
     {title:'header.apply', link:'/apply'},
-    {title:'header.marauding', link:'/marauding'},
+    {title:'header.event', link:'/event'},
     {title:'header.news', link:'/news'},
     {title:'header.user', link:'/user'},
   ];
   activeLink = this.links[0];
 
-
-  constructor(private router: Router, private keycloakService: KeycloakService) { }
+  constructor(private keycloakService: KeycloakService, private http: HttpClient, 
+    private usersService: UsersService, public translate: TranslateService) { }
+  
   async ngOnInit(): Promise<void> {
-    if(await this.keycloakService.isLoggedIn()){
+    if (this.keycloakService.getUserRoles().includes('ADMIN')){
+      this.isAdmin = true;
+    }
+    if(await this.usersService.isLoggedIn()){
       this.isDisabled = true;
-      this.keycloakService.loadUserProfile().then(profile => {
-        console.log(profile.username)
-        this.username = profile.username?.toString();
-      })
+      this.user = await this.usersService.getUser();
+      this.username = this.user.username;
+      
     }
   }
 
-  async isLoggedIn() {
-    return this.keycloakService.isLoggedIn
-  }
-
-  async getUsername() {
-    this.keycloakService.loadUserProfile().then(profile => {
-      console.log(profile.username)
-      profile.username;
-    })
+  isEventsManager(){
+    return this.keycloakService.getUserRoles().includes('events');
   }
 
   async logout() {
-    this.keycloakService.logout("http://localhost:4200/");
+    this.usersService.logout();
   }
+
+  lang(lang: string) {
+    this.translate.setDefaultLang(lang)
+    this.translate.use(lang);
+    localStorage.setItem("language", lang);
+    }
 }

@@ -1,11 +1,24 @@
 <mat-toolbar class="mat-elevation-z6 header">
-    <a href="#" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
-    <span class="header-spacer"></span>
-    <button *ngIf="isDisabled" mat-button class="mat-focus-indicator mat-button-base">
-        <span class="mat-button-wrapper">{{ username }}</span>
+    <a routerLink="/home" class="img"><img src="../../assets/logo-text-whiteback.png" class="img"></a>
+    <button  mat-button routerLink="/event/create" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
+        *ngIf="isEventsManager()" class="mat-focus-indicator mat-button-base" #btnRef="matButton" style="font-weight: 500" color="ishelp-accent">
+        <span class="mat-button-wrapper">{{ 'header.eventsManager' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
+    <span class="header-spacer"></span>
+    <span *ngIf="isDisabled">{{ 'header.welcome' | translate }}{{ username }}</span>
+    <button mat-icon-button class="icon-button" [matMenuTriggerFor]="menu">
+        <span class="iconify icon" data-icon="ic:outline-language"></span>
+    </button>   
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="lang('fr')">
+            <span>Français</span>
+        </button>
+        <button mat-menu-item (click)="lang('en')">
+            <span>English</span>
+        </button>
+    </mat-menu>
     <button (click)="logout()" *ngIf="isDisabled" mat-button class="mat-focus-indicator mat-button-base header-logout">
         <span class="mat-button-wrapper">{{ 'header.LogoutButton' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
@@ -23,9 +36,8 @@
     </button>
 </mat-toolbar>
 <nav *ngIf="isDisabled" class="header-under" mat-tab-nav-bar mat-align-tabs="center" color="accent" [tabPanel]="tabPanel">
-    <a class="nav" mat-tab-link  *ngFor="let link of links"
-    [routerLink]= "link.link"
-    (click)="activeLink = link"
-    [active]="activeLink == link" > {{link.title|translate}} </a>
+	<a class="nav" mat-tab-link *ngFor="let link of links" [routerLink]="link.link" (click)="activeLink = link"
+		routerLinkActive #rla="routerLinkActive" [active]="rla.isActive"> {{ link.title | translate }}
+    </a>
 </nav>
 <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>

@@ -3,11 +3,20 @@
         "LoginButton": "Login",
         "LogoutButton": "Logout",
         "signUpButton": "Sign Up",
+        "welcome": "Welcome ",
         "home": "Home",
         "apply": "Apply",
-        "marauding": "Marauding",
+        "event": "Events",
         "news": "News",
-        "user": "Profile"
+        "user": "Profile",
+        "eventsManager": "Manage events"
+        
+    },
+    "403": {
+        "title": "Wait ??",
+        "subTitle": "What are you trying to do?",
+        "error": "Unauthorized",
+        "back": "Back"
     },
     "404": {
         "title": "Oups !",
@@ -22,5 +31,54 @@
         "Q&A": "Q&A",
         "aboutUs": "About Us",
         "CGU": "CGU"
+    },
+    "showcase": {
+        "pictureTitle": "About Us",
+        "pictureLink": "Test"
+    },
+    "eventList": {
+        "title": "Our events",
+        "titleUser": "My events",
+        "noEvent": "There is no event here ..."
+    },
+    "eventInfo": {
+        "campus": "Starting Campus: ",
+        "location": "Location of the event: ",
+        "date": "Date of the event: ",
+        "startingTime": "From: ",
+        "endingTime": "To: ",
+        "description": "Description: ",
+        "participants": "They're participating: ",
+        "manageButton": "Manage Maraud",
+        "signoutButton": "Cancel participation",
+        "signupButton": "I want to participate"
+    },
+    "eventCreate": {
+        "titleEvents": "Events",
+        "titleCreate": "Event creation",
+        "titleDelete": "Event deletion",
+        "typeLabel": "Event type",
+        "typeMarauding": "Marauding",
+        "typeAfterwork": "Afterwork",
+        "typeOther": "Other",
+        "nameLabel": "Event name",
+        "campusLabel": "Starting campus",
+        "locationLabel": "Event location",
+        "dateLabel": "Event date",
+        "dateHint": "MM/DD/YYYY",
+        "startLabel": "Starting time",
+        "endLabel": "Ending time",
+        "descriptionLabel": "Event description",
+        "createButton": "Create event"
+    },
+    "eventDialog": {
+        "eventCreation": "Event creation",
+        "eventCreationSuccess": "Event successfully created",
+        "eventCreationError": "An error occurred while creating the event",
+        "eventDeletion": "Event deletion",
+        "eventDeletionWarning": "Do you really want to delete this event ?",
+        "buttonCancel": "Cancel",
+        "buttonYes": "Yes",
+        "buttonClose": "Close"
     }
 }

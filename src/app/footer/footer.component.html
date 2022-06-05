@@ -1,45 +1,56 @@
-<footer class="page-footer" style="padding-top: 10px;">
-    <div class="container">
-        <div class="row" style="margin-bottom: 10px;">
-            <div class="col s12 m12 l4 footer-left">
-                <h2 class="white-text">{{ 'footer.socialTitle' | translate }}</h2>
-                <mat-nav-list class="footer-nav-list">
-                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
-                        <a class="icon" href="https://www.youtube.com/channel/UCveKTUT7_UAq7WcVeeKXPnA"><span class="iconify icon" data-icon="akar-icons:youtube-fill"></span></a>
-                    </button>
-                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
-                        <a class="icon" href="https://www.instagram.com/asso_ishelp"><span class="iconify icon" data-icon="akar-icons:instagram-fill"></span></a>
-                    </button>
-                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
-                        <a class="icon" href="https://www.facebook.com/IsHelpAssociation"><span class="iconify icon" data-icon="akar-icons:facebook-fill"></span></a>
-                    </button>
-                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
-                        <a class="icon" href="https://www.linkedin.com/company/ishelp"><span class="iconify icon" data-icon="akar-icons:linkedin-box-fill"></span></a>
-                    </button>
-                    <button mat-icon-button color="accent" aria-label="Example icon button with a home icon">
-                        <a class="icon" href="https://www.tiktok.com/@asso_ishelp"><span class="iconify icon" data-icon="bxl:tiktok"></span></a>
-                    </button>
-                </mat-nav-list>
-            </div>
-            <div class="col s12 m12 l4 footer-middle">
-                <mat-nav-list class="mat-middle-list">
-                <h2 class="white-text">{{ 'footer.donationTitle' | translate }}</h2>
-                <a style="font-weight: 400;"class="grey-text text-lighten-4" href="#">{{ 'footer.donationLink' | translate }}</a>
-            </mat-nav-list>
-            </div>
-            <div class="col s12 m12 l4 footer-right">
-                <mat-nav-list class="mat-right-list">
-                        <a class="grey-text text-lighten-4" href="#">{{ 'footer.Q&A' | translate }}</a>
-                        <a class="grey-text text-lighten-4" href="#">{{ 'footer.aboutUs' | translate }}</a>
-                        <a  class="grey-text text-lighten-4" href="#">{{ 'footer.CGU' | translate }}</a>
-                </mat-nav-list>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            © 2022 Copyright BluePaon
-            <a class="grey-text text-lighten-4 right" href="https://github.com/BluePaonGL">GitHub</a>
-        </div>
-    </div>
+<footer class="footer">
+	<div class="footer-nav">
+		<div class="footer-vertical left">
+			<h2 class="white-text">{{ 'footer.socialTitle' | translate }}</h2>
+			<mat-nav-list class="mat-left-list">
+				<button mat-icon-button color="accent">
+					<a class="icon" href="https://www.youtube.com/channel/UCveKTUT7_UAq7WcVeeKXPnA"
+						><span class="iconify icon" data-icon="akar-icons:youtube-fill"></span
+					></a>
+				</button>
+				<button mat-icon-button color="accent">
+					<a class="icon" href="https://www.instagram.com/asso_ishelp"
+						><span class="iconify icon" data-icon="akar-icons:instagram-fill"></span
+					></a>
+				</button>
+				<button mat-icon-button color="accent">
+					<a class="icon" href="https://www.facebook.com/IsHelpAssociation"
+						><span class="iconify icon" data-icon="akar-icons:facebook-fill"></span
+					></a>
+				</button>
+				<button mat-icon-button color="accent">
+					<a class="icon" href="https://www.linkedin.com/company/ishelp"
+						><span class="iconify icon" data-icon="akar-icons:linkedin-box-fill"></span
+					></a>
+				</button>
+				<button mat-icon-button color="accent">
+					<a class="icon" href="https://www.tiktok.com/@asso_ishelp"
+						><span class="iconify icon" data-icon="bxl:tiktok"></span
+					></a>
+				</button>
+			</mat-nav-list>
+		</div>
+		<span class="footer-spacer"></span>
+		<div class="footer-vertical">
+			<mat-nav-list class="mat-center-list">
+				<h2 class="white-text">{{ 'footer.donationTitle' | translate }}</h2>
+				<a style="font-weight: 400" class="grey-text text-lighten-4" href="#">{{
+					'footer.donationLink' | translate
+				}}</a>
+			</mat-nav-list>
+		</div>
+		<span class="footer-spacer"></span>
+		<div class="footer-vertical right">
+			<mat-nav-list class="mat-right-list">
+				<a class="grey-text text-lighten-4" href="#">{{ 'footer.Q&A' | translate }}</a>
+				<a class="grey-text text-lighten-4" href="about-us">{{ 'footer.aboutUs' | translate }}</a>
+				<a class="grey-text text-lighten-4" href="#">{{ 'footer.CGU' | translate }}</a>
+			</mat-nav-list>
+		</div>
+	</div>
+	<div class="copyright">
+		<a class="copyright-a" href="https://github.com/BluePaonGL">© 2022 Copyright BluePaon</a>
+		<span class="footer-spacer"></span>
+		<a class="copyright-a" href="https://github.com/BluePaonGL">GitHub</a>
+	</div>
 </footer>

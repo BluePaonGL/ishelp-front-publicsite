@@ -3,11 +3,19 @@
         "LoginButton": "Connexion",
         "LogoutButton": "Déconnexion",
         "signUpButton": "Inscription",
-        "home": "Acceuil",
+        "welcome": "Bienvenue ",
+        "home": "Accueil",
         "apply": "Postuler",
-        "marauding": "Maraudes",
+        "event": "Évènements",
         "news": "Actualités",
-        "user": "Profil"
+        "user": "Profil",
+        "eventsManager": "Gestion d'évènements"
+    },
+    "403": {
+        "title": "Oulah !",
+        "subTitle": "Qu'est ce que tu essayes de faire ??",
+        "error": "Non autorisé",
+        "back": "Back"
     },
     "404": {
         "title": "Oups !",
@@ -22,6 +30,53 @@
         "Q&A": "FAQ",
         "aboutUs": "Nous connaitre",
         "CGU": "CGU"
+    },
+    "showcase": {
+        "pictureTitle": "Nous connaitre"
+    },
+    "eventList": {
+        "title": "Nos évènements",
+        "titleUser": "Mes évènements",
+        "noEvent": "Il n'y a pas d'évènements ici ..."
+    },
+    "eventInfo": {
+        "campus": "Campus de départ: ",
+        "location": "Lieux de l'évènement: ",
+        "date": "Date: ",
+        "startingTime": "De: ",
+        "endingTime": "À: ",
+        "description": "Description: ",
+        "participants": "Ils participent: ",
+        "manageButton": "Gestion de Maraude",
+        "signoutButton": "Me désinscrire",
+        "signupButton": "Je participe"
+    },
+    "eventCreate": {
+        "titleEvents": "Évènements",
+        "titleCreate": "Création d'évènements",
+        "titleDelete": "Suppression d'évènements",
+        "typeLabel": "Type d'évènement",
+        "typeMarauding": "Maraude",
+        "typeAfterwork": "Afterwork",
+        "typeOther": "Autre",
+        "nameLabel": "Nom de l'évènement",
+        "campusLabel": "Campus de départ",
+        "locationLabel": "Lieux de l'évènement",
+        "dateLabel": "Date de l'évènement",
+        "dateHint": "JJ/MM/AAAA",
+        "startLabel": "Heure de début",
+        "endLabel": "Heure de fin",
+        "descriptionLabel": "Description de l'évènement",
+        "createButton": "Créer l'évènement"
+    },
+    "eventDialog": {
+        "eventCreation": "Création d'évènements",
+        "eventCreationSuccess": "L'évènement à été créé avec succès",
+        "eventCreationError": "Une erreur est survenue lors de la création de l'évènement",
+        "eventDeletion": "Suppression d'évènements",
+        "eventDeletionWarning": "Voulez-vous vraiment supprimer cet évennements ?",
+        "buttonCancel": "Annuler",
+        "buttonYes": "Oui",
+        "buttonClose": "Fermer"
     }
-    
 }
