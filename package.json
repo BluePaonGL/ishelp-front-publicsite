@@ -26,6 +26,7 @@
     "@angular/router": "~13.3.0",
     "@nebular/theme": "^9.0.3",
     "@ngrx/core": "^1.2.0",
+    "@ngrx/effects": "^13.2.0",
     "@ngrx/store": "^13.2.0",
     "@ngrx/store-devtools": "^13.2.0",
     "@ngx-translate/core": "^13.0.0",

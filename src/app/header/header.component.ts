@@ -3,6 +3,8 @@ import {Component, OnInit} from '@angular/core';
 import {UsersService} from '../utility/users.service';
 import {KeycloakService} from 'keycloak-angular';
 import {TranslateService} from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { selectUserUsername } from '../core/state/user';
 
 @Component({
 	selector: 'app-header',
@@ -12,7 +14,7 @@ import {TranslateService} from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
   isAdmin = false;
   isDisabled: boolean = false;
-  username: string|undefined = '';
+  username$ = this.store.select(selectUserUsername);
   id: any|undefined = '';
   user:any;
   links = [
@@ -25,7 +27,8 @@ export class HeaderComponent implements OnInit {
   activeLink = this.links[0];
 
   constructor(private keycloakService: KeycloakService, private http: HttpClient, 
-    private usersService: UsersService, public translate: TranslateService) { }
+    private usersService: UsersService, public translate: TranslateService,
+    private store: Store) { }
   
   async ngOnInit(): Promise<void> {
     if (this.keycloakService.getUserRoles().includes('ADMIN')){
@@ -34,8 +37,6 @@ export class HeaderComponent implements OnInit {
     if(await this.usersService.isLoggedIn()){
       this.isDisabled = true;
       this.user = await this.usersService.getUser();
-      this.username = this.user.username;
-      
     }
   }
 
