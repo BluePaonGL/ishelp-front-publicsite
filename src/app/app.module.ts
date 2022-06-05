@@ -34,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
 import { CandidatesListComponent } from './recruitment/pages/candidates-list/candidates-list.component';
 import { ApplyComponent } from './recruitment/pages/apply/apply.component';
 import { CandidateCardComponent } from './recruitment/components/candidate-card/candidate-card.component';
+import { CandidateChoiceComponent} from './recruitment/pages/candidate-choice/candidate-choice.component';
 
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
@@ -61,6 +62,7 @@ registerLocaleData(localeFr);
     CandidatesListComponent,
     ApplyComponent,
     CandidateCardComponent,
+    CandidateChoiceComponent,
     UnauthorizedComponent,
     ShowcaseComponent,
     EventComponent,
