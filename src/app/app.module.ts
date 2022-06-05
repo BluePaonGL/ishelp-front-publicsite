@@ -47,6 +47,7 @@ import { CreateEventComponent } from './event/pages/back/create-event.component'
 import { EventDialogComponent } from './event/pages/back/event-dialog.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MaraudComponent } from './event/pages/back/maraud.component';
+import { UserCardComponent } from './common/user-card/user-card.component';
 
 
 registerLocaleData(localeFr);
@@ -67,7 +68,8 @@ registerLocaleData(localeFr);
     CreateEventComponent,
     EventDialogComponent,
     ProfileComponent,
-    MaraudComponent
+    MaraudComponent,
+    UserCardComponent
   ],
   imports: [
     ReactiveFormsModule,
