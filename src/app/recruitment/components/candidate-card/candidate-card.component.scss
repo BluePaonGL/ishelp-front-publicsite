@@ -1,0 +1,23 @@
+@use "@angular/material" as mat;
+@import "../../../../styles.scss";
+
+.mat-card{
+  background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+  color: mat.get-color-from-palette($mat-grey-custom, 50);
+}
+button{
+  width: 100%;
+  margin-top:10px;
+}
+.mat-button{
+  text-align: left;
+}
+mat-card-content{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.status{
+
+}

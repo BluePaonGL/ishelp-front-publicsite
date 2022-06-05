@@ -49,6 +49,7 @@
         "endingTime": "To: ",
         "description": "Description: ",
         "participants": "They're participating: ",
+        "manageButton": "Manage Maraud",
         "signoutButton": "Cancel participation",
         "signupButton": "I want to participate"
     },

@@ -31,8 +31,11 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { CandidatesListComponent } from './recruitment/pages/candidates-list/candidates-list.component';
+import { ApplyComponent } from './recruitment/pages/apply/apply.component';
+import { CandidateCardComponent } from './recruitment/components/candidate-card/candidate-card.component';
+
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
-import { FormulaireComponent } from './back-office/formulaire/formulaire.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { EventComponent } from './event/pages/public/event.component';
 import { DatePipe } from '@angular/common';
@@ -43,6 +46,7 @@ import { AboutUsComponent} from './about-us/about-us.component';
 import { CreateEventComponent } from './event/pages/back/create-event.component';
 import { EventDialogComponent } from './event/pages/back/event-dialog.component';
 import { ProfileComponent } from './profile/profile.component';
+import { MaraudComponent } from './event/pages/back/maraud.component';
 
 
 registerLocaleData(localeFr);
@@ -50,17 +54,20 @@ registerLocaleData(localeFr);
 @NgModule({
   declarations: [
     AppComponent,
-    FormulaireComponent,
     FooterComponent,
     HeaderComponent,
     PageNotFoundComponent,
+    CandidatesListComponent,
+    ApplyComponent,
+    CandidateCardComponent,
     UnauthorizedComponent,
     ShowcaseComponent,
     EventComponent,
     AboutUsComponent,
     CreateEventComponent,
     EventDialogComponent,
-    ProfileComponent
+    ProfileComponent,
+    MaraudComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -81,6 +88,8 @@ registerLocaleData(localeFr);
     MatButtonToggleModule,
     MatToolbarModule,
     MatListModule,
+    MatFormFieldModule,
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
