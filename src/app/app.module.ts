@@ -48,6 +48,8 @@ import { EventDialogComponent } from './event/pages/back/event-dialog.component'
 import { ProfileComponent } from './profile/profile.component';
 import { MaraudComponent } from './event/pages/back/maraud.component';
 import { UserCardComponent } from './common/user-card/user-card.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
 
 
 registerLocaleData(localeFr);
@@ -94,6 +96,10 @@ registerLocaleData(localeFr);
     FormsModule,
     BrowserModule,
     HttpClientModule,
+    StoreModule.forRoot({ }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10 // number of states to retain
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

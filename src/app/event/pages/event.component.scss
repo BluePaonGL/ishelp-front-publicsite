@@ -173,7 +173,9 @@ mat-list-item-content {
 	background-color: mat.get-color-from-palette($mat-blue-custom, 50);
 }
 
-
+.tile {
+	background-color: white;
+}
 
 .event-form{
 	display: flex;
