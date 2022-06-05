@@ -1,0 +1,61 @@
+@use "@angular/material" as mat;
+@import "../../../styles.scss";
+
+.profileName {
+	width: 100%;
+	text-align: center;
+	font-weight: 600;
+	justify-content: center;
+}
+
+:host,
+.user-card {
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	width: 100%;
+	border-radius: 20px;
+	max-height: 100%;
+    padding: 0;
+}
+
+.event-tab {
+	font-size: 16px;
+	display: flex;
+	flex-direction: row;
+}
+
+.event-date {
+	text-transform: uppercase;
+	margin-bottom: 7px;
+	margin-left: 7px;
+	font-weight: 500;
+}
+
+.event-card {
+	box-sizing: border-box;
+	margin-top: 16px;
+	width: 100%;
+	background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+	color: mat.get-color-from-palette($mat-grey-custom, 50);
+}
+
+
+.no-event {
+	background-color: mat.get-color-from-palette($mat-grey-custom, 700);
+	text-align: center;
+}
+
+.custom-list {
+	height: 100%;
+	overflow: auto;
+	margin-bottom: 16px;
+}
+
+img {
+	width: 80%;
+	clip-path: circle();
+	margin: 10px auto;
+	max-width: 200px;
+	max-height: 200px;
+}

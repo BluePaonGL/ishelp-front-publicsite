@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     {title:'header.apply', link:'/apply'},
     {title:'header.event', link:'/event'},
     {title:'header.news', link:'/news'},
-    {title:'header.user', link:'/user'},
+    {title:'header.user', link:'/profile'},
   ];
   activeLink = this.links[0];
 

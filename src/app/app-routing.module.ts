@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.co
 import { ShowcaseComponent } from './showcase/showcase.component';
 import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
 import { CreateEventComponent } from './event/pages/back/create-event.component';
+import { ProfileComponent } from './profile/profile.component';
 import { MaraudComponent } from './event/pages/back/maraud.component';
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   },
   { path: 'event/:id', component: EventComponent, canActivate : [AuthGuard] },
   { path: 'event', component: EventComponent, canActivate : [AuthGuard] },
+  { path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   { path: 'home', component: ShowcaseComponent, canActivate : [AuthGuard] },
   { path: 'candidature', component: ApplyComponent},
   { path: 'gestion/candidatures', component: CandidatesListComponent},
