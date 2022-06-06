@@ -68,18 +68,39 @@
     text-align: left;
 }
 
-.apply-input {
-    border: 1px solid mat.get-color-from-palette($mat-blue-custom, 500);
-    border-radius: 10px;
-    font-weight: 500;
-    font-size: 15px;
+.apply-div {
+    font-family: Roboto;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 15px;
+	letter-spacing: 0em;
+	text-align: left;
+	padding-left: 5px;
 
-    padding: 5px;
 }
 
 .blue {
     color : mat.get-color-from-palette($mat-blue-custom, 500)
 }
 
+.apply-send {
+	color:mat.get-color-from-palette($mat-blue-custom, 500);
+	background-color: #C3DAF2;
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	width: fit-content;
+	font-size: 14px;
+}
+
+.apply-status {
+	background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+	color: mat.get-color-from-palette($mat-grey-custom, 50);
+	padding: 10px;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	width: fit-content;
+	font-size: 14px;
+}
 
 

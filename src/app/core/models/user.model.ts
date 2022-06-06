@@ -1,5 +1,5 @@
 export interface User {
-    id: string | undefined,
+    userId: string | undefined,
     username: string | undefined,
     access_token?: string,
     refresh_token?: string,

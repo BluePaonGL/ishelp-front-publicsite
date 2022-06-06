@@ -70,6 +70,7 @@ mat-list-item-content {
 	padding-left: 0;
 }
 
+
 .delete {
 	display: flex;
 	flex-direction: column;
@@ -170,8 +171,6 @@ mat-list-item-content {
 	background-color: mat.get-color-from-palette($mat-blue-custom, 50);
 }
 
-
-
 .event-form{
 	display: flex;
 	flex-direction: column;
@@ -203,4 +202,9 @@ mat-list-item-content {
 .single-form{
 	width: 195px;
 	margin-right: 16px;
+}
+
+.maraud-group {
+	width: 100%;
+	margin-top: 16px;
 }

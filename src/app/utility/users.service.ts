@@ -19,6 +19,16 @@ export class UsersService {
 		return this.http.get<User>(this.userUrl + '/user/' + userId);
 	}
 
+	async getUserById(userId: string): Promise<any> {
+		let user;
+		await this.keycloakService.loadUserProfile().then(async (profile) => {
+			user = await lastValueFrom(this.http.get(this.userUrl + '/user/' + userId));
+			return user;
+		});
+		return await user;
+	}
+
+
 	async getUserList(users: any[]): Promise<any> {
 		let usersParticipants = await lastValueFrom(this.http.post(this.userUrl + '/user/list', users));
 		return usersParticipants;

@@ -27,14 +27,14 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 
-import { StoreDevtoolsModule} from '@ngrx/store-devtools';
-
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { CandidatesListComponent } from './recruitment/pages/candidates-list/candidates-list.component';
 import { ApplyComponent } from './recruitment/pages/apply/apply.component';
 import { CandidateCardComponent } from './recruitment/components/candidate-card/candidate-card.component';
+import { CandidateStatusComponent} from './recruitment/pages/candidate-status/candidate-status.component';
+import { CandidateChoiceComponent} from './recruitment/pages/candidate-choice/candidate-choice.component';
 
 import { PageNotFoundComponent } from './errors/page-not-found/page-not-found.component';
 import { ShowcaseComponent } from './showcase/showcase.component';
@@ -49,6 +49,7 @@ import { EventDialogComponent } from './event/pages/back/event-dialog.component'
 import { ProfileComponent } from './profile/profile.component';
 import { MaraudComponent } from './event/pages/back/maraud.component';
 import { UserCardComponent } from './common/user-card/user-card.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/state';
 import { UserEffects } from './core/state/user';
@@ -66,6 +67,8 @@ registerLocaleData(localeFr);
     CandidatesListComponent,
     ApplyComponent,
     CandidateCardComponent,
+    CandidateStatusComponent,
+    CandidateChoiceComponent,
     UnauthorizedComponent,
     ShowcaseComponent,
     EventComponent,
@@ -99,6 +102,10 @@ registerLocaleData(localeFr);
     FormsModule,
     BrowserModule,
     HttpClientModule,
+    StoreModule.forRoot({ }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 10 // number of states to retain
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
