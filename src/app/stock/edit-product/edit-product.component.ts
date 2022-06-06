@@ -94,7 +94,7 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct(){
-    this.api.editProduct(this.router.snapshot.params['productId'],this.productEdit.value, this.image.value)
+    this.api.editProduct(parseInt(this.router.snapshot.params['productId']),this.productEdit.value, this.image)
     .subscribe({
       next:(res)=>{
         alert("Produit modifié avec succès");

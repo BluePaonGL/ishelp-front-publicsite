@@ -1,6 +1,6 @@
 <div class="body">
     <span class="body-spacer"></span>
-    <form class="container" [formGroup]="productForm" enctype="multipart/form-data" novalidate>
+    <form class="container" [formGroup]="productForm"  novalidate> <!--enctype="multipart/form-data"-->
         <h1>Ajouter un produit</h1>
         <mat-form-field appearance="outline">
             <mat-label>Nom du produit</mat-label>
@@ -32,18 +32,18 @@
               </mat-datepicker-actions>
             </mat-datepicker>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <!--<mat-form-field appearance="outline">
             <mat-label>Saisir une date limite de consommation</mat-label>
             <input formControlName="consumptionDate" matInput [matDatepicker]="datepicker" [min]="currentDate">
             <mat-hint>MM/DD/YYYY</mat-hint>
-            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-            <mat-datepicker #datepicker1>
+            <mat-datepicker-toggle matSuffix [for]="datepicker2"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker2>
               <mat-datepicker-actions>
                 <button mat-button matDatepickerCancel>Annuler</button>
                 <button mat-raised-button color="primary" matDatepickerApply>Valider</button>
               </mat-datepicker-actions>
             </mat-datepicker>
-        </mat-form-field>
+        </mat-form-field>-->
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
             <textarea formControlName="description" matInput></textarea>

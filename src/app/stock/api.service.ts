@@ -1,3 +1,4 @@
+import { DecimalPipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -11,7 +12,7 @@ export class ApiService {
   getAllProduct(): Observable<any> {
     return this.http.get(`${baseUrl}/all`);
   }
-  getProductById(id : Number): Observable<any> {
+  getProductById(id : any): Observable<any> {
     return this.http.get(`${baseUrl}/findProductById/${id}`);
   }
   getProductByName(name : String): Observable<any> {
@@ -20,10 +21,10 @@ export class ApiService {
   addProduct(data : any, file : File): Observable<any> {
     return this.http.post(`${baseUrl}/addProduct`, {product: data, file: file});
   }
-  editProduct(data : any, file : File, id : Number): Observable<any> {
+  editProduct(data : any, file : File, id : any): Observable<any> {
     return this.http.put(`${baseUrl}/editProduct/${id}`, {product: data, file: file, id: id});
   }
-  deleteProduct(id : Number): Observable<any> {
+  deleteProduct(id : any): Observable<any> {
     return this.http.delete(`${baseUrl}/deleteProduct/${id}`);
   }
 
