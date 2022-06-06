@@ -43,6 +43,10 @@ export class HeaderComponent implements OnInit {
     return this.keycloakService.getUserRoles().includes('events');
   }
 
+  isApplicationsManager(){
+    return this.keycloakService.getUserRoles().includes('application');
+  }
+
   async logout() {
     this.usersService.logout();
   }

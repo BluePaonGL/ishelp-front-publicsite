@@ -24,11 +24,20 @@ const routes: Routes = [
     roles: ['events'],
     } 
   },
+  { path: 'apply/manage', component: CandidatesListComponent, canActivate : [AuthGuard], data: {
+    roles: ['application'],
+    } 
+  },
+  { path: 'apply/manage/:id', component: CandidateChoiceComponent, canActivate : [AuthGuard], data: {
+    roles: ['application'],
+    } 
+  },
+  { path: 'apply', component: ApplyComponent, canActivate : [AuthGuard] },
+  { path: 'apply/status', component: CandidateStatusComponent, canActivate : [AuthGuard] },
   { path: 'event/:id', component: EventComponent, canActivate : [AuthGuard] },
   { path: 'event', component: EventComponent, canActivate : [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
   { path: 'home', component: ShowcaseComponent, canActivate : [AuthGuard] },
-  { path: 'candidature', component: ApplyComponent},
   { path: 'status', component: CandidateStatusComponent},
   { path: 'gestion/candidatures', component: CandidatesListComponent},
   { path: 'gestion/candidatures/choice', component: CandidateChoiceComponent},

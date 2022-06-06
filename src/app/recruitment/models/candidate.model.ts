@@ -1,7 +1,9 @@
 export class Candidate {
 
-    constructor(public fullname: string,
-    public subject: string,
-    public status: string) {
+    constructor(
+        public id: string,
+        public fullname: string,
+        public subject: string,
+        public status: string) {
     }
 }

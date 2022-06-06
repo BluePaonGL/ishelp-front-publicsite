@@ -6,6 +6,12 @@
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
+    <button  mat-button routerLink="/apply/manage" [routerLinkActive]="['active-link']" [routerLinkActiveOptions]="{exact: true}"
+    *ngIf="isApplicationsManager()" class="mat-focus-indicator mat-button-base" #btnRef="matButton" style="font-weight: 500" color="ishelp-accent">
+    <span class="mat-button-wrapper">{{ 'header.applicationsManager' | translate }}</span>
+    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+    <span class="mat-button-focus-overlay"></span>
+</button>
     <span class="header-spacer"></span>
     <span *ngIf="isDisabled">{{ 'header.welcome' | translate }}{{ username$ | async }}</span>
     <button mat-icon-button class="icon-button" [matMenuTriggerFor]="menu">

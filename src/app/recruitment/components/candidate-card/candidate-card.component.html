@@ -1,9 +1,9 @@
-<button mat-button>
-   <mat-card>
-       <mat-card-title>{{candidate.fullname}}</mat-card-title>
-       <mat-card-content>
-           {{candidate.subject}}
-           <span class="status">Statut : {{candidate.status}}</span>
-       </mat-card-content>
-   </mat-card>
+<button mat-button style="padding: 0;">
+    <mat-card>
+        <mat-card-title>{{candidate.fullname}}</mat-card-title>
+        <mat-card-content>
+            {{candidate.subject}}
+            <span class="status">{{'apply.status' | translate}} {{candidate.status}}</span>
+        </mat-card-content>
+    </mat-card>
 </button>
