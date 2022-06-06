@@ -2,6 +2,7 @@ import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {KeycloakService} from 'keycloak-angular';
 import {lastValueFrom} from 'rxjs';
+import { User } from '../core/models/user.model';
 
 @Injectable({
 	providedIn: 'root',
@@ -14,13 +15,8 @@ export class UsersService {
 		return this.keycloakService.isLoggedIn();
 	}
 
-	async getUser(): Promise<any> {
-		let user;
-		await this.keycloakService.loadUserProfile().then(async (profile) => {
-			user = await lastValueFrom(this.http.get(this.userUrl + '/user/' + profile.id?.toString()));
-			return user;
-		});
-		return await user;
+	getUser(userId: string) {
+		return this.http.get<User>(this.userUrl + '/user/' + userId);
 	}
 
 	async getUserList(users: any[]): Promise<any> {

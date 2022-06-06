@@ -36,7 +36,6 @@ export class HeaderComponent implements OnInit {
     }
     if(await this.usersService.isLoggedIn()){
       this.isDisabled = true;
-      this.user = await this.usersService.getUser();
     }
   }
 

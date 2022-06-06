@@ -41,9 +41,7 @@ export class EventComponent implements OnInit {
   }
 
 	async ngOnInit(): Promise<void> {
-		await this.usersService.getUser().then((user) => {
-			this.user = user;
-		});
+
 		this.profileName = this.user.lastName + ' ' + this.user.firstName;
 		this.lang = this.translateService.getBrowserLang();
 		await this.eventsService.getEventByUserId(this.user.userId).then((eventsUser) => {

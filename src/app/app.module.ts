@@ -51,6 +51,8 @@ import { MaraudComponent } from './event/pages/back/maraud.component';
 import { UserCardComponent } from './common/user-card/user-card.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/state';
+import { UserEffects } from './core/state/user';
+import { EffectsModule } from '@ngrx/effects';
 
 
 registerLocaleData(localeFr);
@@ -114,6 +116,7 @@ registerLocaleData(localeFr);
       maxAge: 25,
       logOnly: false
     }),
+    EffectsModule.forRoot([UserEffects]),
   ],
   providers: [
     { 
