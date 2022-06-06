@@ -5,6 +5,8 @@ import {DatePipe} from '@angular/common';
 import { UsersService } from '../../../utility/users.service';
 import { EventsService } from '../../events.service';
 import { KeycloakService } from 'keycloak-angular';
+import { selectUser } from 'src/app/core/state/user';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-event',
@@ -12,9 +14,9 @@ import { KeycloakService } from 'keycloak-angular';
   styleUrls: ['../event.component.scss']
 })
 export class EventComponent implements OnInit {
-	profilePictureUrl = '../../assets/logo-whiteback-round.png';
-	profileName = '';
-	user: any;
+	profilePictureUrl = '../../assets/logo-whiteback-round.png'
+	user$ = this.store.select(selectUser);
+	userId: string | undefined;
 	id: string | null = '';
 	lang!: string;
 	eventById: any;
@@ -29,7 +31,7 @@ export class EventComponent implements OnInit {
 
   constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, 
               private eventsService: EventsService, public datePipe: DatePipe, private usersService: UsersService,
-              private keycloakService: KeycloakService) { 
+              private keycloakService: KeycloakService, private store: Store) { 
     this.eventById = null;
     this.subscription = this.router.events.subscribe((ev) => {
       if (ev instanceof NavigationEnd) {
@@ -41,17 +43,10 @@ export class EventComponent implements OnInit {
   }
 
 	async ngOnInit(): Promise<void> {
-
-		this.profileName = this.user.lastName + ' ' + this.user.firstName;
 		this.lang = this.translateService.getBrowserLang();
-		await this.eventsService.getEventByUserId(this.user.userId).then((eventsUser) => {
-			this.eventsUser = eventsUser;
-		});
-		this.eventsUserNumber = this.eventsUser.length;
-
-		if (this.user.profilePicture !== null) {
-			this.profilePictureUrl = this.user.profilePicture;
-		}
+		this.user$.subscribe(userStore => {
+			this.userId = userStore.user.id;
+		})
 		this.urlChange()
 	}
 
@@ -68,6 +63,7 @@ export class EventComponent implements OnInit {
 			if(this.keycloakService.getUserRoles().includes('events') && this.eventById.eventType == 'MARAUDE'){
 				this.isManagerAndMaraud = true;
 			}
+		
 		}
 	}
 
@@ -75,33 +71,34 @@ export class EventComponent implements OnInit {
 		this.subscription.unsubscribe();
 	}
   async signUp(){
-    await this.eventsService.addParticipant(this.user.userId, this.id);
-    this.eventById = await this.eventsService.getEventById(this.id);
+		this.eventsService.addParticipant(this.userId, this.id);
+		this.eventById = this.eventsService.getEventById(this.id);
 		this.participantNumber = this.eventById.participantsId.length;
-		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
+		this.usersService.getUserList(this.eventById.participantsId).then((users) => {
 			this.users = users;
 		});
-		await this.eventsService.getEventByUserId(this.user.userId).then((eventsUser) => {
+		this.eventsService.getEventByUserId(this.userId).then((eventsUser) => {
 			this.eventsUser = eventsUser;
 		});
 		this.eventsUserNumber = this.eventsUser.length;
   }
 
   async signOut(){
-    await this.eventsService.deleteParticipant(this.user.userId, this.id);
+
+    await this.eventsService.deleteParticipant(this.userId, this.id);
 		this.eventById = await this.eventsService.getEventById(this.id);
 		this.participantNumber = this.eventById.participantsId.length;
 		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
 			this.users = users;
 		});
-		await this.eventsService.getEventByUserId(this.user.userId).then((eventsUser) => {
+		await this.eventsService.getEventByUserId(this.userId).then((eventsUser) => {
 			this.eventsUser = eventsUser;
 		});
 		this.eventsUserNumber = this.eventsUser.length;
   }
 
   isSignedUp(){
-    if(this.id !== null){return this.eventById.participantsId.includes(this.user.userId)}
+    if(this.id !== null){return this.eventById.participantsId.includes(this.userId)}
     else return false
   }
 

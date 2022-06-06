@@ -2,7 +2,7 @@
     <div style="height: 10px;"></div>
     <img src={{profilePictureUrl}}>
     <mat-card-header class="profileName" style="margin-bottom: 7%;">
-        <mat-card-title  class="mat-title"><h1 class="mat-h1 profileName"> {{ profileName }}</h1></mat-card-title>
+        <mat-card-title  class="mat-title"><h1 class="mat-h1 profileName">{{ userLastName$ | async }} {{ userFirstName$ | async }}</h1></mat-card-title>
     </mat-card-header>
     <span class="event-spacer"></span>
     <mat-card-header class="profileName">

@@ -19,7 +19,7 @@ export class EventsService {
 		return event;
 	}
 
-	async getEventByUserId(userId: string | null): Promise<any> {
+	async getEventByUserId(userId: string | undefined): Promise<any> {
 		let event = await lastValueFrom(this.http.get(this.eventUrl + '/event/eventsByParticipantId/' + userId));
 		return event;
 	}
