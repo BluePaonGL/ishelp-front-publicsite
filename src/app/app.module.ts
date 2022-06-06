@@ -54,6 +54,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/state';
 import { UserEffects } from './core/state/user';
 import { EffectsModule } from '@ngrx/effects';
+import { RegistrationComponent } from './registration/registration.component';
 
 
 registerLocaleData(localeFr);
@@ -77,7 +78,8 @@ registerLocaleData(localeFr);
     EventDialogComponent,
     ProfileComponent,
     MaraudComponent,
-    UserCardComponent
+    UserCardComponent,
+    RegistrationComponent
   ],
   imports: [
     ReactiveFormsModule,

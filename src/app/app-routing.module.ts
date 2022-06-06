@@ -12,17 +12,16 @@ import { ProfileComponent } from './profile/profile.component';
 import { MaraudComponent } from './event/pages/back/maraud.component';
 import { CandidateStatusComponent} from './recruitment/pages/candidate-status/candidate-status.component';
 import { CandidateChoiceComponent} from './recruitment/pages/candidate-choice/candidate-choice.component';
+import {RegistrationComponent} from "./registration/registration.component";
 
 const routes: Routes = [
   { path: 'page_not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
   { path: 'event/not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
-  { path: 'event/create', component: CreateEventComponent, canActivate : [AuthGuard], data: {
-    roles: ['events'],
-    } 
+  { path: 'event/create', component: CreateEventComponent, canActivate : [AuthGuard]
   },
   { path: 'event/manage/:id', component: MaraudComponent, canActivate : [AuthGuard], data: {
     roles: ['events'],
-    } 
+    }
   },
   { path: 'event/:id', component: EventComponent, canActivate : [AuthGuard] },
   { path: 'event', component: EventComponent, canActivate : [AuthGuard]},
@@ -32,6 +31,7 @@ const routes: Routes = [
   { path: 'status', component: CandidateStatusComponent},
   { path: 'gestion/candidatures', component: CandidatesListComponent},
   { path: 'gestion/candidatures/choice', component: CandidateChoiceComponent},
+  { path : 'registration', component: RegistrationComponent},
   { path: '', component: ShowcaseComponent},
   { path: 'unauthorized', component: UnauthorizedComponent, canActivate : [AuthGuard] },
   { path: '**', component: PageNotFoundComponent}
