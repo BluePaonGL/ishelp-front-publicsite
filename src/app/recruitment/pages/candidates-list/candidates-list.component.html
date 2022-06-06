@@ -1,24 +1,27 @@
 <div class="body">
+    <span class="body-spacer"></span>
     <div class="grid-div">
         <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
             <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
                 <mat-card class="events-card">
                     <mat-card-header style="padding-top: 16px;">
                         <mat-card-title class="mat-title margin-card header-card">
-                            <h1 class="mat-h1 header-card">Candidatures à traiter</h1>
+                            <h1 class="mat-h1 header-card">{{'apply.toManage' | translate}}</h1>
                         </mat-card-title>
                     </mat-card-header>
                     
                     <mat-card-content class="event-info">
-                        <app-candidate-card *ngFor = "let candidate of candidates" [candidate]="candidate" ></app-candidate-card>
+                        <app-candidate-card style="margin-left: 16px; margin-right: 16px" *ngFor="let candidate of candidates" [candidate]="candidate" [routerLink]= "['/apply/manage/',candidate.id]"></app-candidate-card>
                     </mat-card-content>
                 </mat-card>
             </mat-grid-tile>
             
-            <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
-                <app-user-card></app-user-card>
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="1" rowspan="1">
+                <app-user-card style="margin: 16px;">
+                </app-user-card>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
+    <span class="body-spacer"></span>
 </div>
 
