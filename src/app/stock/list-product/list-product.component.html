@@ -21,13 +21,14 @@
                             </div>
                         </div>
                         <div class="product-card information">
-                            <h3>{{product.productName}}</h3>
-                            <p>DDM : {{product.expiration_date | date}}</p>
+                            <h3>{{product.name}}</h3>
+                            <p>DDM : {{product.peremptionDate | date}}</p>
+                            <p>DLC : {{product.consumptionDate | date}}</p>
                             <p>Quantité : {{product.quantity}}</p>
                         </div>
                         <div class="product-card description">
                             <p>{{product.description}}</p>
-                            <button mat-icon-button (click)="editProduct(product.id)">
+                            <button mat-icon-button (click)="editProduct(product.productId)">
                                 <mat-icon>create</mat-icon>
                             </button>
                             <button mat-icon-button (click)="deleteProduct(product)">

@@ -1,17 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
+import { Observable } from 'rxjs';
+const baseUrl = 'http://localhost:3000/products';
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  constructor(
+  constructor(private http: HttpClient) { }
+  getAllProduct(): Observable<any> {
+    return this.http.get(`${baseUrl}/all`);
+  }
+  getProductById(id : Number): Observable<any> {
+    return this.http.get(`${baseUrl}/findProductById/${id}`);
+  }
+  getProductByName(name : String): Observable<any> {
+    return this.http.get(`${baseUrl}/findProductByName/${name}`);
+  }
+  addProduct(data : any, file : File): Observable<any> {
+    return this.http.post(`${baseUrl}/addProduct`, {product: data, file: file});
+  }
+  editProduct(data : any, file : File, id : Number): Observable<any> {
+    return this.http.put(`${baseUrl}/editProduct/${id}`, {product: data, file: file, id: id});
+  }
+  deleteProduct(id : Number): Observable<any> {
+    return this.http.delete(`${baseUrl}/deleteProduct/${id}`);
+  }
+
+  /*constructor(
     private http : HttpClient
   ) { }
 
   postProduct(data : any){
-    return this.http.post<any>("http://localhost:3000/productList/",data);
+    return this.http.post<any>("http://localhost:3000/products/addProduct",data);
   }
 
   getProduct(){
@@ -30,5 +51,5 @@ export class ApiService {
     return this.http.delete<any>("http://localhost:3000/productList/"+id);
   }
 
-
+*/
 }

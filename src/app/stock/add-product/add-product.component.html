@@ -1,10 +1,10 @@
 <div class="body">
     <span class="body-spacer"></span>
-    <form class="container" [formGroup]="productForm" novalidate>
+    <form class="container" [formGroup]="productForm" enctype="multipart/form-data" novalidate>
         <h1>Ajouter un produit</h1>
         <mat-form-field appearance="outline">
             <mat-label>Nom du produit</mat-label>
-            <input formControlName="productName" matInput placeholder="Livre pour enfants">
+            <input formControlName="name" matInput placeholder="Livre pour enfants">
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Quantité</mat-label>
@@ -13,7 +13,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Catégorie</mat-label>
-            <mat-select formControlName="category" placeholder="Catégorie">
+            <mat-select formControlName="type" placeholder="Catégorie">
                 <mat-option value="alimentaire">Alimentaire</mat-option>
                 <mat-option value="vestimentaire">Vestimentaire</mat-option>
                 <mat-option value="hygiene">Hygiène</mat-option>
@@ -22,10 +22,22 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Saisir une date de péremption</mat-label>
-            <input formControlName="expiration_date" matInput [matDatepicker]="datepicker" [min]="currentDate">
+            <input formControlName="peremptionDate" matInput [matDatepicker]="datepicker" [min]="currentDate">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
             <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Annuler</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Valider</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Saisir une date limite de consommation</mat-label>
+            <input formControlName="consumptionDate" matInput [matDatepicker]="datepicker" [min]="currentDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker1>
               <mat-datepicker-actions>
                 <button mat-button matDatepickerCancel>Annuler</button>
                 <button mat-raised-button color="primary" matDatepickerApply>Valider</button>
@@ -46,7 +58,7 @@
                     <mat-icon>cancel</mat-icon>
                 </button>
                 </mat-chip>
-                <input placeholder="Nouveau allergène..."
+                <input formControlName="allergenSet" placeholder="Nouveau allergène..."
                     [matChipInputFor]="chipList1"
                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                     [matChipInputAddOnBlur]="addOnBlur"
@@ -54,36 +66,11 @@
 
             </mat-chip-list>
         </mat-form-field>
-
-        <mat-form-field appearance="outline" class="chip-list">
-            <mat-label>Type de sous-produit</mat-label>
-            <mat-chip-list #chipList aria-label="Allergènes selection">
-                <mat-chip *ngFor="let subProduct of subProducts" (removed)="remove(subProduct, subProducts)">
-                    {{subProduct}}
-                <button matChipRemove>
-                    <mat-icon>cancel</mat-icon>
-                </button>
-                </mat-chip>
-                <input placeholder="Nouveau sous-produit..."
-                    [matChipInputFor]="chipList"
-                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                    [matChipInputAddOnBlur]="addOnBlur"
-                    (matChipInputTokenEnd)="add($event, subProducts)">
-
-            </mat-chip-list>
-        </mat-form-field>
         
-        <!--
             <div class="image">
             <label for="file">Image</label>
-            <input formControlName="image" id="image" type="file" class="form-control"(change)="onFileChange($event)">
+            <input formControlName="image" id="image" type="file" class="form-control"> <!--(change)="onFileChange($event)"-->
         </div>
-        -->
-        <mat-form-field appearance="outline">
-            <mat-label>Image</mat-label>
-            <input formControlName="image" matInput placeholder="Livre pour enfants">
-        </mat-form-field>
-        
 
         <div class="actions">
             <button mat-raised-button color="warn" (click)="goToProductList()">Retour</button>

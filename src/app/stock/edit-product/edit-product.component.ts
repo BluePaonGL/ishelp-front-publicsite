@@ -35,6 +35,7 @@ export class EditProductComponent implements OnInit {
     'Livre'
   ];
   currentDate = new Date();
+  image: any;
 
   constructor(
     private router:ActivatedRoute,
@@ -63,29 +64,29 @@ export class EditProductComponent implements OnInit {
   }
 
   productEdit = new FormGroup({
-    productName : new FormControl(''),
+    name : new FormControl(''),
     quantity : new FormControl(''),
-    category : new FormControl(''),
-    expiration_date : new FormControl(''),
+    type : new FormControl(''),
+    peremptionDate : new FormControl(''),
+    consumptionDate : new FormControl(''),
     description : new FormControl(''),
-    allergen : new FormControl(''),
-    type_of_subproduct : new FormControl(''),
+    allergenSet : new FormControl(''),
     image : new FormControl('')
   })
 
 
   ngOnInit() {
 
-    this.api.getProductById(this.router.snapshot.params['id']).
+    this.api.getProductById(this.router.snapshot.params['productId']).
     subscribe((result)=>{
       this.productEdit = new FormGroup({
-        productName : new FormControl(result['productName']),
+        name : new FormControl(result['name']),
         quantity : new FormControl(result['quantity']),
-        category : new FormControl(result['category']),
-        expiration_date : new FormControl(result['expiration_date']),
+        type : new FormControl(result['type']),
+        peremptionDate : new FormControl(result['peremptionDate']),
+        consumptionDate : new FormControl(result['consumptionDate']),
         description : new FormControl(result['description']),
-        allergen : new FormControl(result['allergen']),
-        type_of_subproduct : new FormControl(result['type_of_subproduct']),
+        allergenSet : new FormControl(result['allergenSet']),
         image : new FormControl(result['image'])
       })
     })
@@ -93,7 +94,7 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct(){
-    this.api.updateProduct(this.router.snapshot.params['id'],this.productEdit.value)
+    this.api.editProduct(this.router.snapshot.params['productId'],this.productEdit.value, this.image.value)
     .subscribe({
       next:(res)=>{
         alert("Produit modifié avec succès");

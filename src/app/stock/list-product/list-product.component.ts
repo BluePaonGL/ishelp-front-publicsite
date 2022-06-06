@@ -27,7 +27,7 @@ export class ListProductComponent implements OnInit{
   }
 
   getAllProducts(){
-    this.api.getProduct()
+    this.api.getAllProduct()
     .subscribe({
       next:(res)=>{
         this.productList = res;
@@ -48,7 +48,7 @@ export class ListProductComponent implements OnInit{
   }
   
   deleteProduct(product : any){
-    this.api.deleteProduct(product.id)
+    this.api.deleteProduct(product.productId)
     .subscribe({
       next: (res) =>{
         alert("Produit supprimé");

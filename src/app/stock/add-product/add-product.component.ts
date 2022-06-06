@@ -25,19 +25,9 @@ export class AddProductComponent implements OnInit  {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   
-
-  subProducts: string[] = [
-    'Conserve',
-    'Légume',
-    'Fruit',
-    'Féculents',
-    'Produits menstruels',
-    'Livre'
-  ];
-  
   productForm! : FormGroup;
-  isAddMode : boolean | undefined;
   currentDate = new Date();
+  image: any;
 
   constructor(
     private router:Router,
@@ -63,14 +53,14 @@ export class AddProductComponent implements OnInit  {
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
-      id : [''],
-      productName : ['', [Validators.required, Validators.minLength(2)]],
+      productId : [''],
+      name : ['', [Validators.required, Validators.minLength(2)]],
       quantity : ['', [Validators.required, Validators.min(1)]],
-      category : ['', Validators.required],
-      expiration_date : [''],
+      type : ['', Validators.required],
+      peremptionDate : [''],
+      consumptionDate : [''],
       description : [''],
-      allergen : [''],
-      type_of_subproduct : [''],
+      allergenSet : [''],
       image: ['']
     });
 
@@ -80,7 +70,7 @@ export class AddProductComponent implements OnInit  {
 
   addProduct(){
     if(this.productForm.valid){
-      this.api.postProduct(this.productForm.value)
+      this.api.addProduct(this.productForm.value, this.image.value)
       .subscribe({
         next:(res)=>{
           alert("Produit ajouté avec succès");
