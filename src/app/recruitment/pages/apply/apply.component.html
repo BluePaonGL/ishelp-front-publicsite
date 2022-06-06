@@ -1,1 +1,40 @@
-<p>apply works!</p>
+<div class="body">
+    <div class="grid-div">
+        <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
+                <mat-card class="events-card">
+                    <mat-card-header style="padding-top: 16px;">
+                        <mat-card-title class="mat-title margin-card header-card">
+                            <h1 class="mat-h1 header-card">Rejoignez isHelp !</h1>
+                        </mat-card-title>
+                    </mat-card-header>
+                    
+                    <div class="event-info">
+                        <label for="" class="apply-label">Objet de la demande</label>
+                        <input type="textarea" class="apply-input"> <br>
+    
+                        <label for="" class="apply-label">Vos motivations</label>
+                        <textarea name="" id="" cols="20" rows="5"  class="apply-input"></textarea> <br>
+    
+                        <label for="" class="apply-label">Votre expérience associative</label>
+                        <textarea name="" id="" cols="20" rows="5"  class="apply-input"></textarea> <br>
+    
+                        <label for="" class="apply-label">Comment vous contacter</label>
+                        <input type="text"  class="apply-input"> <br>
+    
+                        <label for="" class="apply-label">Fichier à envoyer <span class="blue">(facultatif)</span></label>
+                        <input type="file"> <br>
+    
+                        <button mat-button class="mat-focus-indicator mat-button-base header-login">
+                            Envoyer
+                        </button>
+                    </div>
+                </mat-card>
+            </mat-grid-tile>
+            
+            <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
+                <app-user-card></app-user-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+</div>
