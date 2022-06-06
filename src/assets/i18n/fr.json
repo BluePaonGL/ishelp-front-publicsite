@@ -9,7 +9,8 @@
         "event": "Évènements",
         "news": "Actualités",
         "user": "Profil",
-        "eventsManager": "Gestion d'évènements"
+        "eventsManager": "Gestion d'évènements",
+        "applicationsManager": "Gestion recrutements"
     },
     "403": {
         "title": "Oulah !",
@@ -78,5 +79,21 @@
         "buttonCancel": "Annuler",
         "buttonYes": "Oui",
         "buttonClose": "Fermer"
+    },
+    "apply": {
+        "title": "Rejoignez isHelp !",
+        "object": "Objet de la demande",
+        "motivationText": "Vos motivations",
+        "experienceText": "Votre expérience associative",
+        "contact": "Comment vous contacter",
+        "file": "Fichier à envoyer",
+        "button": "Envoyer",
+        "send": "Votre demande a bien été envoyée !",
+        "status": "Statut : ",
+        "pending": "En cours",
+        "accepted": "Accepté",
+        "toManage": "Candidatures à traiter",
+        "accept": "Accepter",
+        "refuse": "Refuser"
     }
 }

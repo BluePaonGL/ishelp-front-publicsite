@@ -9,8 +9,8 @@
         "event": "Events",
         "news": "News",
         "user": "Profile",
-        "eventsManager": "Manage events"
-        
+        "eventsManager": "Manage events",
+        "applicationsManager": "Manage applications"
     },
     "403": {
         "title": "Wait ??",
@@ -80,5 +80,21 @@
         "buttonCancel": "Cancel",
         "buttonYes": "Yes",
         "buttonClose": "Close"
+    },
+    "apply": {
+        "title": "Join isHelp !",
+        "object": "Subject of the requests",
+        "motivationText": "Your motivation",
+        "experienceText": "Your experience",
+        "contact": "Your contact",
+        "file": "File you want to join",
+        "button": "Send",
+        "send": "Your applicationas been successfully sent !",
+        "status": "Status: ",
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "toManage": "Applications to manage",
+        "accept": "Accept",
+        "refuse": "Refuse"
     }
 }

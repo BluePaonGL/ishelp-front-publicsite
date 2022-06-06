@@ -1,39 +1,42 @@
 <div class="body">
+    <span class="body-spacer"></span>
     <div class="grid-div">
         <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
             <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
                 <mat-card class="events-card">
                     <mat-card-header style="padding-top: 16px;">
                         <mat-card-title class="mat-title margin-card header-card">
-                            <h1 class="mat-h1 header-card">Rejoignez isHelp !</h1>
+                            <h1 class="mat-h1 header-card">{{ 'apply.title' | translate }}</h1>
                         </mat-card-title>
                     </mat-card-header>
                     
                     <div class="event-info">
-                        <div class="apply-div apply-send">Votre demande a bien été envoyée !</div>
-                        <label for="" class="apply-label">Objet de la demande</label>
+                        <div class="apply-div apply-send">{{ 'apply.send' | translate }}</div>
+                        <label for="" class="apply-label">{{ 'apply.object' | translate }}</label>
                         <div class="apply-div">Lorem ipsum</div> <br>
     
-                        <label for="" class="apply-label">Vos motivations</label>
+                        <label for="" class="apply-label">{{ 'apply.motivationText' | translate }}</label>
                         <div class="apply-div">Lorem ipsum</div> <br>
     
-                        <label for="" class="apply-label">Votre expérience associative</label>
+                        <label for="" class="apply-label">{{ 'apply.experienceText' | translate }}</label>
                         <div class="apply-div">Lorem ipsum</div> <br>
     
-                        <label for="" class="apply-label">Comment vous contacter</label>
+                        <label for="" class="apply-label">{{ 'apply.contact' | translate }}</label>
                         <div class="apply-div">Lorem ipsum</div> <br>
     
-                        <label for="" class="apply-label">Fichier à envoyer <span class="blue">(facultatif)</span></label>
+                        <label for="" class="apply-label">{{ 'apply.file' | translate }}</label>
                         <div>fichier.pdf</div> <br>
     
-                        <div class="apply-div apply-status"><span style="font-weight: 600;">Statut :</span> en cours</div>
+                        <div class="apply-div apply-status"><span style="font-weight: 600;">{{ 'apply.status' | translate }}</span>{{ 'apply.pending' | translate }}</div>
                     </div>
                 </mat-card>
             </mat-grid-tile>
             
-            <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
-                <app-user-card></app-user-card>
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="1" rowspan="1">
+                <app-user-card style="margin: 16px;">
+                </app-user-card>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
+    <span class="body-spacer"></span>
 </div>
