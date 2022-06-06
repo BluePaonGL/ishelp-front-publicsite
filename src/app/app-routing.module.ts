@@ -12,8 +12,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { MaraudComponent } from './event/pages/back/maraud.component';
 
 const routes: Routes = [
-  //{ path: 'page_not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
-  //{ path: 'event/not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
+  { path: 'page_not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
+  { path: 'event/not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
   { path: 'event/create', component: CreateEventComponent, canActivate : [AuthGuard], data: {
     roles: ['events'],
     } 
@@ -30,8 +30,7 @@ const routes: Routes = [
   { path: 'gestion/candidatures', component: CandidatesListComponent},
   { path: '', component: ShowcaseComponent},
   { path: 'unauthorized', component: UnauthorizedComponent, canActivate : [AuthGuard] },
-
-  //{ path: '**', component: PageNotFoundComponent}
+  { path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
