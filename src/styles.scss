@@ -102,6 +102,10 @@ body {
 	font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+.body-spacer {
+	flex: 1 1;
+}
+
 .body {
 	display: flex;
 	flex-flow: column;
@@ -140,6 +144,7 @@ body {
 	border-radius: 20px;
 	padding-top: 16px;
 	box-sizing: border-box;
+	background-color: white;
 }
 
 ::-webkit-scrollbar {
