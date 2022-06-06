@@ -27,7 +27,6 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 import {MatDialogModule} from '@angular/material/dialog';
 
-
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -50,6 +49,9 @@ import { MaraudComponent } from './event/pages/back/maraud.component';
 import { UserCardComponent } from './common/user-card/user-card.component';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './core/state';
+import { UserEffects } from './core/state/user';
+import { EffectsModule } from '@ngrx/effects';
 
 
 registerLocaleData(localeFr);
@@ -109,7 +111,15 @@ registerLocaleData(localeFr);
     }),
     AppRoutingModule,
     KeycloakAngularModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+    }),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: false
+    }),
+    EffectsModule.forRoot([UserEffects]),
   ],
   providers: [
     { 

@@ -7,7 +7,7 @@
         <span class="mat-button-focus-overlay"></span>
     </button>
     <span class="header-spacer"></span>
-    <span *ngIf="isDisabled">{{ 'header.welcome' | translate }}{{ username }}</span>
+    <span *ngIf="isDisabled">{{ 'header.welcome' | translate }}{{ username$ | async }}</span>
     <button mat-icon-button class="icon-button" [matMenuTriggerFor]="menu">
         <span class="iconify icon" data-icon="ic:outline-language"></span>
     </button>   
