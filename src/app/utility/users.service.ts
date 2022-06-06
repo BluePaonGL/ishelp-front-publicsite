@@ -15,7 +15,7 @@ export class UsersService {
 		return this.keycloakService.isLoggedIn();
 	}
 
-	getUser(userId: string) {
+	getUser(userId: string | undefined) {
 		return this.http.get<User>(this.userUrl + '/user/' + userId);
 	}
 

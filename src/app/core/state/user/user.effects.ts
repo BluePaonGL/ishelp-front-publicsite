@@ -10,10 +10,9 @@ export class UserEffects {
 
     fetchUser$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(UserActions.appLoaded.type, UserActions.fetchUserOnLogin),
+            ofType(UserActions.fetchUserOnLogin),
             switchMap((action) => 
                 this.userService.getUser(action.user.id).pipe(
-                    tap((user) => console.log(user)),
                     map((user) => UserActions.fetchUserSuccess({user})),
                     catchError((error) => of(UserActions.fetchUserFailed({error: error})))
                 )
