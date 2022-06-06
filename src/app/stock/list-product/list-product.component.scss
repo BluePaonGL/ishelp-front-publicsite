@@ -1,0 +1,82 @@
+@use "@angular/material" as mat;
+@import "../../../styles.scss";
+
+.body {
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+    width: 100%;
+}
+
+h1{
+    color: mat.get-color-from-palette($mat-blue-custom, 500);
+    text-align: center;
+    padding: 30px;
+    font-weight: bold;
+    font-size:xx-large;
+}
+
+h3{
+    color: mat.get-color-from-palette($mat-blue-custom, 500);
+    font-weight: bold;
+    font-size:large;
+}
+
+.container{
+    width: 100%;
+    display: inline-block;
+}
+
+.card-options{
+    float: left;
+    width: 35%;
+}
+
+.row{
+    margin-right: 4%;
+    margin-left: 35%;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    margin-left: 2%;
+    width: 60%;
+}
+
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    
+}
+.content{
+    margin-bottom: 3%;
+    border-radius: 30px;
+    background: white;
+    padding: 20px;
+}
+
+.information{
+    width: 30%;
+}
+.description{
+    text-align: center;
+    
+}
+
+mat-icon{
+    color: mat.get-color-from-palette($mat-blue-custom, 500);
+}
+
+
+img{
+   height: 150px;
+}
+
+a{
+    height: 150px;
+}
+
+
+
+

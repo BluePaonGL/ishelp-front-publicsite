@@ -1,0 +1,94 @@
+<div class="body">
+    <span class="body-spacer"></span>
+    <form class="container" [formGroup]="productEdit" novalidate>
+        <h1>Editer</h1>
+        <mat-form-field appearance="outline">
+            <mat-label>Nom du produit</mat-label>
+            <input formControlName="productName" matInput placeholder="Livre pour enfants">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Quantité</mat-label>
+            <input formControlName="quantity" matInput type="number" placeholder="Ex. 2" min="1" max="30">
+            <mat-error *ngIf=""></mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Catégorie</mat-label>
+            <mat-select formControlName="category" placeholder="Catégorie">
+                <mat-option value="alimentaire">Alimentaire</mat-option>
+                <mat-option value="vestimentaire">Vestimentaire</mat-option>
+                <mat-option value="hygiene">Hygiène</mat-option>
+                <mat-option value="jouet">Jouet</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Saisir une date de péremption</mat-label>
+            <input formControlName="expiration_date" matInput [matDatepicker]="datepicker" [min]="currentDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Annuler</button>
+                <button mat-raised-button color="primary" matDatepickerApply>Valider</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="description" matInput></textarea>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="chip-list">
+            <mat-label>Allergènes</mat-label>
+            <mat-chip-list #chipList1 aria-label="Allergènes selection">
+                <mat-chip *ngFor="let allergen of allergens" (removed)="remove(allergen,allergens)">
+                    {{allergen}}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+                </mat-chip>
+                <input placeholder="Nouveau allergène..."
+                    [matChipInputFor]="chipList1"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event,allergens)">
+
+            </mat-chip-list>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="chip-list">
+            <mat-label>Type de sous-produit</mat-label>
+            <mat-chip-list #chipList aria-label="Allergènes selection">
+                <mat-chip *ngFor="let subProduct of subProducts" (removed)="remove(subProduct, subProducts)">
+                    {{subProduct}}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+                </mat-chip>
+                <input placeholder="Nouveau sous-produit..."
+                    [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                    [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event, subProducts)">
+
+            </mat-chip-list>
+        </mat-form-field>
+        
+        <!--
+            <div class="image">
+            <label for="file">Image</label>
+            <input formControlName="image" id="image" type="file" class="form-control"(change)="onFileChange($event)">
+        </div>
+        -->
+        <mat-form-field appearance="outline">
+            <mat-label>Image</mat-label>
+            <input formControlName="image" matInput placeholder="Livre pour enfants">
+        </mat-form-field>
+        
+
+        <div class="actions">
+            <button mat-raised-button color="warn" (click)="goToProductList()">Retour</button>
+            <button type="submit" mat-raised-button style="margin-left: 8px;"color="primary" (click)="updateProduct()">Editer</button>
+        </div>
+    </form>
+</div>
+

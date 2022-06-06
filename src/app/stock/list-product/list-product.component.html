@@ -1,0 +1,42 @@
+<div class="body">
+    <h1>Liste des produits en stock</h1>
+    <div class="container">
+        <div class="card-options">
+            <div class="options">
+                <input type="text" name="search" class="form-control" placeholder="Chercher un produit" [(ngModel)]="filteredString"> 
+                <button mat-raised-button style="margin-top: 5%;"color="primary" (click)="goToAddProduct()">Ajouter un produit</button>
+            </div>
+            
+        </div>
+        <div class="row">
+            <ng-container *ngFor="let product of productList | filter:filteredString">
+                <div class="content">
+                    <div class="card">  
+                        <div class="product-card image">
+                            <div *ngIf="product.image === '' ">
+                                <img src="../../../assets/logo-whiteback-square.png" alt="">
+                            </div>
+                            <div *ngIf="product.image !== '' ">
+                                <a href=getSantizeUrl({{product.image}})> </a>
+                            </div>
+                        </div>
+                        <div class="product-card information">
+                            <h3>{{product.productName}}</h3>
+                            <p>DDM : {{product.expiration_date | date}}</p>
+                            <p>Quantité : {{product.quantity}}</p>
+                        </div>
+                        <div class="product-card description">
+                            <p>{{product.description}}</p>
+                            <button mat-icon-button (click)="editProduct(product.id)">
+                                <mat-icon>create</mat-icon>
+                            </button>
+                            <button mat-icon-button (click)="deleteProduct(product)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

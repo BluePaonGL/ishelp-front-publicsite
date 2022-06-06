@@ -104,4 +104,9 @@ export class EventComponent implements OnInit {
       window.location.reload();
     });;
   }
+
+  goToStockList(){
+    this.router.navigate(['/stock']);
+  }
+
 }

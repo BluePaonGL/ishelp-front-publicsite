@@ -1,0 +1,53 @@
+@use "@angular/material" as mat;
+@import "../../../styles.scss";
+
+.container {
+    margin-top: 2%;
+    margin-bottom: 3%;
+    width: 65%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+}
+
+.body-spacer{
+    margin: 2%;
+}
+
+h1{
+  color: mat.get-color-from-palette($mat-blue-custom, 400);
+  text-align: center;
+  padding: 4%;
+  font-family: Roboto, "Helvetica Neue", sans-serif; 
+  font-weight: 600;
+}
+
+mat-form-field{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    width: 55%;
+}
+
+.radio-group {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    align-items: flex-start;
+    width: 55%;
+    color: mat.get-color-from-palette($mat-grey-custom, 800);
+  }
+  
+  .radio-button {
+    margin: 5px;
+  }
+
+  .actions{
+    text-align: center;
+    padding-bottom: 2%;
+  }

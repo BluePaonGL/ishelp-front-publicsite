@@ -1,6 +1,6 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule, LOCALE_ID  } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -19,7 +19,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatMenuModule } from '@angular/material/menu';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio'
+import {MatChipsModule} from '@angular/material/chips';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -31,6 +38,10 @@ import { DatePipe } from '@angular/common';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { UnauthorizedComponent } from './errors/unauthorized/unauthorized.component';
+import { ListProductComponent } from './stock/list-product/list-product.component';
+import { EditProductComponent } from './stock/edit-product/edit-product.component';
+import { AddProductComponent } from './stock/add-product/add-product.component';
+import { FilterPipe } from './stock/pipes/filter.pipe';
 registerLocaleData(localeFr);
 
 @NgModule({
@@ -43,6 +54,10 @@ registerLocaleData(localeFr);
     UnauthorizedComponent,
     ShowcaseComponent,
     EventComponent,
+    ListProductComponent,
+    AddProductComponent,
+    EditProductComponent,
+    FilterPipe,
   ],
   imports: [
     MatMenuModule,
@@ -53,8 +68,17 @@ registerLocaleData(localeFr);
     MatCardModule,
     MatButtonToggleModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatChipsModule,
     MatListModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({
@@ -81,6 +105,10 @@ registerLocaleData(localeFr);
       deps: [KeycloakService]
     },
     DatePipe,
+    {
+      provide: MAT_RADIO_DEFAULT_OPTIONS,
+      useValue: { color: 'primary' },
+    },
   ],
   bootstrap: [AppComponent]
 })
