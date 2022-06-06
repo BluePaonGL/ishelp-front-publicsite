@@ -32,7 +32,7 @@ export class UserCardComponent implements OnInit {
 
   async ngOnInit() {
 		this.user$.subscribe(userStore => {
-			this.userId = userStore.user.id;
+			this.userId = userStore.user.userId;
 			this.profilePictureUrl = userStore.user.profilePicture;
 			this.eventsService.getEventByUserId(this.userId).then((eventsUser) => {
 				this.eventsUser = eventsUser;

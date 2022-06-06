@@ -12,7 +12,7 @@ export class UserEffects {
         this.actions$.pipe(
             ofType(UserActions.appLoaded.type, UserActions.fetchUserOnLogin),
             switchMap((action) => 
-                this.userService.getUser(action.user.id).pipe(
+                this.userService.getUser(action.user.userId).pipe(
                     tap((user) => console.log(user)),
                     map((user) => {
                         user.profilePicture = user.profilePicture !== null ? user.profilePicture :'../../assets/logo-whiteback-round.png';

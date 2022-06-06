@@ -45,7 +45,7 @@ export class EventComponent implements OnInit {
 	async ngOnInit(): Promise<void> {
 		this.lang = this.translateService.getBrowserLang();
 		this.user$.subscribe(userStore => {
-			this.userId = userStore.user.id;
+			this.userId = userStore.user.userId;
 		})
 		this.urlChange()
 	}

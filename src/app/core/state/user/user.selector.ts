@@ -20,5 +20,5 @@ export const selectUserFirstName = createSelector(
 
 export const selectUserId = createSelector(
     selectUser,
-    (state: UserState) => state.user.id
+    (state: UserState) => state.user.userId
 );
