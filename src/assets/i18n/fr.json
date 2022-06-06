@@ -95,5 +95,12 @@
         "toManage": "Candidatures à traiter",
         "accept": "Accepter",
         "refuse": "Refuser"
+    },
+    "profile": {
+        "username": "Identifiant : ",
+        "role": "Rôle : ",
+        "email": "Email : ",
+        "studentId": "Numéro étudiant : ",
+        "promo": "Promotion : "
     }
 }

@@ -22,3 +22,13 @@ export const selectUserId = createSelector(
     selectUser,
     (state: UserState) => state.user.userId
 );
+
+export const selectUserEmail = createSelector(
+    selectUser,
+    (state: UserState) => state.user.email
+);
+
+export const selectUserStudentId = createSelector(
+    selectUser,
+    (state: UserState) => state.user.studentId
+);

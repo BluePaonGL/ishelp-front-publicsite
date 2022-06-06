@@ -96,5 +96,12 @@
         "toManage": "Applications to manage",
         "accept": "Accept",
         "refuse": "Refuse"
+    },
+    "profile": {
+        "username": "Username: ",
+        "role": "Role: ",
+        "email": "Email: ",
+        "studentId": "Student Id: ",
+        "promo": "Promo: "
     }
 }

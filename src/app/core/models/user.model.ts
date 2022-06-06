@@ -3,7 +3,7 @@ export interface User {
     username: string | undefined,
     access_token?: string,
     refresh_token?: string,
-    student_id?: number,
+    studentId?: number,
     email?: string,
     firstName?: string,
     lastName?: string,
