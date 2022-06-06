@@ -1,5 +1,19 @@
 <div class="body">
-	<div class="about-us-top-picture">
-		<a routerLink="/AboutUs" class="picture-title">{{ 'about-us.pictureTitle' | translate }}</a>
+	<div class="aboutUsTopPicture">
+		<h1 class="pictureTitle">{{ 'aboutUs.pictureTitle' | translate }}</h1>
+	</div>
+	<div class="mission">
+		<h1 class="aboutUsTitle">{{ 'aboutUs.ourMission' | translate }}</h1>
+		<p class="aboutUsContent">{{ 'aboutUs.missionText' | translate }}</p>
+	</div>
+	<div class="partners">
+		<h1 class="aboutUsTitle">{{ 'aboutUs.ourPartners' | translate }}</h1>
+		<div class="ourPartners">
+			<img *ngFor="let partnerLogoLink of ourPartners" class="partnerLogo" [src]="partnerLogoLink" />
+		</div>
+	</div>
+	<div class="organigram">
+		<h1 class="aboutUsTitle">{{ 'aboutUs.isHelpOrganigram' | translate }}</h1>
+		<div class="organigramImage"></div>
 	</div>
 </div>
