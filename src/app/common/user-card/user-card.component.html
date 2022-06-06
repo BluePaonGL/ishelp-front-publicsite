@@ -21,7 +21,6 @@
             </mat-list-item>
         </span>
         <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of eventsUser">
-            
             <a style="width: 100%;" [routerLink]= "['/event/',event.eventId]" (click)="reload(event.eventId)">
                 <div class="event-list">
                     <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>

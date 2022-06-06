@@ -14,7 +14,7 @@ export class GlobalHttpInterceptorService implements HttpInterceptor {
 				console.log('error is intercept');
 				console.error(error);
 				if (this.router.url.indexOf('/event/') !== -1 && error.message.indexOf('500 OK') !== -1) {
-					this.router.navigate(['/event/not_found']);
+					//this.router.navigate(['/event/not_found']);
 				}
 				return throwError(() => new Error(error.message));
 			})
