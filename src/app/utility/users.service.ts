@@ -29,9 +29,9 @@ export class UsersService {
 	}
 
 
-	async getUserList(users: any[]): Promise<any> {
-		let usersParticipants = await lastValueFrom(this.http.post(this.userUrl + '/user/list', users));
-		return usersParticipants;
+	getUserList(users: string[] | undefined) {
+		return this.http.post<User[]>(this.userUrl + '/user/list', users);
+		
 	}
 
 	async logout() {

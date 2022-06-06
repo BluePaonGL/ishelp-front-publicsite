@@ -66,7 +66,7 @@ export class CreateEventComponent implements OnInit {
         this.eventForm.value['description']
         );
       if(this.response['eventId']!== null){
-        await this.eventsService.getAllEvents().then((events) => (this.events = events));
+        this.events = this.eventsService.getAllEvents();
         this.openDialog('create', true, null);
       }
       else {
@@ -90,7 +90,7 @@ export class CreateEventComponent implements OnInit {
 
 	async ngOnInit(): Promise<void> {
     this.dateAdapter.setLocale(this.translateService.getDefaultLang()); 
-    await this.eventsService.getAllEvents().then((events) => (this.events = events));
+    this.events = this.eventsService.getAllEvents();
     this.eventsNumber = this.events.length;
 	}
 
@@ -110,7 +110,7 @@ export class CreateEventComponent implements OnInit {
       if (this.isDeleted) {
         this.response = await this.eventsService.deleteEvent(eventId);
         this.isDeleted = false;
-        await this.eventsService.getAllEvents().then((events) => (this.events = events));
+        this.events = this.eventsService.getAllEvents();
       }
     });
   }
