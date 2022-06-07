@@ -57,8 +57,8 @@ export class AddProductComponent implements OnInit  {
       name : ['', [Validators.required, Validators.minLength(2)]],
       quantity : ['', [Validators.required, Validators.min(1)]],
       type : ['', Validators.required],
-      peremptionDate : [''],
-      consumptionDate : [''],
+      peremptionDate : ['', Validators.required],
+      //consumptionDate : [''],
       description : [''],
       allergenSet : [''],
       image: ['']
@@ -70,7 +70,7 @@ export class AddProductComponent implements OnInit  {
 
   addProduct(){
     if(this.productForm.valid){
-      //this.api.addProduct(this.productForm.value, this.image.value)
+      //this.api.addProduct(this.productForm.value, this.productForm.get['image'])
       this.api.addProduct(this.productForm.value)
       .subscribe({
         next:(res)=>{

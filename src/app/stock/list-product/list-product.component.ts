@@ -65,5 +65,36 @@ export class ListProductComponent implements OnInit{
     return this.sanitizer.bypassSecurityTrustStyle(url);
   }
   
+  currentDate = new Date();
+  diffBetweenTwoDate(date1 : Date, date2 : Date){
+    var dateOne = new Date(date1);
+    var dateTwo = new Date(date2);
+    var Difference_In_Time = dateTwo.getTime() - dateOne.getTime();
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    return Difference_In_Days;
+  }
+  
+  seeMessage(){
+    alert("Votre produit périme dans moins de deux semaines")
+  }
+
+/*
+  const base64 = '...';
+  const imageName = 'name.png';
+  const imageBlob = this.dataURItoBlob(base64);
+  const imageFile = new File([imageBlob], imageName, { type: 'image/png' });
+  */
+
+  dataURItoBlob(dataURI: string) {
+    const byteString = window.atob(dataURI);
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const int8Array = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      int8Array[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([int8Array], { type: 'image/png' });    
+    console.log(blob)
+    return blob;
+ }
 
 }

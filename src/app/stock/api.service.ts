@@ -26,6 +26,22 @@ export class ApiService {
     return this.http.put(`${baseUrl}/editProduct/${id}`, data);
   }
 
+  AddModelData(product: any, id: any, file: File): Observable<any> 
+  {
+    const mData = JSON.stringify(product);
+    const formData = new FormData();
+    formData.append('product', mData);
+    if (file) {
+      formData.append('file', file, file.name);
+    }
+
+    /*const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'multipart/mixed', 'Access-Control-Allow-Origin': '*'})
+    }*/
+
+    return this.http.put(`${baseUrl}/editImage/${id}`, formData)
+  }
+
   /* WITH IMAGE
   addProduct(data : any, file : File): Observable<any> {
     return this.http.post(`${baseUrl}/addProduct`, {product: data, file: file});
@@ -37,30 +53,4 @@ export class ApiService {
   deleteProduct(id : any): Observable<any> {
     return this.http.delete(`${baseUrl}/deleteProduct/${id}`);
   }
-
-  /*constructor(
-    private http : HttpClient
-  ) { }
-
-  postProduct(data : any){
-    return this.http.post<any>("http://localhost:3000/products/addProduct",data);
-  }
-
-  getProduct(){
-    return this.http.get<any>("http://localhost:3000/productList/");
-  }
-
-  getProductById(id : number){
-    return this.http.get<any>("http://localhost:3000/productList/"+id);
-  }
-
-  updateProduct(id : number,data : any){
-    return this.http.put<any>("http://localhost:3000/productList/"+id,data);
-  }
-
-  deleteProduct(id : number){
-    return this.http.delete<any>("http://localhost:3000/productList/"+id);
-  }
-
-*/
 }

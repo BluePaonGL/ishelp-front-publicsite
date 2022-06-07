@@ -1,6 +1,6 @@
 <div class="body">
     <span class="body-spacer"></span>
-    <form class="container" [formGroup]="productEdit" enctype="multipart/form-data" novalidate>
+    <form class="container" [formGroup]="productEdit"  novalidate>
         <h1>Editer</h1>
         <mat-form-field appearance="outline">
             <mat-label>Nom du produit</mat-label>
@@ -32,6 +32,7 @@
               </mat-datepicker-actions>
             </mat-datepicker>
         </mat-form-field>
+        <!--
         <mat-form-field appearance="outline">
             <mat-label>Saisir une date limite de consommation</mat-label>
             <input formControlName="consumptionDate" matInput [matDatepicker]="datepicker" [min]="currentDate">
@@ -44,6 +45,7 @@
               </mat-datepicker-actions>
             </mat-datepicker>
         </mat-form-field>
+        -->
         <mat-form-field appearance="outline">
             <mat-label>Description</mat-label>
             <textarea formControlName="description" matInput></textarea>
@@ -69,7 +71,7 @@
 
         <div class="image">
             <label for="file">Image</label>
-            <input formControlName="image" id="image" type="file" class="form-control" (change)="onFileSelect($event)">
+            <input formControlName="image" id="image" type="file" class="form-control"> <!-- (change)="onFileSelect($event)"-->
         </div>
 
         <div class="actions">

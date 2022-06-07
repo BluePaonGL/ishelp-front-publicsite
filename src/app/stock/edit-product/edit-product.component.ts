@@ -85,24 +85,28 @@ export class EditProductComponent implements OnInit {
         quantity : new FormControl(result['quantity']),
         type : new FormControl(result['type']),
         peremptionDate : new FormControl(result['peremptionDate']),
-        consumptionDate : new FormControl(result['consumptionDate']),
+        //consumptionDate : new FormControl(result['consumptionDate']),
         description : new FormControl(result['description']),
         allergenSet : new FormControl(result['allergenSet']),
         image : new FormControl(result['image'])
       })
     })
 
-    this.uploadForm = this.formBuilder.group({
-      image: ['']
-    });
-
+    
   }
 
-  updateProduct(){
-    const formData = new FormData();
-    formData.append('file', this.uploadForm.get('image').value);
+  /*this.uploadForm = this.formBuilder.group({
+      image: ['']
+    });
+ */
 
-    //this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'], this.uploadForm.get("image").value)
+  updateProduct(){
+    //const formData = new FormData();
+    //formData.append('file', this.uploadForm.get('image').value);
+
+    var file = new File([this.image], "file");
+
+    //this.api.AddModelData(this.productEdit.value, this.router.snapshot.params['id'], file) //this.uploadForm.get("image").value
     this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'])
     .subscribe({
       next:(res)=>{
@@ -118,11 +122,11 @@ export class EditProductComponent implements OnInit {
   }
 
 
-  onFileSelect(event : any) {
+  /*onFileSelect(event : any) {
     if (event.target.files.length > 0) {
       const file = event.target.files[0];
       this.uploadForm.get('image').setValue(file);
     }
   }
-
+*/
 }
