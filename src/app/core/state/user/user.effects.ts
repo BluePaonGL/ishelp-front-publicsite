@@ -10,13 +10,12 @@ export class UserEffects {
 
     fetchUser$ = createEffect(() => 
         this.actions$.pipe(
-            ofType(UserActions.appLoaded.type, UserActions.fetchUserOnLogin),
+            ofType(UserActions.fetchUserOnLogin),
             switchMap((action) => 
                 this.userService.getUser(action.user.userId).pipe(
                     tap((user) => console.log(user)),
                     map((user) => {
                         user.profilePicture = user.profilePicture !== null ? user.profilePicture :'../../assets/logo-whiteback-round.png';
-                        console.log(user);
                         return UserActions.fetchUserSuccess({user})
                     }),        
                     catchError((error) => of(UserActions.fetchUserFailed({error: error})))

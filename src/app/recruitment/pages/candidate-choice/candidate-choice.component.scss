@@ -38,12 +38,12 @@
 
 .header-reject {
 	color: mat.get-color-from-palette($mat-grey-custom, 50);
-	background-color: #B10256;
+	background-color: mat.get-color-from-palette($mat-grey-custom, 800);
 }
 
 .header-accept {
 	color: mat.get-color-from-palette($mat-grey-custom, 50);
-	background-color: #068387;
+	background-color: mat.get-color-from-palette($mat-blue-custom, 500);
 }
 
 

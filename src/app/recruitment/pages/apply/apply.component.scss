@@ -81,5 +81,20 @@
     color : mat.get-color-from-palette($mat-blue-custom, 500)
 }
 
+.apply-form{
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding-right: 16px;
+	overflow: auto;
+}
 
+.apply-form mat-form-field{
+	margin-top: 16px;
+}
 
+.file {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}

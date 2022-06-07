@@ -1,40 +1,67 @@
 <div class="body">
+    <span class="body-spacer"></span>
     <div class="grid-div">
         <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
             <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
                 <mat-card class="events-card">
                     <mat-card-header style="padding-top: 16px;">
                         <mat-card-title class="mat-title margin-card header-card">
-                            <h1 class="mat-h1 header-card">Rejoignez isHelp !</h1>
+                            <h1 class="mat-h1 header-card">{{ 'apply.title' | translate }}</h1>
                         </mat-card-title>
-                    </mat-card-header>
-                    
+                    </mat-card-header> 
                     <div class="event-info">
-                        <label for="" class="apply-label">Objet de la demande</label>
-                        <input type="textarea" class="apply-input"> <br>
-    
-                        <label for="" class="apply-label">Vos motivations</label>
-                        <textarea name="" id="" cols="20" rows="5"  class="apply-input"></textarea> <br>
-    
-                        <label for="" class="apply-label">Votre expérience associative</label>
-                        <textarea name="" id="" cols="20" rows="5"  class="apply-input"></textarea> <br>
-    
-                        <label for="" class="apply-label">Comment vous contacter</label>
-                        <input type="text"  class="apply-input"> <br>
-    
-                        <label for="" class="apply-label">Fichier à envoyer <span class="blue">(facultatif)</span></label>
-                        <input type="file"> <br>
-    
-                        <button mat-button class="mat-focus-indicator mat-button-base header-login">
-                            Envoyer
-                        </button>
+                        <form class="apply-form" autocomplete="on" [formGroup]="applyForm" (ngSubmit)="onSubmit()">
+                            <div>
+                                <mat-form-field style="width: 100%" appearance="fill">
+                                    <mat-label>{{ 'apply.object' | translate }}</mat-label>
+                                    <input matInput formControlName="subject">
+                                </mat-form-field>
+                            </div>
+                            <mat-form-field style="height: 50%" appearance="fill">
+                                <mat-label>{{ 'apply.motivationText' | translate }}</mat-label>
+                                <textarea matInput
+                                    formControlName="motivations"
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="10"></textarea>
+                            </mat-form-field>
+                            <mat-form-field style="height: 100%" appearance="fill">
+                                <mat-label>{{ 'apply.experienceText' | translate }}</mat-label>
+                                <textarea matInput
+                                    formControlName="experiences"
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="10"></textarea>
+                            </mat-form-field>
+                            <mat-form-field style="height: 100%" appearance="fill">
+                                <mat-label>{{ 'apply.contact' | translate }}</mat-label>
+                                <textarea matInput
+                                    formControlName="contact"
+                                    cdkTextareaAutosize
+                                    #autosize="cdkTextareaAutosize"
+                                    cdkAutosizeMinRows="1"
+                                    cdkAutosizeMaxRows="2"></textarea>
+                            </mat-form-field>
+                            <div class="file">
+                                <mat-label>{{ 'apply.file' | translate }}</mat-label>
+                                <input type="file" formControlName="file" style="margin-top: 16px;">
+                            </div>
+                            <button mat-raised-button type="submit" color="primary" [disabled]="!applyForm.valid" class="mat-focus-indicator mat-button-base" style="margin-top: 16px;">
+                                <span class="mat-button-wrapper">{{ 'apply.button' | translate }}</span>
+                                <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                <span class="mat-button-focus-overlay"></span>
+                            </button>
+                        </form>
                     </div>
                 </mat-card>
             </mat-grid-tile>
-            
-            <mat-grid-tile class="tile tile mat-elevation-z6" colspan="1" rowspan="1">
-                <app-user-card></app-user-card>
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="1" rowspan="1">
+                <app-user-card style="margin: 16px;">
+                </app-user-card>
             </mat-grid-tile>
         </mat-grid-list>
     </div>
+    <span class="body-spacer"></span>
 </div>

@@ -41,7 +41,6 @@ export class AppComponent implements OnInit {
 				this.userProfile.username = this.userProfile.username[0].toUpperCase() + this.userProfile.username.slice(1);
 			}
 			user = {username: this.userProfile.username, userId: this.userProfile.id};
-			console.log(user);
 			this.store.dispatch(
 				fetchUserOnLogin({
 					user: user

@@ -1,9 +1,9 @@
 export interface User {
-    userId: string | undefined,
+    userId?: string,
     username: string | undefined,
     access_token?: string,
     refresh_token?: string,
-    student_id?: number,
+    studentId?: number,
     email?: string,
     firstName?: string,
     lastName?: string,

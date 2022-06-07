@@ -13,6 +13,8 @@ import { MaraudComponent } from './event/pages/back/maraud.component';
 import { CandidateStatusComponent} from './recruitment/pages/candidate-status/candidate-status.component';
 import { CandidateChoiceComponent} from './recruitment/pages/candidate-choice/candidate-choice.component';
 import {RegistrationComponent} from "./registration/registration.component";
+import { AboutUsComponent } from './about-us/about-us.component';
+
 
 const routes: Routes = [
   { path: 'page_not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
@@ -23,6 +25,16 @@ const routes: Routes = [
     roles: ['events'],
     }
   },
+  { path: 'apply/manage', component: CandidatesListComponent, canActivate : [AuthGuard], data: {
+    roles: ['application'],
+    } 
+  },
+  { path: 'apply/manage/:id', component: CandidateChoiceComponent, canActivate : [AuthGuard], data: {
+    roles: ['application'],
+    } 
+  },
+  { path: 'apply', component: ApplyComponent, canActivate : [AuthGuard] },
+  { path: 'apply/status', component: CandidateStatusComponent, canActivate : [AuthGuard] },
   { path: 'event/:id', component: EventComponent, canActivate : [AuthGuard] },
   { path: 'event', component: EventComponent, canActivate : [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
@@ -32,6 +44,7 @@ const routes: Routes = [
   { path: 'gestion/candidatures', component: CandidatesListComponent},
   { path: 'gestion/candidatures/choice', component: CandidateChoiceComponent},
   { path : 'registration', component: RegistrationComponent},
+  {path: 'about_us', component: AboutUsComponent},
   { path: '', component: ShowcaseComponent},
   { path: 'unauthorized', component: UnauthorizedComponent, canActivate : [AuthGuard] },
   { path: '**', component: PageNotFoundComponent}

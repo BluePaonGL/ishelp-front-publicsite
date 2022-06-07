@@ -4,22 +4,22 @@
         <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
             <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
                 <mat-card class="base-card events-card">
-                    <div class="base-card events-card" *ngIf="this.router.url === '/event/' + this.id && eventById">
+                    <div class="base-card events-card" *ngIf="this.router.url === '/event/' + this.id && (currentEvent$ | async)">
                         <mat-card-header style="padding-top: 16px;">
-                            <mat-card-title *ngIf="eventById.name" class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{eventById.name}}</h1></mat-card-title>
+                            <mat-card-title *ngIf="(currentEvent$ | async)?.name" class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{(currentEvent$ | async)?.name}}</h1></mat-card-title>
                         </mat-card-header>
                         <div class="event-info">
-                            <span *ngIf="eventById.startingCampus !== null" class="info"><span class="info-header">{{ 'eventInfo.campus'| translate }}</span>{{eventById.startingCampus}}</span>
-                            <span *ngIf="eventById.location !== null" class="info"><span class="info-header">{{ 'eventInfo.location'| translate }}</span>{{eventById.location}}</span>
-                            <span *ngIf="eventById.date !== null" class="info"><span class="info-header">{{ 'eventInfo.date'| translate }}</span>{{eventById.date |  date: 'fullDate':'':lang}}</span>
-                            <span *ngIf="eventById.startingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.startingTime'| translate }}</span>{{"2022-01-01T" + eventById.startingTime |  date: 'shortTime':'':lang}}</span>
-                            <span *ngIf="eventById.endingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.endingTime'| translate }}</span>{{"2022-01-01T" + eventById.endingTime |  date: 'shortTime':'':lang}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.startingCampus !== null" class="info"><span class="info-header">{{ 'eventInfo.campus'| translate }}</span>{{(currentEvent$ | async)?.startingCampus}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.location !== null" class="info"><span class="info-header">{{ 'eventInfo.location'| translate }}</span>{{(currentEvent$ | async)?.location}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.date !== null" class="info"><span class="info-header">{{ 'eventInfo.date'| translate }}</span>{{(currentEvent$ | async)?.date |  date: 'fullDate':'':lang}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.startingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.startingTime'| translate }}</span>{{"2022-01-01T" + startingTime$ |  date: 'shortTime':'':lang}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.endingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.endingTime'| translate }}</span>{{"2022-01-01T" + endingTime$ |  date: 'shortTime':'':lang}}</span>
                             <span class="info-header info">{{ 'eventInfo.description'| translate }}</span>
-                            <span *ngIf="eventById.description !== null" class="info description">{{eventById.description}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.description !== null" class="info description">{{(currentEvent$ | async)?.description}}</span>
                             <span class="event-spacer"></span>
-                            <span class="info"><span class="info-header">{{ 'eventInfo.participants'| translate }}</span>( {{ participantNumber }} )</span>
+                            <span class="info"><span class="info-header">{{ 'eventInfo.participants'| translate }}</span>( {{ (currentEvent$ | async)?.participants?.length }} )</span>
                             <div class="participants-list">
-                                <div class="participant" *ngFor="let user of users; let last = last" [ngClass]="{last: last }">
+                                <div class="participant" *ngFor="let user of (currentEvent$ | async)?.participants; let last = last" [ngClass]="{last: last }">
                                     <img class="participant-img" src={{profilePictureUrl}}>
                                     <span class="participant-name">{{user.firstName}} {{ user.lastName}}</span>
                                 </div>
@@ -31,12 +31,12 @@
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
                                 </button>
-                                <button (click)="signUp()" *ngIf="!isSignedUp()" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                <button (click)="signUp()" *ngIf="!signedUp$" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
                                     <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
                                 </button>
-                                <button (click)="signOut()" *ngIf="isSignedUp()" mat-raised-button class="mat-focus-indicator mat-button-base event-signout">
+                                <button (click)="signOut()" *ngIf="signedUp$" mat-raised-button class="mat-focus-indicator mat-button-base event-signout">
                                     <span class="mat-button-wrapper">{{ 'eventInfo.signoutButton' | translate }}</span>
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
@@ -60,7 +60,7 @@
                                     </a>
                                 </mat-list-item>
                             </span>  
-                            <mat-list-item class="mat-list-item" *ngFor="let event of events" style="height: fit-content; width: 100%; min-width:fit-content">
+                            <mat-list-item class="mat-list-item" *ngFor="let event of events$ | async" style="height: fit-content; width: 100%; min-width:fit-content">
                                 <a [routerLink]= "['./',event.eventId]" style="width: 100%;">
                                     <div class="event-list">
                                         <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>
@@ -87,7 +87,7 @@
                     </mat-card>
             </mat-grid-tile>
             <mat-grid-tile class="tile mat-elevation-z6" colspan="1" rowspan="1">
-                <app-user-card style="margin: 16px;">
+                <app-user-card (initEvent)="ngOnInit()" style="margin: 16px;">
                 </app-user-card>
             </mat-grid-tile>
     </mat-grid-list>

@@ -7,6 +7,9 @@ import { EventsService } from '../../events.service';
 import {FormControl, FormGroupDirective, FormGroup, NgForm, Validators} from '@angular/forms';
 import { EventDialogComponent } from './event-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { addEvent, deleteEvent, selectEventItems } from 'src/app/core/state/event';
+import { Event } from 'src/app/core/models/event.model';
 
 export interface eventData {
   action: 'create' | 'delete';
@@ -23,7 +26,7 @@ export class CreateEventComponent implements OnInit {
 	id: string | null = '';
 	lang!: string;
 	eventById: any;
-	events: any;
+  events$ = this.store.select(selectEventItems);
 	eventsNumber: number | undefined;
 	participantNumber: number | undefined;
 	subscription: any;
@@ -52,7 +55,6 @@ export class CreateEventComponent implements OnInit {
       Validators.required,
     ]),
   });
-  
 
     async onSubmit() {
       this.response = await this.eventsService.addEvent(
@@ -65,8 +67,38 @@ export class CreateEventComponent implements OnInit {
         this.eventForm.value['end']+ ':00',
         this.eventForm.value['description']
         );
+
+      const test: Event =  {
+        eventId: "test",
+        name: "test",
+        eventType: "test",
+        startingCampus: "test",
+        startingTime: "test",
+        endingTime: "test",
+        location: "test",
+        date: "test",
+        description: "test",
+        participantsId: [''],
+        participants: []
+      }
+      
       if(this.response['eventId']!== null){
-        await this.eventsService.getAllEvents().then((events) => (this.events = events));
+        const event: Event =  {
+          eventId: this.response['eventId'],
+          name: this.response['name'],
+          eventType: this.response['eventType'],
+          startingCampus: this.response['startingCampus'],
+          startingTime: this.response['startingTime'],
+          endingTime: this.response['endingTime'],
+          location: this.response['location'],
+          date: this.response['date'],
+          description: this.response['description'],
+          participantsId: [],
+          participants: []
+        };
+        this.store.dispatch(addEvent({
+          event: event
+        }));
         this.openDialog('create', true, null);
       }
       else {
@@ -76,7 +108,7 @@ export class CreateEventComponent implements OnInit {
     }
 
   constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, public dialog: MatDialog, 
-              private eventsService: EventsService, public datePipe: DatePipe, private dateAdapter: DateAdapter<Date>) 
+              private eventsService: EventsService, public datePipe: DatePipe, private store: Store, private dateAdapter: DateAdapter<Date>) 
               { 
     this.eventById = null;
     this.subscription = this.router.events.subscribe((ev) => {
@@ -89,16 +121,17 @@ export class CreateEventComponent implements OnInit {
   }
 
 	async ngOnInit(): Promise<void> {
+    this.events$.subscribe(events => {
+      this.eventsNumber = events.length;
+    })
     this.dateAdapter.setLocale(this.translateService.getDefaultLang()); 
-    await this.eventsService.getAllEvents().then((events) => (this.events = events));
-    this.eventsNumber = this.events.length;
 	}
 
 	ngOnDestroy(): void {
 		this.subscription.unsubscribe();
 	}
   
-  async openDialog(action: string, success: boolean, eventId: string|null){
+  async openDialog(action: string, success: boolean, eventId: string | null | undefined){
     const dialogRef =this.dialog.open(EventDialogComponent, {
       data: {
         action: action,
@@ -108,9 +141,14 @@ export class CreateEventComponent implements OnInit {
     await dialogRef.afterClosed().subscribe(async result => {
       this.isDeleted = result;
       if (this.isDeleted) {
-        this.response = await this.eventsService.deleteEvent(eventId);
+        if(eventId !== null &&  eventId !== undefined){     
+          this.response = await this.eventsService.deleteEvent(eventId);   
+          this.store.dispatch(deleteEvent({
+          eventId: eventId
+        }));}
+
         this.isDeleted = false;
-        await this.eventsService.getAllEvents().then((events) => (this.events = events));
+        this.events$ = this.store.select(selectEventItems);
       }
     });
   }
