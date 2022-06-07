@@ -21,9 +21,9 @@ export class EventComponent implements OnInit {
 	user$ = this.store.select(selectUser);
 	events$ = this.store.select(selectEventItems);
 	currentEvent$ = this.store.select(selectCurrentEvent);
-	signedUp: boolean = false;
-
-
+	startingTime$: string = '00:00:00'
+	endingTime$: string = '00:00:00'
+	signedUp$: boolean = false;
 	userId: string | undefined;
 	id: string = '';
 	lang!: string;
@@ -38,26 +38,22 @@ export class EventComponent implements OnInit {
 	constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, 
 				private eventsService: EventsService, public datePipe: DatePipe, private usersService: UsersService,
 				private keycloakService: KeycloakService, private store: Store) { 
-		this.subscription = this.router.events.subscribe((ev) => {
-		if (ev instanceof NavigationEnd) {
-			if(this.router.url !== '/event'){
+	}
+
+	ngOnInit() {
+		if(this.router.url !== '/event'){
 				const id = this.route.snapshot.paramMap.get("id");
 				if(id !== null)  {
 					this.id = id;
 				}   
 			
-			}
 		}
-		});
-	}
-
-	async ngOnInit(): Promise<void> {
 		this.lang = this.translateService.getBrowserLang();
 		this.user$.subscribe(userStore => {
 			this.userId = userStore.user.userId;
+			this.isSignedUp();
 		});
 		this.urlChange();
-		console.log(this.id);
 		this.events$.subscribe(events => {
 			if(this.id !== '' && events.length > 0) {
 				let event = events.find(event => event.eventId === this.id);
@@ -65,72 +61,59 @@ export class EventComponent implements OnInit {
 					event = {}
 				}
 				this.store.dispatch(setCurrentEvent({event}));
-			
 			}
-		}
-
-		)
-		
+		})
+		this.store.select(selectCurrentEvent).subscribe(currentEvent => {
+			if(currentEvent.startingTime !== undefined && currentEvent.endingTime !== undefined) {
+				this.startingTime$ = currentEvent.startingTime;
+				this.endingTime$ = currentEvent.endingTime;
+			}
+		});
+			
 	}
 
 	async urlChange(){
 		if (this.router.url === '/event') {
-			/* this.events$.subscribe(events => {
+			this.events$.subscribe(events => {
 				this.eventsNumber = events.length;
-			}) */
+			})
 		} else if (this.id !== null) {
-			//this.participantNumber = this.eventById.participantsId.length;
-/* 			await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
-				this.users = users;
-			}); */
-			/* if(this.keycloakService.getUserRoles().includes('events') && this.eventById.eventType == 'MARAUDE'){
-				this.isManagerAndMaraud = true;
-			} */
-			
+			this.store.select(selectCurrentEvent).subscribe(currentEvent => {
+				if(this.keycloakService.getUserRoles().includes('events') && currentEvent.eventType == 'MARAUDE'){
+					this.isManagerAndMaraud = true;
+				}
+			})
 		}
 	}
 
-	ngOnDestroy(): void {
-		this.subscription.unsubscribe();
-	}
 	async signUp(){
-		/* this.eventsService.addParticipant(this.userId, this.id);
-		this.eventById = this.eventsService.getEventById(this.id);
-		this.participantNumber = this.eventById.participantsId.length;
-		this.usersService.getUserList(this.eventById.participantsId).then((users) => {
-			this.users = users;
-		});
-		this.eventsService.getEventByUserId(this.userId).then((eventsUser) => {
-			this.eventsUser = eventsUser;
-		});
-		this.eventsUserNumber = this.eventsUser.length; */
-		
+		await this.eventsService.addParticipant(this.userId, this.id);
 		this.store.dispatch(addEventParticipant({
 			userId: this.userId,
 			eventId: this.id
 		}));
-		console.log(this.currentEvent$);
-		this.signedUp = true;
+		this.signedUp$ = true;
 	}
 
-	async signOut(){
+	isSignedUp(){
+    if(this.id !== null){
+			this.store.select(selectCurrentEvent).subscribe(currentEvent => {
+				if(this.userId !== undefined && currentEvent.participantsId?.includes(this.userId) !== undefined){
+					this.signedUp$ = currentEvent.participantsId?.includes(this.userId)
+				}
+			})}
+  }
 
-		//await this.eventsService.deleteParticipant(this.userId, this.id);
-		//this.participantNumber = this.eventById.participantsId.length;
-/* 		await this.usersService.getUserList(this.eventById.participantsId).then((users) => {
-			this.users = users;
-		}); */
-		/* await this.eventsService.getEventByUserId(this.userId).then((eventsUser) => {
-			this.eventsUser = eventsUser;
-		}); */
-		//this.eventsUserNumber = this.eventsUser.length;
+
+	async signOut(){
+		await this.eventsService.deleteParticipant(this.userId, this.id);
 
 		this.store.dispatch(deleteEventParticipant({
 			userId: this.userId,
 			eventId: this.id
 		}))
 
-		this.signedUp = false;
+		this.signedUp$ = false;
 	}
 
 	reload(eventId: string){

@@ -12,8 +12,8 @@
                             <span *ngIf="(currentEvent$ | async)?.startingCampus !== null" class="info"><span class="info-header">{{ 'eventInfo.campus'| translate }}</span>{{(currentEvent$ | async)?.startingCampus}}</span>
                             <span *ngIf="(currentEvent$ | async)?.location !== null" class="info"><span class="info-header">{{ 'eventInfo.location'| translate }}</span>{{(currentEvent$ | async)?.location}}</span>
                             <span *ngIf="(currentEvent$ | async)?.date !== null" class="info"><span class="info-header">{{ 'eventInfo.date'| translate }}</span>{{(currentEvent$ | async)?.date |  date: 'fullDate':'':lang}}</span>
-                            <span *ngIf="(currentEvent$ | async)?.startingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.startingTime'| translate }}</span>{{"2022-01-01T" + (currentEvent$ | async)?.startingTime |  date: 'shortTime':'':lang}}</span>
-                            <span *ngIf="(currentEvent$ | async)?.endingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.endingTime'| translate }}</span>{{"2022-01-01T" + (currentEvent$ | async)?.endingTime |  date: 'shortTime':'':lang}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.startingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.startingTime'| translate }}</span>{{"2022-01-01T" + startingTime$ |  date: 'shortTime':'':lang}}</span>
+                            <span *ngIf="(currentEvent$ | async)?.endingTime !== null" class="info"><span class="info-header">{{ 'eventInfo.endingTime'| translate }}</span>{{"2022-01-01T" + endingTime$ |  date: 'shortTime':'':lang}}</span>
                             <span class="info-header info">{{ 'eventInfo.description'| translate }}</span>
                             <span *ngIf="(currentEvent$ | async)?.description !== null" class="info description">{{(currentEvent$ | async)?.description}}</span>
                             <span class="event-spacer"></span>
@@ -31,12 +31,12 @@
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
                                 </button>
-                                <button (click)="signUp()" *ngIf="!signedUp" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                <button (click)="signUp()" *ngIf="!signedUp$" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
                                     <span class="mat-button-wrapper">{{ 'eventInfo.signupButton' | translate }}</span>
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
                                 </button>
-                                <button (click)="signOut()" *ngIf="signedUp" mat-raised-button class="mat-focus-indicator mat-button-base event-signout">
+                                <button (click)="signOut()" *ngIf="signedUp$" mat-raised-button class="mat-focus-indicator mat-button-base event-signout">
                                     <span class="mat-button-wrapper">{{ 'eventInfo.signoutButton' | translate }}</span>
                                     <span matripple="" class="mat-ripple mat-button-ripple"></span>
                                     <span class="mat-button-focus-overlay"></span>
@@ -87,7 +87,7 @@
                     </mat-card>
             </mat-grid-tile>
             <mat-grid-tile class="tile mat-elevation-z6" colspan="1" rowspan="1">
-                <app-user-card style="margin: 16px;">
+                <app-user-card (initEvent)="ngOnInit()" style="margin: 16px;">
                 </app-user-card>
             </mat-grid-tile>
     </mat-grid-list>

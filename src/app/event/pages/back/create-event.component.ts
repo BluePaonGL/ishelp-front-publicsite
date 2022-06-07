@@ -7,6 +7,8 @@ import { EventsService } from '../../events.service';
 import {FormControl, FormGroupDirective, FormGroup, NgForm, Validators} from '@angular/forms';
 import { EventDialogComponent } from './event-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { selectEventItems } from 'src/app/core/state/event';
 
 export interface eventData {
   action: 'create' | 'delete';
@@ -23,7 +25,7 @@ export class CreateEventComponent implements OnInit {
 	id: string | null = '';
 	lang!: string;
 	eventById: any;
-	events: any;
+  events$ = this.store.select(selectEventItems);
 	eventsNumber: number | undefined;
 	participantNumber: number | undefined;
 	subscription: any;
@@ -52,7 +54,6 @@ export class CreateEventComponent implements OnInit {
       Validators.required,
     ]),
   });
-  
 
     async onSubmit() {
       this.response = await this.eventsService.addEvent(
@@ -66,7 +67,6 @@ export class CreateEventComponent implements OnInit {
         this.eventForm.value['description']
         );
       if(this.response['eventId']!== null){
-        this.events = this.eventsService.getAllEvents();
         this.openDialog('create', true, null);
       }
       else {
@@ -76,7 +76,7 @@ export class CreateEventComponent implements OnInit {
     }
 
   constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, public dialog: MatDialog, 
-              private eventsService: EventsService, public datePipe: DatePipe, private dateAdapter: DateAdapter<Date>) 
+              private eventsService: EventsService, public datePipe: DatePipe, private store: Store, private dateAdapter: DateAdapter<Date>) 
               { 
     this.eventById = null;
     this.subscription = this.router.events.subscribe((ev) => {
@@ -89,16 +89,17 @@ export class CreateEventComponent implements OnInit {
   }
 
 	async ngOnInit(): Promise<void> {
+    this.events$.subscribe(events => {
+      this.eventsNumber = events.length;
+    })
     this.dateAdapter.setLocale(this.translateService.getDefaultLang()); 
-    this.events = this.eventsService.getAllEvents();
-    this.eventsNumber = this.events.length;
 	}
 
 	ngOnDestroy(): void {
 		this.subscription.unsubscribe();
 	}
   
-  async openDialog(action: string, success: boolean, eventId: string|null){
+  async openDialog(action: string, success: boolean, eventId: string | null | undefined){
     const dialogRef =this.dialog.open(EventDialogComponent, {
       data: {
         action: action,
@@ -110,7 +111,8 @@ export class CreateEventComponent implements OnInit {
       if (this.isDeleted) {
         this.response = await this.eventsService.deleteEvent(eventId);
         this.isDeleted = false;
-        this.events = this.eventsService.getAllEvents();
+        this.events$ = this.store.select(selectEventItems);
+        console.log(this.events$);
       }
     });
   }
