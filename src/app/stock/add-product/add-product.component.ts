@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ApiService } from 'src/app/stock/api.service';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { Observable, Subscriber } from 'rxjs';
 
 @Component({
   selector: 'app-add-product',
@@ -106,5 +107,32 @@ export class AddProductComponent implements OnInit  {
       });
     }
   }
+
+  // productImage: Observable<any>;
+
+  // onChange($event: Event) {
+  //   const file = ($event.target as HTMLInputElement).files[0];
+  //   this.convertToBase64(file);
+  // }
+
+  // convertToBase64(file: File) {
+  //   this.productImage = new Observable((subscriber: Subscriber<any>) => {
+  //     this.readFile(file, subscriber);
+  //   });
+  // }
+
+  // readFile(file: File, subscriber: Subscriber<any>) {
+  //   const filereader = new FileReader();
+  //   filereader.readAsDataURL(file);
+
+  //   filereader.onload = () => {
+  //     subscriber.next(filereader.result);
+  //     subscriber.complete();
+  //   };
+  //   filereader.onerror = (error) => {
+  //     subscriber.error(error);
+  //     subscriber.complete();
+  //   };
+  // }
   
 }
