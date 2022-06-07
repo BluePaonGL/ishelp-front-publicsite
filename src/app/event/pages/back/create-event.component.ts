@@ -112,7 +112,6 @@ export class CreateEventComponent implements OnInit {
         this.response = await this.eventsService.deleteEvent(eventId);
         this.isDeleted = false;
         this.events$ = this.store.select(selectEventItems);
-        console.log(this.events$);
       }
     });
   }

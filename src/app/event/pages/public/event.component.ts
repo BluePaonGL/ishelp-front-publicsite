@@ -87,7 +87,7 @@ export class EventComponent implements OnInit {
 	}
 
 	async signUp(){
-		await this.eventsService.addParticipant(this.userId, this.id);
+		//await this.eventsService.addParticipant(this.userId, this.id);
 		this.store.dispatch(addEventParticipant({
 			userId: this.userId,
 			eventId: this.id
@@ -106,7 +106,7 @@ export class EventComponent implements OnInit {
 
 
 	async signOut(){
-		await this.eventsService.deleteParticipant(this.userId, this.id);
+		//await this.eventsService.deleteParticipant(this.userId, this.id);
 
 		this.store.dispatch(deleteEventParticipant({
 			userId: this.userId,

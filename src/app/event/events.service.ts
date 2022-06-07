@@ -24,18 +24,12 @@ export class EventsService {
 		return event;
 	}
 
-	async addParticipant(participantId: any, eventId: any): Promise<any> {
-		let response = await lastValueFrom(
-			this.http.post(this.eventUrl + '/event/addEventParticipant', {participantId, eventId})
-		);
-		return response;
+	addParticipant(participantId: any, eventId: any) {
+		return this.http.post(this.eventUrl + '/event/addEventParticipant', {participantId, eventId});
 	}
 
-	async deleteParticipant(participantId: any, eventId: any): Promise<any> {
-		let response = await lastValueFrom(
-			this.http.delete(this.eventUrl + '/event/deleteParticipant/' + eventId + '/' + participantId)
-		);
-		return response;
+	deleteParticipant(participantId: any, eventId: any) {
+		return this.http.delete(this.eventUrl + '/event/deleteParticipant/' + eventId + '/' + participantId)
 	}
 
 	async addEvent(name: string, eventType: string, startingCampus: string, location: string|null,

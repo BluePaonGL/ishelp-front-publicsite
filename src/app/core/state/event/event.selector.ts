@@ -6,7 +6,6 @@ export const selectEvents = createFeatureSelector<EventsState>("events");
 export const selectEventItems = createSelector(
     selectEvents,
     (state: EventsState) => {
-        console.log(state);
         return state.events
     }
 )
@@ -14,7 +13,6 @@ export const selectEventItems = createSelector(
 export const selectCurrentEvent = createSelector(
     selectEvents,
     (state: EventsState) => {
-        console.log(state.event);
         return state.event
     }
 )

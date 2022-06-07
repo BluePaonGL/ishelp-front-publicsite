@@ -16,7 +16,6 @@ export class EventsEffects {
             ofType(UserActions.fetchUserSuccess),
             switchMap(() =>
                 this.eventService.getAllEvents().pipe(
-                    tap((events) => console.log(events)),
                     map((events) => {
                         return EventActions.fetchEventsSuccess({events: events});
                     }),
@@ -37,6 +36,30 @@ export class EventsEffects {
                 )
             )
         ))
+    
+    addEventParticipant = createEffect(() => 
+        this.actions$.pipe(
+            ofType(EventActions.addEventParticipant),
+            switchMap((action) =>
+                this.eventService.addParticipant(action.userId, action.eventId).pipe(
+                    map(() => {
+                        return EventActions.addEventParticipantSuccess();
+                    }),
+                )
+            )
+        )
+    )
+
+    deleteEventParticipant = createEffect(() => 
+        this.actions$.pipe(
+            ofType(EventActions.deleteEventParticipant),
+            switchMap((action) => 
+                this.eventService.deleteParticipant(action.userId, action.eventId).pipe(
+                    map(() => EventActions.deleteEventParticipantSuccess())
+                )
+            )
+        )
+    )
 
     /* fetchEventParticipant = createEffect(() =>
         this.actions$.pipe(

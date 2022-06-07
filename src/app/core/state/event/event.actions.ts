@@ -62,9 +62,17 @@ export const addEventParticipant = createAction(
     props<{userId: string | undefined, eventId: string}>()
 );
 
+export const addEventParticipantSuccess = createAction(
+    "[Event Service API] Add Event Participant Success"
+)
+
 export const deleteEventParticipant = createAction(
     "[EventDetails Page] Delete Event Participant Initiated",
     props<{userId: string | undefined, eventId: string}>()
+)
+
+export const deleteEventParticipantSuccess = createAction(
+    "[Event Service API] Delete Event Participant Success"
 )
 
 export const setCurrentEvent = createAction(
