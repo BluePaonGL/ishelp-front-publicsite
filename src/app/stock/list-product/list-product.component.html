@@ -11,7 +11,10 @@
         <div class="row">
             <ng-container *ngFor="let product of productList | filter:filteredString">
                 <div class="content">
-                    <div class="card">  
+                    <div class="forNotif" *ngIf="diffBetweenTwoDate(currentDate,product.expiration_date)<=14" matBadge="1" matBadgePosition="after" matBadgeColor="warn">
+                        
+                    </div>
+                    <div class="card" >  
                         <div class="product-card image">
                             <div *ngIf="product.image === '' ">
                                 <img src="../../../assets/logo-whiteback-square.png" alt="">

@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -12,6 +13,8 @@ import { ApiService } from 'src/app/stock/api.service';
 export class ListProductComponent implements OnInit{
 
   filteredString: string ='';
+  currentDate = new Date();
+
   constructor(
     private router: Router,
     private api : ApiService,
@@ -64,6 +67,17 @@ export class ListProductComponent implements OnInit{
   public getSantizeUrl(url : string) {
     return this.sanitizer.bypassSecurityTrustStyle(url);
   }
+
+
+  diffBetweenTwoDate(date1 : Date, date2 : Date){
+    var dateOne = new Date(date1);
+    var dateTwo = new Date(date2);
+    var Difference_In_Time = dateTwo.getTime() - dateOne.getTime();
+    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    return Difference_In_Days;
+  }
+  
+  
   
 
 }

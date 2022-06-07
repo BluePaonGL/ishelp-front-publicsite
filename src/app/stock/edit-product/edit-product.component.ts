@@ -107,4 +107,13 @@ export class EditProductComponent implements OnInit {
     })
   }
 
+  onFileChange(event : any) {
+    if (event.target.files.length > 0) {
+      const image = event.target.files[0];
+      this.productEdit.patchValue({
+        fileSource: image
+      });
+    }
+  }
+
 }

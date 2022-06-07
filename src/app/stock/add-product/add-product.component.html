@@ -1,6 +1,6 @@
 <div class="body">
     <span class="body-spacer"></span>
-    <form class="container" [formGroup]="productForm" novalidate>
+    <form class="container" [formGroup]="productForm" novalidate enctype="multipart/form-data">
         <h1>Ajouter un produit</h1>
         <mat-form-field appearance="outline">
             <mat-label>Nom du produit</mat-label>
@@ -73,17 +73,16 @@
             </mat-chip-list>
         </mat-form-field>
         
-        <!--
-            <div class="image">
-            <label for="file">Image</label>
+        
+        <div class="image">
             <input formControlName="image" id="image" type="file" class="form-control"(change)="onFileChange($event)">
         </div>
-        -->
+        <!--
         <mat-form-field appearance="outline">
             <mat-label>Image</mat-label>
-            <input formControlName="image" matInput placeholder="Livre pour enfants">
+            <input formControlName="image" matInput>
         </mat-form-field>
-        
+        -->
 
         <div class="actions">
             <button mat-raised-button color="warn" (click)="goToProductList()">Retour</button>

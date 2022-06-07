@@ -27,6 +27,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio'
 import {MatChipsModule} from '@angular/material/chips';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import {MatBadgeModule} from '@angular/material/badge';
+
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -77,6 +79,7 @@ registerLocaleData(localeFr);
     MatRadioModule,
     MatChipsModule,
     MatListModule,
+    MatBadgeModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
