@@ -13,7 +13,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 export class EditProductComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
-  
+  uploadForm: any;  
   listAllergen: string | undefined;
   allergens: string[] = [
     'Gluten',
@@ -42,7 +42,7 @@ export class EditProductComponent implements OnInit {
     private router:ActivatedRoute,
     private formBuilder : FormBuilder,
     private api : ApiService,
-    private route: Router,
+    private route: Router
   ) { }
 
   add(event: MatChipInputEvent, list: string[]): void {
@@ -92,10 +92,18 @@ export class EditProductComponent implements OnInit {
       })
     })
 
+    this.uploadForm = this.formBuilder.group({
+      image: ['']
+    });
+
   }
 
   updateProduct(){
-    this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'], this.image)
+    const formData = new FormData();
+    formData.append('file', this.uploadForm.get('image').value);
+
+    //this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'], this.uploadForm.get("image").value)
+    this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'])
     .subscribe({
       next:(res)=>{
         alert("Produit modifié avec succès");
@@ -107,6 +115,14 @@ export class EditProductComponent implements OnInit {
       }
 
     })
+  }
+
+
+  onFileSelect(event : any) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.uploadForm.get('image').setValue(file);
+    }
   }
 
 }

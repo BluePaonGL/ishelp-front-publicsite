@@ -70,7 +70,8 @@ export class AddProductComponent implements OnInit  {
 
   addProduct(){
     if(this.productForm.valid){
-      this.api.addProduct(this.productForm.value, this.image.value)
+      //this.api.addProduct(this.productForm.value, this.image.value)
+      this.api.addProduct(this.productForm.value)
       .subscribe({
         next:(res)=>{
           alert("Produit ajouté avec succès");
