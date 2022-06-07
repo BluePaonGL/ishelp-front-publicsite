@@ -3,7 +3,13 @@
     <div class="container">
         <div class="card-options">
             <div class="options">
-                <input type="text" name="search" class="form-control" placeholder="Chercher un produit" [(ngModel)]="filteredString"> 
+                <input type="text" name="search" class="form-control" placeholder="Chercher un produit" [(ngModel)]="filteredString">
+                <mat-select formControlName="categorySearch" placeholder="Type de produit">
+                    <mat-option value="alimentaire">Alimentaire</mat-option>
+                    <mat-option value="vestimentaire">Vestimentaire</mat-option>
+                    <mat-option value="hygiene">Hygiène</mat-option>
+                    <mat-option value="jouet">Jouet</mat-option>
+                </mat-select>
                 <button mat-raised-button style="margin-top: 5%;"color="primary" (click)="goToAddProduct()">Ajouter un produit</button>
             </div>
             
