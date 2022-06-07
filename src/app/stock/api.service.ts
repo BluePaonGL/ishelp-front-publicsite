@@ -21,8 +21,8 @@ export class ApiService {
   addProduct(data : any, file : File): Observable<any> {
     return this.http.post(`${baseUrl}/addProduct`, {product: data, file: file});
   }
-  editProduct(data : any, file : File, id : any): Observable<any> {
-    return this.http.put(`${baseUrl}/editProduct/${id}`, {product: data, file: file, id: id});
+  editProduct(data : any, id : any, file : File): Observable<any> {
+    return this.http.put(`${baseUrl}/editProduct/${id}`, {product: data, id: id, file: file});
   }
   deleteProduct(id : any): Observable<any> {
     return this.http.delete(`${baseUrl}/deleteProduct/${id}`);

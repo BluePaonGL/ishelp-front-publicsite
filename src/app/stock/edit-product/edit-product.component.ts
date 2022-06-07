@@ -37,11 +37,12 @@ export class EditProductComponent implements OnInit {
   currentDate = new Date();
   image: any;
 
+
   constructor(
     private router:ActivatedRoute,
     private formBuilder : FormBuilder,
     private api : ApiService,
-    private route: Router
+    private route: Router,
   ) { }
 
   add(event: MatChipInputEvent, list: string[]): void {
@@ -77,8 +78,8 @@ export class EditProductComponent implements OnInit {
 
   ngOnInit() {
 
-    this.api.getProductById(this.router.snapshot.params['productId']).
-    subscribe((result)=>{
+    this.api.getProductById(this.router.snapshot.params['id']) //this.router.snapshot.params['productId']
+      .subscribe((result)=>{
       this.productEdit = new FormGroup({
         name : new FormControl(result['name']),
         quantity : new FormControl(result['quantity']),
@@ -94,7 +95,7 @@ export class EditProductComponent implements OnInit {
   }
 
   updateProduct(){
-    this.api.editProduct(parseInt(this.router.snapshot.params['productId']),this.productEdit.value, this.image)
+    this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'], this.image)
     .subscribe({
       next:(res)=>{
         alert("Produit modifié avec succès");
