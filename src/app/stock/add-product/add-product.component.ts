@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, VERSION, ViewChild, ElementRef} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ApiService } from 'src/app/stock/api.service';
@@ -12,6 +12,10 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 })
 
 export class AddProductComponent implements OnInit  {
+  @ViewChild('image')
+  image2!: ElementRef ;
+  
+
   allergens: string[] = [
     'Gluten',
     'Œuf',
@@ -28,6 +32,7 @@ export class AddProductComponent implements OnInit  {
   productForm! : FormGroup;
   currentDate = new Date();
   image: any;
+  url: string | ArrayBuffer | null | undefined;
 
   constructor(
     private router:Router,
@@ -53,7 +58,7 @@ export class AddProductComponent implements OnInit  {
 
   ngOnInit() {
     this.productForm = this.formBuilder.group({
-      productId : [''],
+      //productId : [''],
       name : ['', [Validators.required, Validators.minLength(2)]],
       quantity : ['', [Validators.required, Validators.min(1)]],
       type : ['', Validators.required],
@@ -67,10 +72,13 @@ export class AddProductComponent implements OnInit  {
   }
 
 
-
-  addProduct(){
+  addProduct(event : any){
     if(this.productForm.valid){
-      //this.api.addProduct(this.productForm.value, this.productForm.get['image'])
+      
+      var file = this.readUrl(event)?.slice(23)
+      console.log(file)
+
+      //this.api.addImage(this.productForm.value, file) //this.image2.nativeElement.value
       this.api.addProduct(this.productForm.value)
       .subscribe({
         next:(res)=>{
@@ -96,6 +104,22 @@ export class AddProductComponent implements OnInit  {
         fileSource: image
       });
     }
+  }
+
+  readUrl(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = (event: ProgressEvent) => {
+        this.url = (<FileReader>event.target).result;
+        //console.log("url = ", this.url)
+      }
+  
+      reader.readAsDataURL(event.target.files[0]);
+      //console.log("event = ", event.target.files[0]);
+      //console.log("reader = ", reader.readAsDataURL(event.target.files[0]));
+    }
+    return this.url
   }
   
 }

@@ -1,6 +1,6 @@
 <div class="body">
     <span class="body-spacer"></span>
-    <form class="container" [formGroup]="productForm"  novalidate> <!--enctype="multipart/form-data"-->
+    <form class="container" [formGroup]="productForm" enctype="multipart/form-data"  novalidate>
         <h1>Ajouter un produit</h1>
         <mat-form-field appearance="outline">
             <mat-label>Nom du produit</mat-label>
@@ -69,12 +69,13 @@
         
             <div class="image">
             <label for="file">Image</label>
-            <input formControlName="image" id="image" type="file" class="form-control"> <!--(change)="onFileChange($event)"-->
+            <input formControlName="image" #image id="image" type="file" class="form-control" (change)="readUrl($event)">
+            <img [src]="url"> 
         </div>
 
         <div class="actions">
             <button mat-raised-button color="warn" (click)="goToProductList()">Retour</button>
-            <button type="submit" mat-raised-button style="margin-left: 8px;"color="primary" (click)="addProduct()">Ajouter</button>
+            <button type="submit" mat-raised-button style="margin-left: 8px;"color="primary" (click)="addProduct($event)">Ajouter</button>
         </div>
     </form>
 </div>

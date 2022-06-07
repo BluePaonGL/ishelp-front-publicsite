@@ -22,6 +22,7 @@ export class ApiService {
   addProduct(data : any): Observable<any> {
     return this.http.post(`${baseUrl}/addProduct`, data);
   }
+
   editProduct(data : any, id : any): Observable<any> {
     return this.http.put(`${baseUrl}/editProduct/${id}`, data);
   }
@@ -42,10 +43,40 @@ export class ApiService {
     return this.http.put(`${baseUrl}/editImage/${id}`, formData)
   }
 
-  /* WITH IMAGE
-  addProduct(data : any, file : File): Observable<any> {
-    return this.http.post(`${baseUrl}/addProduct`, {product: data, file: file});
+
+  addImage(product : any, file : any): Observable<any> {
+    const byteCharacters = atob(file);
+    const byteNumbers = new Array(byteCharacters.length);
+for (let i = 0; i < byteCharacters.length; i++) {
+    byteNumbers[i] = byteCharacters.charCodeAt(i);
+}
+const byteArray = new Uint8Array(byteNumbers);
+const blob = new Blob([byteArray], {type: "multipart/form-data"});
+console.log("blob = ", blob)
+
+
+    const mData = JSON.stringify(product);
+    const formData = new FormData();
+    formData.append('product', mData);
+    if (file) {
+      formData.append('file', blob);
+    }
+
+    const httpOptions = {
+      headers: new HttpHeaders({'Content-Type': 'multipart/form-data;boundary=---WebKit193844043', 'Access-Control-Allow-Origin': '*'}) //multipart/form-data;boundary=---WebKit193844043
+    }
+
+    formData.forEach((value,key) => {
+      console.log(key+" "+value)
+      if(key == "file"){
+        console.log(value.toString)
+      }
+    });
+
+    return this.http.post(`${baseUrl}/test`, {product: mData, file: blob}, httpOptions); //{product: data, file: file}
   }
+
+  /*
   editProduct(data : any, id : any, file : FormData): Observable<any> {
     //const headers = new HttpHeaders().set('Content-Type','multipart/form-data');
     return this.http.put(`${baseUrl}/editProduct/${id}`, {data, id, file}); //,{headers:headers}
