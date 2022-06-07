@@ -36,4 +36,27 @@ export class UserEffects {
             )
         )
     )
+
+    pageApplication$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(UserActions.fetchUserSuccess),
+            switchMap((action) => 
+                this.userService.pageApplications(action.user.userId).pipe(
+                    tap((applications) => console.log(applications)),
+                    map((applications) => UserActions.pageApplicationsSuccess({applications}))
+                )
+            )
+        )
+    )
+
+    submitApplication$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(UserActions.submitApplication),
+            switchMap((action) =>
+                this.userService.submitApplication(action.application).pipe(
+                    map((application) => UserActions.submitApplicationSuccess({application}))
+                )
+            )
+        )
+    )
 }

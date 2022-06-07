@@ -15,7 +15,25 @@ const userReducer = createReducer(
     on(UserActions.registerUserSuccess, (state, {user}) => ({
         ...state,
         user
-    }))
+    })),
+    on(UserActions.submitApplicationSuccess, (state, {application}) => {
+        return {...state,
+        application: application}
+    }),
+    on(UserActions.pageApplicationsSuccess, (state, {applications}) => {
+        console.log(applications);
+        if(applications.content !== undefined) {
+            return {
+                ...state,
+                application: applications.content[applications.content.length - 1]
+            }
+        } else {
+            return {
+                ...state
+            }
+        }
+        
+    })
 );
 
 export function reducer(state: UserState | undefined, action: Action) {
