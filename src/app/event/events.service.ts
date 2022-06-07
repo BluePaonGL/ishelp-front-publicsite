@@ -1,6 +1,7 @@
 import {HttpClient} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {lastValueFrom} from 'rxjs';
+import { Event } from "../core/models/event.model"
 
 @Injectable({
 	providedIn: 'root',
@@ -9,9 +10,8 @@ export class EventsService {
 	eventUrl: string = 'https://event-service.cubetech-app.fr';
 	constructor(private http: HttpClient) {}
 
-	async getAllEvents(): Promise<any> {
-		let events = await lastValueFrom(this.http.get(this.eventUrl + '/event/events/'));
-		return events;
+	getAllEvents() {
+		return this.http.get<Event[]>(this.eventUrl + '/event/events/');
 	}
 
 	async getEventById(eventId: string | null): Promise<any> {

@@ -54,6 +54,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './core/state';
 import { UserEffects } from './core/state/user';
 import { EffectsModule } from '@ngrx/effects';
+import { EventsEffects } from './core/state/event';
 
 
 registerLocaleData(localeFr);
@@ -123,7 +124,7 @@ registerLocaleData(localeFr);
       maxAge: 25,
       logOnly: false
     }),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, EventsEffects]),
   ],
   providers: [
     { 
