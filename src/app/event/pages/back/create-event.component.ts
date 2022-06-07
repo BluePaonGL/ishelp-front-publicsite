@@ -149,7 +149,6 @@ export class CreateEventComponent implements OnInit {
 
         this.isDeleted = false;
         this.events$ = this.store.select(selectEventItems);
-        console.log(this.events$);
       }
     });
   }

@@ -60,7 +60,6 @@ const eventReducer = createReducer(
     on(EventActions.fetchEventParticipantSuccess, (state, {event, users}) => {
         let updatedEvent = {...event};
         updatedEvent.participants = users;
-        updatedEvent.startingCampus = "NDC";
         let updatedState = {
             ...state
         };
