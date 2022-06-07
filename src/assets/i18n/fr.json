@@ -92,6 +92,7 @@
         "registrationButton": "Inscription",
         "connexionButton": "Connexion",
         "createTitle": "Créez votre compte IsHelp"
+    },
     "apply": {
         "title": "Rejoignez isHelp !",
         "object": "Objet de la demande",

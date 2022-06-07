@@ -94,6 +94,7 @@
         "registrationButton": "Register",
         "connexionButton": "Sign In",
         "createTitle": "Create your IsHelp account"
+    },
     "apply": {
         "title": "Join isHelp !",
         "object": "Subject of the requests",

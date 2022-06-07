@@ -11,6 +11,10 @@ const userReducer = createReducer(
     on(UserActions.fetchUserOnLogin, (state, {user}) => ({
         ...state,
         user: user
+    })),
+    on(UserActions.registerUserSuccess, (state, {user}) => ({
+        ...state,
+        user
     }))
 );
 

@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'event/:id', component: EventComponent, canActivate : [AuthGuard] },
   { path: 'event', component: EventComponent, canActivate : [AuthGuard]},
   { path: 'profile', component: ProfileComponent, canActivate : [AuthGuard]},
-  { path: 'home', component: ShowcaseComponent, canActivate : [AuthGuard] },
+  { path: 'home', component: ShowcaseComponent, canActivate: [AuthGuard] },
   { path: 'candidature', component: ApplyComponent},
   { path: 'status', component: CandidateStatusComponent},
   { path: 'gestion/candidatures', component: CandidatesListComponent},

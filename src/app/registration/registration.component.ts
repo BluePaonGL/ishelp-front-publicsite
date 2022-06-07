@@ -1,5 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { registerUser } from '../core/state/user';
 
 @Component({
     selector: 'app-registration',
@@ -14,7 +18,7 @@ export class RegistrationComponent implements OnInit {
         username: new FormControl('', [
             Validators.required
         ]),
-        student_id: new FormControl('', [
+        studentId: new FormControl('', [
             Validators.required,
         ]),
         email: new FormControl('', [
@@ -36,7 +40,7 @@ export class RegistrationComponent implements OnInit {
     });
 
 
-    constructor() {
+    constructor(private store: Store, private router: Router, public dialog: MatDialog) {
     }
 
     ngOnInit(): void {
@@ -44,6 +48,8 @@ export class RegistrationComponent implements OnInit {
     }
 
     onSubmit() {
-
+        delete this.userForm.value.passwordCheck;
+        this.store.dispatch(registerUser({user: this.userForm.value}));
+        this.router.navigate(['/home'])
     }
 }

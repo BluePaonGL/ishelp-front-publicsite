@@ -19,6 +19,10 @@ export class UsersService {
 		return this.http.get<User>(this.userUrl + '/user/' + userId);
 	}
 
+	registerUser(user: User) {
+		return this.http.post<User>(this.userUrl + '/user', user);
+	}
+
 	async getUserById(userId: string): Promise<any> {
 		let user;
 		await this.keycloakService.loadUserProfile().then(async (profile) => {

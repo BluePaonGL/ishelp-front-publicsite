@@ -1,3 +1,4 @@
+import { MatDialog } from "@angular/material/dialog";
 import { createAction, props } from "@ngrx/store";
 import { User } from "../../models/user.model";
 
@@ -18,3 +19,12 @@ export const fetchUserOnLogin = createAction(
     props<{user : User}>()
 );
 
+export const registerUser = createAction(
+    "[Register Page] Register User",
+    props<{user: User}>()
+);
+
+export const registerUserSuccess = createAction(
+    "[UserService API] Register User Success",
+    props<{user: User}>()
+)
