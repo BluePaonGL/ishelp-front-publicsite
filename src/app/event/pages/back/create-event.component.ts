@@ -8,7 +8,8 @@ import {FormControl, FormGroupDirective, FormGroup, NgForm, Validators} from '@a
 import { EventDialogComponent } from './event-dialog.component';
 import {MatDialog} from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { selectEventItems } from 'src/app/core/state/event';
+import { addEvent, deleteEvent, selectEventItems } from 'src/app/core/state/event';
+import { Event } from 'src/app/core/models/event.model';
 
 export interface eventData {
   action: 'create' | 'delete';
@@ -66,7 +67,38 @@ export class CreateEventComponent implements OnInit {
         this.eventForm.value['end']+ ':00',
         this.eventForm.value['description']
         );
+
+      const test: Event =  {
+        eventId: "test",
+        name: "test",
+        eventType: "test",
+        startingCampus: "test",
+        startingTime: "test",
+        endingTime: "test",
+        location: "test",
+        date: "test",
+        description: "test",
+        participantsId: [''],
+        participants: []
+      }
+      
       if(this.response['eventId']!== null){
+        const event: Event =  {
+          eventId: this.response['eventId'],
+          name: this.response['name'],
+          eventType: this.response['eventType'],
+          startingCampus: this.response['startingCampus'],
+          startingTime: this.response['startingTime'],
+          endingTime: this.response['endingTime'],
+          location: this.response['location'],
+          date: this.response['date'],
+          description: this.response['description'],
+          participantsId: [],
+          participants: []
+        };
+        this.store.dispatch(addEvent({
+          event: event
+        }));
         this.openDialog('create', true, null);
       }
       else {
@@ -109,7 +141,12 @@ export class CreateEventComponent implements OnInit {
     await dialogRef.afterClosed().subscribe(async result => {
       this.isDeleted = result;
       if (this.isDeleted) {
-        this.response = await this.eventsService.deleteEvent(eventId);
+        if(eventId !== null &&  eventId !== undefined){     
+          this.response = await this.eventsService.deleteEvent(eventId);   
+          this.store.dispatch(deleteEvent({
+          eventId: eventId
+        }));}
+
         this.isDeleted = false;
         this.events$ = this.store.select(selectEventItems);
         console.log(this.events$);

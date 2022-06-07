@@ -1,3 +1,4 @@
+import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store";
 import { initialState } from "../event";
 import * as EventActions from "./event.actions";
@@ -68,11 +69,39 @@ const eventReducer = createReducer(
             ...updatedState
         }
     }),
+
     on(EventActions.setCurrentEvent, (state, {event}) => {
         const currentEvent = {...event};
         return {
             ...state,
             event: currentEvent
+        }
+    }),
+
+    on(EventActions.addEvent, (state, {event}) => {
+        let events = [...state.events]
+        events.push(event)
+        let sortedEvents = events.sort((objA, objB) => {
+            if(objA.date !== undefined && objB.date !== undefined) {
+                return new Date(objA.date).getTime() - new Date(objB.date).getTime()
+            }
+            return 0;
+        });
+        return {
+            ...state,
+            events: sortedEvents
+        }
+    }),
+
+    on(EventActions.deleteEvent, (state, {eventId}) => {
+        let events = [...state.events]
+        let eventIndex = state.events.findIndex(
+            (event) => event.eventId === eventId
+        )
+        events.splice(eventIndex, 1)
+        return {
+            ...state,
+            events: events
         }
     })
 )

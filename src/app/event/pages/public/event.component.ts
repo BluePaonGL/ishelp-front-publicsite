@@ -107,7 +107,6 @@ export class EventComponent implements OnInit {
 
 	async signOut(){
 		await this.eventsService.deleteParticipant(this.userId, this.id);
-
 		this.store.dispatch(deleteEventParticipant({
 			userId: this.userId,
 			eventId: this.id
