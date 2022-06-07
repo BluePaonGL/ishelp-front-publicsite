@@ -1,5 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/stock/api.service';
@@ -19,7 +20,7 @@ export class ListProductComponent implements OnInit{
     private router: Router,
     private api : ApiService,
     private sanitizer: DomSanitizer,
-    
+    private dialog : MatDialog
   ){}
   
   public productList : any;
@@ -77,6 +78,9 @@ export class ListProductComponent implements OnInit{
     return Difference_In_Days;
   }
   
+  seeMessage(){
+    alert("Votre produit périme dans moins de deux semaines")
+  }
   
   
 
