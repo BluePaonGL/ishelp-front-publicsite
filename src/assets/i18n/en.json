@@ -81,6 +81,19 @@
         "buttonYes": "Yes",
         "buttonClose": "Close"
     },
+
+    "userCreate": {
+        "usernameLabel": "Username",
+        "studentIDLabel": "Student ID",
+        "emailLabel": "Email Isep",
+        "firstNameLabel": "First Name",
+        "lastNameLabel": "Last Name",
+        "photoLabel": "Profile picture",
+        "passwordLabel": "Password",
+        "passwordCheckLabel": "Password confirmation",
+        "registrationButton": "Register",
+        "connexionButton": "Sign In",
+        "createTitle": "Create your IsHelp account"
     "apply": {
         "title": "Join isHelp !",
         "object": "Subject of the requests",

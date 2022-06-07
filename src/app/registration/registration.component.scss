@@ -1,0 +1,50 @@
+@use "@angular/material" as mat;
+@import "../../styles.scss";
+
+.mat-card {
+  background-color: mat.get-color-from-palette($mat-blue-custom, 500);
+  color: mat.get-color-from-palette($mat-grey-custom, 50);
+  width: 40%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin: 2% auto;
+}
+.mat-card-title{
+  margin-right: auto;
+  margin-left:auto;
+  text-align: center;
+}
+
+img {
+  width: 15%;
+  margin-right: auto;
+  margin-left:auto;
+}
+
+.mat-card-content {
+  color: mat.get-color-from-palette($mat-blue-custom, 500);
+  background-color: mat.get-color-from-palette($mat-grey-custom, 50);
+  border-radius: 20px;
+  padding: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-registration {
+  color: mat.get-color-from-palette($mat-grey-custom, 50);
+  background-color: mat.get-color-from-palette($mat-blue-custom, 50);
+  text-align: center;
+}
+
+.button-connexion {
+  color: mat.get-color-from-palette($mat-grey-custom, 50);
+  background-color: mat.get-color-from-palette($mat-grey-custom, 700);
+  text-align: center;
+}
+
+.mat-card-actions{
+  text-align: center;
+}
