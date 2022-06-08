@@ -83,7 +83,8 @@ registerLocaleData(localeFr);
     ProfileComponent,
     MaraudComponent,
     UserCardComponent,
-    MaraudusersComponent
+    MaraudusersComponent,
+    RegistrationComponent
   ],
   imports: [
     MatCheckboxModule,
