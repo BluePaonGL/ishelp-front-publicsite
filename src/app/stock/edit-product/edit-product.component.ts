@@ -108,8 +108,10 @@ export class EditProductComponent implements OnInit {
     //var file = new File([this.image], "file");
 
     var file = this.readUrl(event)
-    this.productEdit.value.image = this.readUrl(event)
-    console.log(this.productEdit.value)
+    console.log(file)
+    if (file != null){
+      this.productEdit.value.image = this.readUrl(event)
+    }
 
     //this.api.AddModelData(this.productEdit.value, this.router.snapshot.params['id'], file) //this.uploadForm.get("image").value
     this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'])

@@ -72,6 +72,7 @@
         <div class="image">
             <label for="file">Image</label>
             <input formControlName="image" id="image" type="file" class="form-control" (change)=readUrl($event)> <!-- (change)="onFileSelect($event)"-->
+            <img class="image" [src]="url"> 
         </div>
 
         <div class="actions">
