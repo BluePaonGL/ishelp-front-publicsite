@@ -32,3 +32,8 @@ export const selectUserStudentId = createSelector(
     selectUser,
     (state: UserState) => state.user.studentId
 );
+
+export const selectUserEvents = createSelector(
+    selectUser,
+    (state: UserState) => state.user.events
+);

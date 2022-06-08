@@ -19,6 +19,7 @@ export class MaraudComponent implements OnInit {
   lang!: string;
   maraudNumber: number = 0;
   marauds: any;
+  usersMaraud: any;
 
   constructor(public router: Router, private route: ActivatedRoute,  private usersService: UsersService,
     private eventsService: EventsService, private maraudsService: MaraudsService) 
@@ -35,8 +36,7 @@ export class MaraudComponent implements OnInit {
     }
 
   async ngOnInit(): Promise<void> {
-
-    this.urlChange();
+    await this.urlChange();
   }
 
   async urlChange(){
@@ -44,6 +44,16 @@ export class MaraudComponent implements OnInit {
       this.eventById = await this.eventsService.getEventById(this.id);
       this.marauds = await this.maraudsService.getMaraudsByEventId(this.id);
       this.maraudNumber = this.marauds.length;
+      this.usersMaraud =[];
+      await this.marauds.forEach(async (maraud: any) => {
+        let users: string[] = [];
+        await maraud.maraudGroupMembers.forEach(async (user: string) => {  
+          users.push(await this.getName(user))
+        })
+        
+        this.usersMaraud.push([maraud.maraudGroupId, users])
+      });
+      console.log(this.usersMaraud[0][1])
 		}
 	}
   ngOnDestroy(): void {
@@ -51,20 +61,27 @@ export class MaraudComponent implements OnInit {
   }
 
   async addGroup() {
-    console.log(this.eventById.eventId);
     await this.maraudsService.addGroup(this.eventById.eventId, (this.maraudNumber + 1).toString()).then((events) => (this.events = events));
     this.marauds = await this.maraudsService.getMaraudsByEventId(this.id);
     this.maraudNumber = this.marauds.length;
   }
 
+  async deleteMaraudGroup(groupId: string){
+    await this.maraudsService.deleteMaraudGroup(groupId);
+    this.marauds = await this.maraudsService.getMaraudsByEventId(this.id);
+    this.maraudNumber = this.marauds.length;
+  }
+
   isUsers(listOfUsers: any[]): boolean {
-    if(listOfUsers.length === 0){
-      return false;
+    if(listOfUsers !== undefined){
+      if(listOfUsers.length === 0){
+        return false;
+      }
     }
     return true;
   }
   
-  async getName(userId: string): Promise<string> {
+  async getName(userId: string) {
     let user = await this.usersService.getUserById(userId);
     let firstLastName = user.lastName + " " + user.firstName
     return firstLastName;

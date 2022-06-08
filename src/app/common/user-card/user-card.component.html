@@ -9,7 +9,7 @@
         <mat-card-title  class="mat-title header-card"><h1 class="mat-h1 header-card"> {{ 'eventList.titleUser'| translate }}</h1></mat-card-title>
     </mat-card-header>
     <mat-list class="custom-list" style="margin-bottom: 16px">
-        <span *ngIf="eventsUserNumber === 0">
+        <span *ngIf="(userEvents$ | async)?.length === 0">
             <mat-list-item class="mat-list-item " style="width: 100%; height: 100%;">
                 <a style="width: 100%; height: 100%;">
                     <div style="width: 100%;">
@@ -20,7 +20,7 @@
                 </a>
             </mat-list-item>
         </span>
-        <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of eventsUser">
+        <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content"*ngFor="let event of userEvents$ | async">
             <a style="width: 100%;" [routerLink]= "['/event/',event.eventId]" (click)="reload(event.eventId)">
                 <div class="event-list">
                     <div mat-line class="event-date">{{event.date |  date: 'fullDate':'':lang}}</div>

@@ -118,6 +118,11 @@
         "addGroup": "Ajouter un groupe",
         "deleteGroup": "Supprimer ce groupe",
         "addUser": "Ajouter les utilisateurs",
-        "removeUser": "Retirer les utilisateurs"
+        "removeUser": "Retirer les utilisateurs",
+        "titleGroup": "Gestion du groupe",
+        "availableUsers": "Participants disponibles :",
+        "participants": "Participants :",
+        "addUsers" : "Ajouter les participants",
+        "removeUsers" : "Retirer les participants"
     }
 }

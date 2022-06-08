@@ -22,20 +22,25 @@
                         </mat-list-item>
                     </span>
                     <mat-list class="custom-list" style="margin-bottom: 16px">
-                        <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content" *ngFor="let maraud of marauds">
-                            <div class="event-list">
-                                <div mat-line class="maraud-group" style="display: flex; flex-direction: row;">
+                        <mat-list-item class="mat-list-item" style="height: fit-content; width: 100%; min-width:fit-content" *ngFor="let maraud of marauds; let y = index">
+                            <div style="width: 100%;">
+                                <div mat-line class="maraud-group" style="display: flex; flex-direction: row; width: 100%;">
                                     <span style="margin: auto;">{{ 'maraud.maraudLabel'| translate }} {{maraud.groupLabel}}   </span> 
                                     <span class="event-spacer"></span>                    
-                                    <button (click)="'test'" [routerLink]= "['/event/manage/group',maraud.groupId]" mat-mini-fab color="primary" class="mat-focus-indicator mat-button-base event-signup" style="box-shadow: none;">
+                                    <button (click)="'test'" [routerLink]= "['/event/manage/group',maraud.maraudGroupId]" mat-mini-fab color="primary" class="mat-focus-indicator mat-button-base event-signup" style="box-shadow: none; margin-right: 10px">
                                         <mat-icon>edit</mat-icon>
                                     </button>
+                                    <button (click)="deleteMaraudGroup(maraud.maraudGroupId)" mat-mini-fab color="warn" class="mat-focus-indicator mat-button-base event-signup" style="box-shadow: none;">
+                                        <mat-icon>delete</mat-icon>
+                                    </button>
                                 </div>
-                                <mat-card class="event-card mat-elevation-z3">
-                                    <div class="event-tab">
-                                        <span *ngIf="!isUsers(maraud.listOfUsers)">{{ 'maraud.noUser'| translate }}</span>
-                                        <div *ngIf="isUsers(maraud.listOfUsers)" class="event-tab-left">
-                                            <span *ngFor="let user of maraud.listOfUsers" style="font-weight: 100;">{{getName(user)}}</span>
+                                <mat-card class="event-card mat-elevation-z3" style="padding-top: 0;">
+                                    <div class="maraud-tab" style="width: 100%">
+                                        <span *ngIf="!isUsers(maraud.maraudGroupMembers)" style="padding-top: 16px;">{{ 'maraud.noUser'| translate }}</span>
+                                        <div *ngIf=" isUsers(maraud.maraudGroupMembers) " class="event-tab-left">
+                                            <mat-card *ngFor="let user of this.usersMaraud[y][1]; let i = index" class="maraud-user-card mat-elevation-z3">
+                                                {{ user }}
+                                            </mat-card>
                                         </div>
                                     </div>
                                 </mat-card>

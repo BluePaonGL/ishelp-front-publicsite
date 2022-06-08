@@ -11,7 +11,7 @@ export class EventsService {
 	constructor(private http: HttpClient) {}
 
 	getAllEvents() {
-		return this.http.get<Event[]>(this.eventUrl + '/event/events/');
+		return this.http.get<Event[]>(this.eventUrl + '/event/events');
 	}
 
 	async getEventById(eventId: string | null): Promise<any> {
@@ -19,9 +19,8 @@ export class EventsService {
 		return event;
 	}
 
-	async getEventByUserId(userId: string | undefined): Promise<any> {
-		let event = await lastValueFrom(this.http.get(this.eventUrl + '/event/eventsByParticipantId/' + userId));
-		return event;
+	getEventByUserId (userId: string | undefined){
+		return this.http.get<Event[]>(this.eventUrl + '/event/eventsByParticipantId/' + userId);
 	}
 
 	addParticipant(participantId: any, eventId: any) {

@@ -1,0 +1,68 @@
+<div class="body">
+    <span class="body-spacer"></span>
+    <div class="grid-div">
+        <mat-grid-list class="grid" cols="3" rowHeight="fit" gutterSize="3%">
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="2" rowspan="1">
+                <mat-card class="base-card events-card">
+                    <div style="margin-bottom: 16px;">
+                        <mat-card-header style="padding-top: 16px;">
+                        <mat-card-title  class="mat-title margin-card header-card"><h1 class="mat-h1 header-card"> {{ 'maraud.titleGroup'| translate }} {{maraud.groupLabel}}</h1></mat-card-title>
+                        </mat-card-header>
+                    </div>
+                    <div style="display: flex; flex-direction: columns; height: 100%; margin-bottom: 16px;">
+                        <div style="width: 100%; margin-right: 8px;">
+                            <div mat-line class="maraud-group" style="display: flex; flex-direction: row; width: 100%;">
+                                <span style="margin: auto;">{{ 'maraud.availableUsers'| translate }}    </span> 
+                                <span class="event-spacer"></span>                    
+                            </div>
+                            <form [formGroup]="formAdd" (ngSubmit)="submitAdd()" style="height: 100%;">
+                                <mat-card class="event-card mat-elevation-z3" style=" width: 100%;">
+                                    <div class="event-tab">
+                                        <mat-card class="maraud-user-card mat-elevation-z3" style="margin-top: 0;">
+                                            <p formArrayName="orders" *ngFor="let order of ordersFormAddArray.controls; let i = index">
+                                                <mat-checkbox color="primary" [formControlName]="i"> {{ availableUsernames[i] }} </mat-checkbox>
+                                            </p>
+                                        </mat-card>
+                                    </div>
+                                </mat-card>
+                                <button (click)="'addGroup()'" style="margin-top: 16px; width: 100%;" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                    <span class="mat-button-wrapper">{{ 'maraud.addUsers' | translate }}</span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
+                            </form>
+                        </div>
+                        <div style="width: 100%; margin-left: 8px;">
+                            <div mat-line class="maraud-group" style="display: flex; flex-direction: row; width: 100%;">
+                                <span style="margin: auto;">{{ 'maraud.participants'| translate }}    </span> 
+                                <span class="event-spacer"></span>                    
+                            </div>
+                            <form [formGroup]="formRemove" (ngSubmit)="submitRemove()">
+                                <mat-card class="event-card mat-elevation-z3" style="height: fit-content; width: 100%;">
+                                    <div class="event-tab">
+                                        <mat-card class="maraud-user-card mat-elevation-z3" style="margin-top: 0;">
+                                            <p formArrayName="orders" *ngFor="let order of ordersFormRemoveArray.controls; let i = index">
+                                                <mat-checkbox color="primary" [formControlName]="i"> {{ participantUsernames[i] }} </mat-checkbox>
+                                            </p>
+                                        </mat-card>
+                                    </div>
+                                </mat-card>
+                                <button (click)="'addGroup()'" style="margin-top: 16px; width: 100%;" mat-raised-button class="mat-focus-indicator mat-button-base event-signup">
+                                    <span class="mat-button-wrapper">{{ 'maraud.removeUsers' | translate }}</span>
+                                    <span matripple="" class="mat-ripple mat-button-ripple"></span>
+                                    <span class="mat-button-focus-overlay"></span>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </mat-card> 
+            </mat-grid-tile>
+
+            <mat-grid-tile class="tile mat-elevation-z6" colspan="1" rowspan="1">
+                <app-user-card  style="margin: 16px;">
+                </app-user-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <span class="body-spacer"></span>
+</div>

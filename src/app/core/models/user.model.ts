@@ -1,3 +1,5 @@
+import { Event } from "./event.model";
+
 export interface User {
     userId?: string,
     username: string | undefined,
@@ -8,5 +10,6 @@ export interface User {
     firstName?: string,
     lastName?: string,
     profilePicture?: string,
-    language?: string
+    language?: string,
+    events?: Event[]
 }

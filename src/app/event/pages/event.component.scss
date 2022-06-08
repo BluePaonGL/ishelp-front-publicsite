@@ -22,6 +22,7 @@
 }
 
 .custom-list {
+	width: 100%;
 	height: 100%;
 	overflow: auto;
 	margin-bottom: 16px;
@@ -63,9 +64,6 @@
 	color: mat.get-color-from-palette($mat-grey-custom, 50);
 }
 
-
-
-
 mat-list-item-content {
 	padding-left: 0;
 }
@@ -81,8 +79,6 @@ mat-list-item-content {
 	display: flex;
 	flex-direction: row;
 }
-
-
 
 .participant-img {
 	margin: 0 0;
@@ -207,4 +203,19 @@ mat-list-item-content {
 .maraud-group {
 	width: 100%;
 	margin-top: 16px;
+}
+
+.maraud-user-card{
+	box-sizing: border-box;
+	background-color: mat.get-color-from-palette($mat-grey-custom, 50);
+	color: black;
+	height: fit-content;
+	width: 100%;
+	margin-top: 16px;
+}
+
+.maraud-tab {
+	font-size: 16px;
+	display: flex;
+	flex-direction: column;
 }

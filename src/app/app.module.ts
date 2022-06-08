@@ -26,6 +26,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {NgxMatTimepickerModule} from 'ngx-mat-timepicker';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -55,6 +56,7 @@ import { reducers, metaReducers } from './core/state';
 import { UserEffects } from './core/state/user';
 import { EffectsModule } from '@ngrx/effects';
 import { EventsEffects } from './core/state/event';
+import { MaraudusersComponent } from './event/pages/back/maraudusers.component';
 
 
 registerLocaleData(localeFr);
@@ -78,9 +80,11 @@ registerLocaleData(localeFr);
     EventDialogComponent,
     ProfileComponent,
     MaraudComponent,
-    UserCardComponent
+    UserCardComponent,
+    MaraudusersComponent
   ],
   imports: [
+    MatCheckboxModule,
     ReactiveFormsModule,
     FormsModule,
     NgxMatTimepickerModule.setLocale('fr-FR'),

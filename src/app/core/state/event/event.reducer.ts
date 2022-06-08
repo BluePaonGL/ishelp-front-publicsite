@@ -1,8 +1,6 @@
-import { state } from "@angular/animations";
 import { Action, createReducer, on } from "@ngrx/store";
 import { initialState } from "../event";
 import * as EventActions from "./event.actions";
-import { EventsEffects } from "./event.effects";
 import { EventsState } from "./event.state";
 
 const eventReducer = createReducer(

@@ -60,22 +60,4 @@ export class EventsEffects {
             )
         )
     )
-
-    /* fetchEventParticipant = createEffect(() =>
-        this.actions$.pipe(
-            ofType(EventActions.fetchEventsSuccess),
-            exhaustMap((action) => 
-                merge(
-                    ...action.events.map(event =>
-                        this.userService.getUserList(event.participantsId).pipe(
-                            tap((users) => console.log(users, event)),
-                            map(users => {
-                                return EventActions.fetchEventParticipantSuccess({event, users});
-                            })
-                        )
-                    )
-                )
-            )
-        )
-    ) */
 }

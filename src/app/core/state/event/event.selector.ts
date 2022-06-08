@@ -17,6 +17,16 @@ export const selectCurrentEvent = createSelector(
     }
 )
 
+export const selectEvent = (id: string) => createSelector(
+    selectEvents,
+    (state: EventsState) => {
+        let eventIndex = state.events.findIndex(
+            (event) => event.eventId === id
+        )
+        return state.events[eventIndex]
+    }
+)
+
 export const selectEventItem = (props: {id: string}) => 
     createSelector(selectEventItems, (eventItems) =>
         eventItems.find((eventItem) => eventItem.eventId === props.id)

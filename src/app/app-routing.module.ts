@@ -13,6 +13,7 @@ import { MaraudComponent } from './event/pages/back/maraud.component';
 import { CandidateStatusComponent} from './recruitment/pages/candidate-status/candidate-status.component';
 import { CandidateChoiceComponent} from './recruitment/pages/candidate-choice/candidate-choice.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { MaraudusersComponent } from './event/pages/back/maraudusers.component';
 
 const routes: Routes = [
   { path: 'page_not_found', component: PageNotFoundComponent, canActivate : [AuthGuard] },
@@ -22,6 +23,10 @@ const routes: Routes = [
     } 
   },
   { path: 'event/manage/:id', component: MaraudComponent, canActivate : [AuthGuard], data: {
+    roles: ['events'],
+    } 
+  },
+  { path: 'event/manage/group/:id', component: MaraudusersComponent, canActivate : [AuthGuard], data: {
     roles: ['events'],
     } 
   },

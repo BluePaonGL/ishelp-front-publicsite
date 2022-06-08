@@ -3,8 +3,7 @@ import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {DatePipe} from '@angular/common';
 import { EventsService } from 'src/app/event/events.service';
-import { UsersService } from 'src/app/utility/users.service';
-import { selectUser, selectUserFirstName, selectUserId, selectUserLastName } from 'src/app/core/state/user';
+import { selectUser, selectUserEvents, selectUserFirstName, selectUserId, selectUserLastName } from 'src/app/core/state/user';
 import { Store } from '@ngrx/store';
 
 
@@ -18,6 +17,7 @@ export class UserCardComponent implements OnInit {
 	initEvent: EventEmitter<any> = new EventEmitter();
 
   profilePictureUrl: string | undefined = '../../assets/logo-whiteback-round.png';
+	userEvents$ = this.store.select(selectUserEvents)
 	userLastName$ = this.store.select(selectUserLastName);
 	userFirstName$ = this.store.select(selectUserFirstName);
 	user$ = this.store.select(selectUser);
@@ -26,29 +26,24 @@ export class UserCardComponent implements OnInit {
 	id: string | null = '';
 	lang!: string;
 	eventById: any;
-	eventsUser: any;
-	eventsUserNumber: number | undefined;
-	participantNumber: number | undefined;
+	eventsNumber$ = 0;
 
-
-  constructor(private translateService: TranslateService, public router: Router, private store: Store,
-    private eventsService: EventsService, public datePipe: DatePipe) {}
+  constructor(private translateService: TranslateService, public router: Router, private store: Store, public datePipe: DatePipe) {}
 
   ngOnInit() {
 		this.user$.subscribe(userStore => {
 			this.userId = userStore.user.userId;
 			this.profilePictureUrl = userStore.user.profilePicture;
-			this.eventsService.getEventByUserId(this.userId).then((eventsUser) => {
-				this.eventsUser = eventsUser;
-				this.eventsUserNumber = this.eventsUser.length;
-			});
+			if(userStore.user.events !== undefined) {
+				this.eventsNumber$ = userStore.user.events.length
+			}
 		})
 		this.lang = this.translateService.getBrowserLang();
 		
 
 	}
 
-  reload(eventId: string){
+  reload(eventId: string |undefined) {
 		this.router.navigateByUrl('/event/'+eventId, { skipLocationChange: true }).then(() => {
 			if(this.router.url.includes('/event/')){
 				this.initEvent.emit()

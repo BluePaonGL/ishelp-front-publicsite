@@ -5,11 +5,9 @@ import {DatePipe} from '@angular/common';
 import { UsersService } from '../../../utility/users.service';
 import { EventsService } from '../../events.service';
 import { KeycloakService } from 'keycloak-angular';
-import { selectUser, selectUserId } from 'src/app/core/state/user';
+import { addUserEvent, deleteUserEvent, selectUser } from 'src/app/core/state/user';
 import { Store } from '@ngrx/store';
-import { addEventParticipant, fetchEventParticipant, selectEventItems, selectCurrentEvent, setCurrentEvent, deleteEventParticipant} from 'src/app/core/state/event';
-import { filter, map, Observable, tap } from 'rxjs';
-import { Event } from 'src/app/core/models/event.model';
+import { addEventParticipant, selectEventItems, selectCurrentEvent, setCurrentEvent, deleteEventParticipant, selectEventItem, selectEvent} from 'src/app/core/state/event';
 
 @Component({
 	selector: 'app-event',
@@ -82,6 +80,7 @@ export class EventComponent implements OnInit {
 				if(this.keycloakService.getUserRoles().includes('events') && currentEvent.eventType == 'MARAUDE'){
 					this.isManagerAndMaraud = true;
 				}
+				else{this.isManagerAndMaraud = false;}
 			})
 		}
 	}
@@ -91,6 +90,13 @@ export class EventComponent implements OnInit {
 			userId: this.userId,
 			eventId: this.id
 		}));
+		this.store.select(selectEvent(this.id)).subscribe( event => {
+			if(event !== undefined){
+					this.store.dispatch(addUserEvent({event: event}));
+			}	
+		}
+		).unsubscribe();
+		
 		this.signedUp$ = true;
 	}
 
@@ -109,7 +115,12 @@ export class EventComponent implements OnInit {
 			userId: this.userId,
 			eventId: this.id
 		}))
-
+		this.store.select(selectEvent(this.id)).subscribe( event => {
+			if(event !== undefined){
+					this.store.dispatch(deleteUserEvent({event: event}));
+			}	
+		}
+		).unsubscribe();
 		this.signedUp$ = false;
 	}
 

@@ -3,7 +3,7 @@ import {TranslateService} from '@ngx-translate/core';
 import {KeycloakService} from 'keycloak-angular';
 import {KeycloakProfile} from 'keycloak-js';
 import {Store} from "@ngrx/store";
-import { appLoaded, fetchUserOnLogin } from './core/state/user';
+import { appLoaded, fetchEventsOnLogin, fetchUserOnLogin } from './core/state/user';
 import { User } from './core/models/user.model';
 
 @Component({
@@ -46,6 +46,14 @@ export class AppComponent implements OnInit {
 					user: user
 				})
 			);
+			if(user.userId !== undefined){
+				this.store.dispatch(
+				fetchEventsOnLogin({
+					userId: user.userId
+				})
+			);
+			}
+
 		}
 		
 	}

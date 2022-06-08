@@ -119,6 +119,11 @@
         "addGroup": "Add a maraud group",
         "deleteGroup": "Remove a maraud group",
         "addUser": "Add users",
-        "removeUser": "Remove users"
+        "removeUser": "Remove users",
+        "titleGroup": "Managing the group",
+        "availableUsers": "Available users:",
+        "participants": "Participants:",
+        "addUsers" : "Add selected users",
+        "removeUsers" : "Remove selected users"
     }
 }
