@@ -6,22 +6,22 @@
                 <mat-card class="events-card">
                     <mat-card-header style="padding-top: 16px;">
                         <mat-card-title class="mat-title margin-card header-card">
-                            <h1 class="mat-h1 header-card">{{'Nom candidat'}}</h1>
+                            <h1 class="mat-h1 header-card">{{(application$ | async)?.user?.firstName}} {{(application$ | async)?.user?.lastName}}</h1>
                         </mat-card-title>
                     </mat-card-header>
                     
                     <div class="event-info">
                         <label for="" class="apply-label">{{ 'apply.object' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{(application$ | async)?.object}}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.motivationText' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{(application$ | async)?.motivations}}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.experienceText' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{(application$ | async)?.resume}}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.contact' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{(application$ | async)?.contact}}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.file' | translate }} <span class="blue">(facultatif)</span></label>
                         <div>fichier.pdf</div> <br>

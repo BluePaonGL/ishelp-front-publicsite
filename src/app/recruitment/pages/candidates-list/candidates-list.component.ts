@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectApplicationItems, selectApplications } from 'src/app/core/state/applications';
 import {Candidate} from "../../models/candidate.model";
 
 @Component({
@@ -8,8 +10,9 @@ import {Candidate} from "../../models/candidate.model";
 })
 export class CandidatesListComponent implements OnInit {
   candidates!: Candidate[];
+  applications$ = this.store.select(selectApplicationItems);
 
-  constructor() { }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.candidates = [

@@ -1,3 +1,5 @@
+import { User } from "./user.model"
+
 export interface ApplicationPaging {
     content?: Application[],
     totalElements?: number,
@@ -10,5 +12,7 @@ export interface Application {
     object?: string,
     motivations?: string,
     resume?: string,
-    contact?: string
+    contact?: string,
+    status?: string,
+    user?: User
 }
