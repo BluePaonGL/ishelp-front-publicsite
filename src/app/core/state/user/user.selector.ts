@@ -40,7 +40,6 @@ export const selectUserEvents = createSelector(
 export const selectApplication = createSelector(
     selectUser,
     (state: UserState) => {
-        console.log(state.application);
         return state.application
     }
 )

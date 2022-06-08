@@ -53,7 +53,6 @@ export class MaraudComponent implements OnInit {
         
         this.usersMaraud.push([maraud.maraudGroupId, users])
       });
-      console.log(this.usersMaraud[0][1])
 		}
 	}
   ngOnDestroy(): void {

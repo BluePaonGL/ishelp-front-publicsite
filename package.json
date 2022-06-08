@@ -37,7 +37,7 @@
     "ngx-mat-timepicker": "^13.0.0",
     "ngx-material-timepicker": "^5.5.3",
     "resources": "^0.4.3",
-    "rxjs": "~7.5.0",
+    "rxjs": "^7.5.5",
     "sass": "^1.52.1",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",

@@ -66,7 +66,6 @@ export class MaraudusersComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     if (this.id !== null) {
       this.maraud = await this.maraudsService.getMaraudsByGroupId(this.id);
-      console.log(this.maraud)
       this.memberNumber = this.maraud.maraudGroupMembers.length;
       this.users = await this.maraudsService.getAvailableUsers(this.maraud.eventId)
       
@@ -77,7 +76,6 @@ export class MaraudusersComponent implements OnInit {
   }
   
   async updateList(){
-    console.log(this.users)
     this.availableUsernames = [];
     let usersTemp: string[] = [];
     var userss = new Promise<void>((resolve, reject) => {this.users.forEach(async (user: string,  i: number, array: string | any[]) => {
@@ -108,7 +106,6 @@ export class MaraudusersComponent implements OnInit {
     const selectedOrderIds = this.formAdd.value.orders
       .map((checked: any, i: number) => checked ? this.users[i] : null)
       .filter((checked: null) => checked !== null);
-      console.log(selectedOrderIds)
       let index;
       var add = new Promise<void>((resolve, reject) => {selectedOrderIds.forEach(async (selected: string, i: number, array: string | any[]) => {
         await this.maraudsService.addMaraudGroupUser(this.maraud.maraudGroupId, selected)
@@ -119,14 +116,13 @@ export class MaraudusersComponent implements OnInit {
         this.maraud.maraudGroupMembers.push(selected)
         if (i === array.length -1) resolve();
       })})
-      add.then(async () => {console.log(selectedOrderIds);await this.updateList()})
+      add.then(async () => {await this.updateList()})
   }
 
   async submitRemove() {
     const selectedOrderIds = this.formRemove.value.orders
       .map((checked: any, i: number) => checked ? this.maraud.maraudGroupMembers[i] : null)  
       .filter((checked: null) => checked !== null);
-      console.log(selectedOrderIds)
       var remove = new Promise<void>((resolve, reject) => {selectedOrderIds.forEach(async (selected: string, i: number, array: string | any[]) => {
         await this.maraudsService.deleteMaraudGroupUser(this.maraud.maraudGroupId, selected)
         this.users.push(selected)
@@ -136,7 +132,7 @@ export class MaraudusersComponent implements OnInit {
         this.ordersFormAddArray.push(new FormControl(false))
         if (i === array.length -1) resolve();
       })})
-      remove.then(async () => {console.log(selectedOrderIds);await this.updateList()})
+      remove.then(async () => {await this.updateList()})
   }
 
 }

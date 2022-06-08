@@ -69,7 +69,6 @@ const userReducer = createReducer(
     }),
 
     on(UserActions.pageApplicationsSuccess, (state, {applications}) => {
-        console.log(applications);
         if(applications.content !== undefined) {
             return {
                 ...state,

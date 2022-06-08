@@ -56,7 +56,6 @@ export class UserEffects {
             ofType(UserActions.fetchUserSuccess),
             switchMap((action) => 
                 this.userService.pageApplications(action.user.userId).pipe(
-                    tap((applications) => console.log(applications)),
                     map((applications) => UserActions.pageApplicationsSuccess({applications}))
                 )
             )

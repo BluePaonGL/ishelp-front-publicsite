@@ -29,13 +29,13 @@ export class ApplyComponent implements OnInit {
   });
 
   user$ = this.store.select(selectUser);
+  userSubscription: any;
 
   constructor(private router: Router, private store: Store) { }
 
   ngOnInit(): void {
-    this.user$.subscribe((user) =>
+    this.userSubscription = this.user$.subscribe((user) =>
       {
-        console.log(user.application);
         if (undefined !== user.application && user.application.applicationId !== undefined) {
           this.router.navigate(['/apply/status']);
         }
@@ -47,11 +47,13 @@ export class ApplyComponent implements OnInit {
     let application : Application = {};
     delete this.applyForm.value.file;
     Object.assign(application, this.applyForm.value)
-    console.log(this.applyForm.value);
-    console.log(application);
     
 
     this.store.dispatch(submitApplication({application}));
     this.router.navigate(['/apply/status']);
   }
+
+  ngOnDestroy(): void {
+    this.userSubscription.unsubscribe();
+  } 
 }

@@ -33,7 +33,7 @@ export class EventComponent implements OnInit {
 	isManagerAndMaraud: boolean = false;
 
 	constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, 
- 							public datePipe: DatePipe,private keycloakService: KeycloakService, private store: Store) { 
+				public datePipe: DatePipe,private keycloakService: KeycloakService, private store: Store) { 
 	}
 
 	ngOnInit() {

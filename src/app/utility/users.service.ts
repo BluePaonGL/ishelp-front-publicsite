@@ -25,7 +25,6 @@ export class UsersService {
 	}
 
 	pageApplications(userId: string | undefined) {
-		console.log(userId);
 		if(userId !== undefined) {
 			return this.http.get<ApplicationPaging>(this.userUrl + "/application", {params: {userId}})
 		} else {
