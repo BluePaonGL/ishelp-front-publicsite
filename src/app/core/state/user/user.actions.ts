@@ -1,4 +1,6 @@
+import { MatDialog } from "@angular/material/dialog";
 import { createAction, props } from "@ngrx/store";
+import { Application, ApplicationPaging } from "../../models/application.model";
 import { User } from "../../models/user.model";
 import { Event } from "../../models/event.model";
 
@@ -45,3 +47,32 @@ export const deleteUserEvent = createAction(
 );
 
 
+export const registerUser = createAction(
+    "[Register Page] Register User",
+    props<{user: User}>()
+);
+
+export const registerUserSuccess = createAction(
+    "[UserService API] Register User Success",
+    props<{user: User}>()
+)
+
+export const pageApplications = createAction(
+    "[Application Page] Page Applications",
+    props<{userId: string}>()
+)
+
+export const pageApplicationsSuccess = createAction(
+    "[UserService API] Page Applications Success",
+    props<{applications: ApplicationPaging}>()
+)
+
+export const submitApplication = createAction(
+    "[Apply Page] Submit Application",
+    props<{application: Application}>()
+)
+
+export const submitApplicationSuccess = createAction(
+    "[UserService API] Submit Application Success",
+    props<{application: Application}>()
+)

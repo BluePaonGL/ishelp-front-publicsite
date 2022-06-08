@@ -2,12 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {DatePipe} from '@angular/common';
-import { UsersService } from '../../../utility/users.service';
-import { EventsService } from '../../events.service';
 import { KeycloakService } from 'keycloak-angular';
 import { addUserEvent, deleteUserEvent, selectUser } from 'src/app/core/state/user';
 import { Store } from '@ngrx/store';
-import { addEventParticipant, selectEventItems, selectCurrentEvent, setCurrentEvent, deleteEventParticipant, selectEventItem, selectEvent} from 'src/app/core/state/event';
+import { addEventParticipant, selectEventItems, selectCurrentEvent, setCurrentEvent, deleteEventParticipant, selectEvent} from 'src/app/core/state/event';
+
 
 @Component({
 	selector: 'app-event',
@@ -34,8 +33,7 @@ export class EventComponent implements OnInit {
 	isManagerAndMaraud: boolean = false;
 
 	constructor(private translateService: TranslateService, public router: Router, private route: ActivatedRoute, 
-				private eventsService: EventsService, public datePipe: DatePipe, private usersService: UsersService,
-				private keycloakService: KeycloakService, private store: Store) { 
+ 							public datePipe: DatePipe,private keycloakService: KeycloakService, private store: Store) { 
 	}
 
 	ngOnInit() {

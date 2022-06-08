@@ -13,16 +13,16 @@
                     <div class="event-info">
                         <div class="apply-div apply-send">{{ 'apply.send' | translate }}</div>
                         <label for="" class="apply-label">{{ 'apply.object' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{ (application$ | async)?.object }}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.motivationText' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{ (application$ | async)?.motivations }}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.experienceText' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{ (application$ | async)?.resume }}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.contact' | translate }}</label>
-                        <div class="apply-div">Lorem ipsum</div> <br>
+                        <div class="apply-div">{{ (application$ | async)?.contact }}</div> <br>
     
                         <label for="" class="apply-label">{{ 'apply.file' | translate }}</label>
                         <div>fichier.pdf</div> <br>

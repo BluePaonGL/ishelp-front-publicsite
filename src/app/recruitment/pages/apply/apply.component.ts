@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
+import { Application } from 'src/app/core/models/application.model';
+import { selectUser, submitApplication } from 'src/app/core/state/user';
 
 @Component({
   selector: 'app-apply',
@@ -9,13 +13,13 @@ import { Router } from '@angular/router';
 })
 export class ApplyComponent implements OnInit {
   applyForm = new FormGroup({
-    subject: new FormControl('', [
+    object: new FormControl('', [
       Validators.required
     ]),
     motivations: new FormControl('', [
       Validators.required,
     ]),
-    experiences: new FormControl('', [
+    resume: new FormControl('', [
       Validators.required,
     ]),
     contact: new FormControl('', [
@@ -24,16 +28,30 @@ export class ApplyComponent implements OnInit {
     file: new FormControl('', []),
   });
 
+  user$ = this.store.select(selectUser);
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private store: Store) { }
 
   ngOnInit(): void {
-    if(false){ // condition de recrutement en cours
-      this.router.navigate(['/apply/status'])
-    }
+    this.user$.subscribe((user) =>
+      {
+        console.log(user.application);
+        if (undefined !== user.application && user.application.applicationId !== undefined) {
+          this.router.navigate(['/apply/status']);
+        }
+      }
+    )
   }
 
   onSubmit() {
-    this.router.navigate(['/apply/status'])
+    let application : Application = {};
+    delete this.applyForm.value.file;
+    Object.assign(application, this.applyForm.value)
+    console.log(this.applyForm.value);
+    console.log(application);
+    
+
+    this.store.dispatch(submitApplication({application}));
+    this.router.navigate(['/apply/status']);
   }
 }

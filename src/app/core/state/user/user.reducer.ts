@@ -40,6 +40,7 @@ const userReducer = createReducer(
             user: userUpdate
         }
     }),
+    
     on(UserActions.deleteUserEvent, (state, {event}) => {
         const user = {...state.user}
         let deletedEvents: Event[] = []
@@ -55,6 +56,31 @@ const userReducer = createReducer(
             ...state,
             user: user
         }
+    }),
+    
+    on(UserActions.registerUserSuccess, (state, {user}) => ({
+        ...state,
+        user
+    })),
+
+    on(UserActions.submitApplicationSuccess, (state, {application}) => {
+        return {...state,
+        application: application}
+    }),
+
+    on(UserActions.pageApplicationsSuccess, (state, {applications}) => {
+        console.log(applications);
+        if(applications.content !== undefined) {
+            return {
+                ...state,
+                application: applications.content[applications.content.length - 1]
+            }
+        } else {
+            return {
+                ...state
+            }
+        }
+        
     })
 );
 

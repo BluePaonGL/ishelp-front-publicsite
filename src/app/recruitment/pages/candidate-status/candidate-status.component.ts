@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectApplication } from 'src/app/core/state/user';
 
 @Component({
   selector: 'candidate-status',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CandidateStatusComponent implements OnInit {
 
-  constructor() { }
+  application$ = this.store.select(selectApplication);
+
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
   }

@@ -80,6 +80,19 @@
         "buttonYes": "Oui",
         "buttonClose": "Fermer"
     },
+    "userCreate": {
+        "usernameLabel": "Surnom",
+        "studentIDLabel": "Numéro étudiant",
+        "emailLabel": "Email Isep",
+        "firstNameLabel": "Prénom",
+        "lastNameLabel": "Nom",
+        "photoLabel": "Photo de profil",
+        "passwordLabel": "Mot de passe",
+        "passwordCheckLabel": "Confirmation de mot de passe",
+        "registrationButton": "Inscription",
+        "connexionButton": "Connexion",
+        "createTitle": "Créez votre compte IsHelp"
+    },
     "apply": {
         "title": "Rejoignez isHelp !",
         "object": "Objet de la demande",

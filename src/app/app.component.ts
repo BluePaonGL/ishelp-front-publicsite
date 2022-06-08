@@ -33,7 +33,7 @@ export class AppComponent implements OnInit {
 			this.translate.setDefaultLang(this.translate.getBrowserLang());
 		}
 		this.isLoggedIn = await this.keycloak.isLoggedIn();
-
+		
 		if (this.isLoggedIn) {
 			let user: User = {} as User;
 			this.userProfile = await this.keycloak.loadUserProfile();
