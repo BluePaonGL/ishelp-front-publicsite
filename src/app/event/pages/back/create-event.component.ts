@@ -10,6 +10,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { addEvent, deleteEvent, selectEventItems } from 'src/app/core/state/event';
 import { Event } from 'src/app/core/models/event.model';
+import { fetchEventsOnLogin, selectUserId } from 'src/app/core/state/user';
 
 export interface eventData {
   action: 'create' | 'delete';
@@ -145,7 +146,18 @@ export class CreateEventComponent implements OnInit {
           this.response = await this.eventsService.deleteEvent(eventId);   
           this.store.dispatch(deleteEvent({
           eventId: eventId
-        }));}
+        }));
+        this.store.select(selectUserId).subscribe(userIdT => {
+          if(userIdT !== undefined){
+            this.store.dispatch(
+            fetchEventsOnLogin({
+              userId: userIdT
+            })
+          );
+          }
+        });
+
+      }
 
         this.isDeleted = false;
         this.events$ = this.store.select(selectEventItems);
