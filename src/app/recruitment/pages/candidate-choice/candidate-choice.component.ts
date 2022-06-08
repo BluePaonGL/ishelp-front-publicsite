@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Application } from 'src/app/core/models/application.model';
-import { selectApplicationById } from 'src/app/core/state/applications';
+import { changeApplicationStatus, selectApplicationById } from 'src/app/core/state/applications';
 
 @Component({
   selector: 'candidate-choice',
@@ -24,6 +24,10 @@ export class CandidateChoiceComponent implements OnInit {
       }   
       
   
+  }
+
+  changeStatus(status: string) {
+    this.store.dispatch(changeApplicationStatus({status, applicationId: this.id}))
   }
 
 }

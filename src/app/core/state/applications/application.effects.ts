@@ -19,4 +19,13 @@ export class ApplicationsEffects {
             )
         )
     )
+
+/*     changeApplicationStatus = createEffect(() => 
+        this.actions$.pipe(
+            ofType(ApplicationActions.changeApplicationStatus),
+            switchMap((action) =>
+                this.applicationService
+            )
+        )
+    ) */
 }
