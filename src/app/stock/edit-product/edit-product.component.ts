@@ -15,6 +15,7 @@ export class EditProductComponent implements OnInit {
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   uploadForm: any;  
   listAllergen: string | undefined;
+  url: string | ArrayBuffer | null | undefined;
   allergens: string[] = [
     'Gluten',
     'Œuf',
@@ -100,11 +101,15 @@ export class EditProductComponent implements OnInit {
     });
  */
 
-  updateProduct(){
+  updateProduct(event : any){
     //const formData = new FormData();
     //formData.append('file', this.uploadForm.get('image').value);
 
-    var file = new File([this.image], "file");
+    //var file = new File([this.image], "file");
+
+    var file = this.readUrl(event)
+    this.productEdit.value.image = this.readUrl(event)
+    console.log(this.productEdit.value)
 
     //this.api.AddModelData(this.productEdit.value, this.router.snapshot.params['id'], file) //this.uploadForm.get("image").value
     this.api.editProduct(this.productEdit.value, this.router.snapshot.params['id'])
@@ -120,7 +125,22 @@ export class EditProductComponent implements OnInit {
 
     })
   }
-
+  readUrl(event:any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+  
+      reader.onload = (event: ProgressEvent) => {
+        this.url = (<FileReader>event.target).result;
+        //console.log("url = ", this.url)
+      }
+  
+      reader.readAsDataURL(event.target.files[0]);
+      //console.log("event = ", event.target.files[0]);
+      //console.log("reader = ", reader.readAsDataURL(event.target.files[0]));
+    //return reader.readAsDataURL(event.target.files[0])
+    }
+    return this.url
+  }
 
   /*onFileSelect(event : any) {
     if (event.target.files.length > 0) {

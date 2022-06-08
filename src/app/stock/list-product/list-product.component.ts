@@ -31,6 +31,7 @@ export class ListProductComponent implements OnInit{
     .subscribe({
       next:(res)=>{
         this.productList = res;
+        console.log(res)
       },
       error:(err)=>{
         alert("Erreur en récupérant les données")

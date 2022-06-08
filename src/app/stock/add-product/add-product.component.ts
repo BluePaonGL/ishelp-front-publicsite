@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { ApiService } from 'src/app/stock/api.service';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-add-product',
@@ -33,6 +34,7 @@ export class AddProductComponent implements OnInit  {
   currentDate = new Date();
   image: any;
   url: string | ArrayBuffer | null | undefined;
+  
 
   constructor(
     private router:Router,
@@ -75,8 +77,9 @@ export class AddProductComponent implements OnInit  {
   addProduct(event : any){
     if(this.productForm.valid){
       
-      var file = this.readUrl(event)?.slice(23)
-      console.log(file)
+      var file = this.readUrl(event)
+      this.productForm.value.image = this.readUrl(event)
+      console.log(this.productForm.value)
 
       //this.api.addImage(this.productForm.value, file) //this.image2.nativeElement.value
       this.api.addProduct(this.productForm.value)
@@ -118,8 +121,8 @@ export class AddProductComponent implements OnInit  {
       reader.readAsDataURL(event.target.files[0]);
       //console.log("event = ", event.target.files[0]);
       //console.log("reader = ", reader.readAsDataURL(event.target.files[0]));
+    //return reader.readAsDataURL(event.target.files[0])
     }
     return this.url
   }
-  
 }

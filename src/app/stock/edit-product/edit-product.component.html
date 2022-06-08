@@ -71,12 +71,12 @@
 
         <div class="image">
             <label for="file">Image</label>
-            <input formControlName="image" id="image" type="file" class="form-control"> <!-- (change)="onFileSelect($event)"-->
+            <input formControlName="image" id="image" type="file" class="form-control" (change)=readUrl($event)> <!-- (change)="onFileSelect($event)"-->
         </div>
 
         <div class="actions">
             <button mat-raised-button color="warn" (click)="goToProductList()">Retour</button>
-            <button type="submit" mat-raised-button style="margin-left: 8px;"color="primary" (click)="updateProduct()">Editer</button>
+            <button type="submit" mat-raised-button style="margin-left: 8px;"color="primary" (click)="updateProduct($event)">Editer</button>
         </div>
     </form>
 </div>

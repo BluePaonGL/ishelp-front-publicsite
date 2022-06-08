@@ -22,7 +22,7 @@
                                 <img src="../../../assets/logo-whiteback-square.png" alt="">
                             </div>
                             <div *ngIf="product.image !== '' ">
-                                <img src="{{'data:image/jpg;base64,' + product.image}}">
+                                <img src="{{product.image}}">
                             </div>
                         </div>
                         <div class="product-card information">
