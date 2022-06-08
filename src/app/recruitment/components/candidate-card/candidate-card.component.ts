@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { Application } from 'src/app/core/models/application.model';
 import {Candidate} from "../../models/candidate.model";
 
 @Component({
@@ -7,7 +8,7 @@ import {Candidate} from "../../models/candidate.model";
   styleUrls: ['./candidate-card.component.scss']
 })
 export class CandidateCardComponent implements OnInit {
-  @Input() candidate!: Candidate;
+  @Input() application!: Application;
   constructor() { }
 
   ngOnInit(): void {

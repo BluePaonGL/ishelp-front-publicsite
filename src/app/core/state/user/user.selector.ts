@@ -32,3 +32,11 @@ export const selectUserStudentId = createSelector(
     selectUser,
     (state: UserState) => state.user.studentId
 );
+
+export const selectApplication = createSelector(
+    selectUser,
+    (state: UserState) => {
+        console.log(state.application);
+        return state.application
+    }
+)

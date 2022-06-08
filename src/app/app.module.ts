@@ -56,6 +56,7 @@ import { UserEffects } from './core/state/user';
 import { EffectsModule } from '@ngrx/effects';
 import { RegistrationComponent } from './registration/registration.component';
 import { EventsEffects } from './core/state/event';
+import { ApplicationsEffects } from './core/state/applications/application.effects';
 
 
 registerLocaleData(localeFr);
@@ -126,7 +127,7 @@ registerLocaleData(localeFr);
       maxAge: 25,
       logOnly: false
     }),
-    EffectsModule.forRoot([UserEffects, EventsEffects]),
+    EffectsModule.forRoot([UserEffects, EventsEffects, ApplicationsEffects]),
   ],
   providers: [
     { 

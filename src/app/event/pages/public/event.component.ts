@@ -7,7 +7,7 @@ import { EventsService } from '../../events.service';
 import { KeycloakService } from 'keycloak-angular';
 import { selectUser, selectUserId } from 'src/app/core/state/user';
 import { Store } from '@ngrx/store';
-import { addEventParticipant, fetchEventParticipant, selectEventItems, selectCurrentEvent, setCurrentEvent, deleteEventParticipant} from 'src/app/core/state/event';
+import { addEventParticipant, selectEventItems, selectCurrentEvent, setCurrentEvent, deleteEventParticipant} from 'src/app/core/state/event';
 import { filter, map, Observable, tap } from 'rxjs';
 import { Event } from 'src/app/core/models/event.model';
 

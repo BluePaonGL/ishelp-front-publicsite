@@ -5,6 +5,7 @@ import {KeycloakService} from 'keycloak-angular';
 import {TranslateService} from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
 import { selectUserUsername } from '../core/state/user';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-header',
@@ -28,7 +29,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private keycloakService: KeycloakService, private http: HttpClient, 
     private usersService: UsersService, public translate: TranslateService,
-    private store: Store) { }
+    private store: Store, private router: Router) { }
   
   async ngOnInit(): Promise<void> {
     if (this.keycloakService.getUserRoles().includes('ADMIN')){
@@ -49,6 +50,10 @@ export class HeaderComponent implements OnInit {
 
   async logout() {
     this.usersService.logout();
+  }
+
+  async registration() {
+    this.router.navigate(['/registration/'])
   }
 
   lang(lang: string) {

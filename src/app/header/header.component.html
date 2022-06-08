@@ -35,7 +35,7 @@
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
     </button>
-    <button *ngIf="!isDisabled" mat-button class="mat-focus-indicator mat-button-base header-signup">
+    <button (click)="registration()" *ngIf="!isDisabled" mat-button class="mat-focus-indicator mat-button-base header-signup">
         <span class="mat-button-wrapper">{{ 'header.signUpButton' | translate }}</span>
         <span matripple="" class="mat-ripple mat-button-ripple"></span>
         <span class="mat-button-focus-overlay"></span>
